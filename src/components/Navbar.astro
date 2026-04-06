@@ -1,0 +1,86 @@
+---
+const links = [
+  { href: '#services', label: 'Services' },
+  { href: '#how-we-work', label: 'How we work' },
+  { href: '#packages', label: 'Packages' },
+  { href: '#team', label: 'About' },
+  { href: '#contact', label: 'Contact' },
+];
+---
+
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300">
+  <div class="max-w-[1200px] mx-auto px-6 lg:px-16 h-[72px] flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#" class="flex items-center">
+      <img
+        src="/images/logo/innovise-main-logo.png"
+        alt="Innovise Technologies"
+        class="nav-logo h-10 transition-all duration-300"
+        style="filter: brightness(0) invert(1);"
+      />
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-8">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class="nav-link text-sm font-medium text-white/80 hover:text-white transition-colors duration-200"
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="#contact"
+        class="bg-white/10 hover:bg-white/20 text-white text-sm font-semibold px-5 py-2.5 rounded-lg border border-white/20 transition-all duration-200"
+      >
+        Get in touch
+      </a>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden text-white p-2"
+      aria-label="Toggle navigation menu"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path id="hamburger-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+    <div class="px-6 py-4 flex flex-col gap-4">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class="mobile-nav-link text-text-secondary hover:text-brand-500 text-base font-medium transition-colors"
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="#contact"
+        class="bg-brand-500 text-white text-center text-sm font-semibold px-5 py-3 rounded-lg hover:bg-brand-600 transition-colors"
+      >
+        Get in touch
+      </a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+  // Close mobile menu on link click
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      menu?.classList.add('hidden');
+    });
+  });
+</script>
