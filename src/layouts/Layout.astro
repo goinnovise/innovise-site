@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { entranceAnimationsEnabled } from '../config/entrance-animations';
 
 interface Props {
   title?: string;
@@ -10,10 +11,12 @@ const {
   title = "Innovise Technologies | Custom Software Development & Consulting",
   description = "Innovise Technologies builds custom software solutions for businesses of all sizes. From full-stack development to DevOps and cloud infrastructure. We're the engineering partner that scales with you."
 } = Astro.props;
+
+const entranceAnimationsOn = entranceAnimationsEnabled();
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-entrance-animations={entranceAnimationsOn ? 'on' : 'off'}>
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="/images/logo/innovise-main-logo.png" />
@@ -30,23 +33,25 @@ const {
   <body class="min-h-screen">
     <slot />
 
-    <script>
-      // Scroll-triggered animations
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-      );
+    <script define:vars={{ entranceAnimationsOn }}>
+      // Scroll-triggered animations (gated by src/config/entrance-animations.ts)
+      if (entranceAnimationsOn) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+        );
 
-      document.querySelectorAll('.animate-on-scroll, .stagger-children').forEach((el) => {
-        observer.observe(el);
-      });
+        document.querySelectorAll('.animate-on-scroll, .stagger-children').forEach((el) => {
+          observer.observe(el);
+        });
+      }
 
       // Navbar scroll behavior
       const nav = document.getElementById('navbar');

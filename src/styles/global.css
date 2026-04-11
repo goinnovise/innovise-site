@@ -90,6 +90,14 @@ h1, h2, h3, h4, h5, h6 {
   color: #faf7f5;
 }
 
+/* Toggle via src/config/entrance-animations.ts (ENABLE_ENTRANCE_ANIMATIONS) */
+[data-entrance-animations="off"] .animate-on-scroll,
+[data-entrance-animations="off"] .stagger-children > * {
+  opacity: 1;
+  transform: none;
+  animation: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-on-scroll,
   .stagger-children > * {
