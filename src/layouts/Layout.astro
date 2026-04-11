@@ -34,7 +34,7 @@ const entranceAnimationsOn = entranceAnimationsEnabled();
     <slot />
 
     <script define:vars={{ entranceAnimationsOn }}>
-      // Scroll-triggered animations (gated by src/config/entrance-animations.ts)
+      // Section/stagger entrance fades (src/config/entrance-animations.ts). Not the header.
       if (entranceAnimationsOn) {
         const observer = new IntersectionObserver(
           (entries) => {
@@ -52,32 +52,36 @@ const entranceAnimationsOn = entranceAnimationsEnabled();
           observer.observe(el);
         });
       }
+    </script>
 
-      // Navbar scroll behavior
-      const nav = document.getElementById('navbar');
-      if (nav) {
-        window.addEventListener('scroll', () => {
-          if (window.scrollY > 50) {
-            nav.classList.add('bg-white', 'shadow-sm');
-            nav.classList.remove('bg-transparent');
-            nav.querySelectorAll('.nav-link').forEach(l => {
-              l.classList.remove('text-white/80', 'hover:text-white');
-              l.classList.add('text-text-secondary', 'hover:text-brand-500');
-            });
-            const logo = nav.querySelector('.nav-logo') as HTMLElement;
-            if (logo) logo.style.filter = 'none';
-          } else {
-            nav.classList.remove('bg-white', 'shadow-sm');
-            nav.classList.add('bg-transparent');
-            nav.querySelectorAll('.nav-link').forEach(l => {
-              l.classList.add('text-white/80', 'hover:text-white');
-              l.classList.remove('text-text-secondary', 'hover:text-brand-500');
-            });
-            const logo = nav.querySelector('.nav-logo') as HTMLElement;
-            if (logo) logo.style.filter = 'brightness(0) invert(1)';
-          }
-        });
+    <script>
+      // Fixed header: always reacts to scroll (independent of ENABLE_ENTRANCE_ANIMATIONS).
+      function syncNavbarFromScroll() {
+        const nav = document.getElementById('navbar');
+        if (!nav) return;
+        if (window.scrollY > 50) {
+          nav.classList.add('bg-white', 'shadow-sm');
+          nav.classList.remove('bg-transparent');
+          nav.querySelectorAll('.nav-link').forEach((l) => {
+            l.classList.remove('text-white/80', 'hover:text-white');
+            l.classList.add('text-text-secondary', 'hover:text-brand-500');
+          });
+          const logo = nav.querySelector('.nav-logo');
+          if (logo instanceof HTMLElement) logo.style.filter = 'none';
+        } else {
+          nav.classList.remove('bg-white', 'shadow-sm');
+          nav.classList.add('bg-transparent');
+          nav.querySelectorAll('.nav-link').forEach((l) => {
+            l.classList.add('text-white/80', 'hover:text-white');
+            l.classList.remove('text-text-secondary', 'hover:text-brand-500');
+          });
+          const logo = nav.querySelector('.nav-logo');
+          if (logo instanceof HTMLElement) logo.style.filter = 'brightness(0) invert(1)';
+        }
       }
+
+      window.addEventListener('scroll', syncNavbarFromScroll, { passive: true });
+      syncNavbarFromScroll();
     </script>
   </body>
 </html>
