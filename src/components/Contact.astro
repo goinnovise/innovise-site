@@ -1,107 +1,159 @@
 ---
+
 ---
 
-<section id="contact" class="py-24 lg:py-32 bg-surface-page">
-  <div class="max-w-[1200px] mx-auto px-6 lg:px-16">
-    <div class="text-center mb-16">
-      <p class="text-brand-400 text-sm font-semibold tracking-widest uppercase mb-4 animate-on-scroll">
+<section id="contact" class="bg-surface-page py-24 lg:py-32">
+  <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+    <div class="mb-16 text-center">
+      <p
+        class="text-brand-400 animate-on-scroll mb-4 text-sm font-semibold tracking-widest uppercase"
+      >
         Get started
       </p>
-      <h2 class="font-heading text-3xl sm:text-4xl lg:text-[41px] font-semibold text-text-primary mb-5 animate-on-scroll">
+      <h2
+        class="font-heading text-text-primary animate-on-scroll mb-5 text-3xl font-semibold sm:text-4xl lg:text-[41px]"
+      >
         Let's talk
       </h2>
     </div>
 
-    <div class="grid lg:grid-cols-5 gap-12 lg:gap-16">
+    <div class="grid gap-12 lg:grid-cols-5 lg:gap-16">
       <!-- Left: Info -->
-      <div class="lg:col-span-2 animate-on-scroll">
+      <div class="animate-on-scroll lg:col-span-2">
         <div class="mb-10">
-          <h3 class="font-heading text-lg font-semibold text-text-primary mb-3">Project inquiries</h3>
+          <h3 class="font-heading text-text-primary mb-3 text-lg font-semibold">
+            Project inquiries
+          </h3>
           <p class="text-text-secondary leading-relaxed">
-            Have a project that needs the right team behind it? Tell us about it and we'll get back to you within one business day.
+            Have a project that needs the right team behind it? Tell us about it
+            and we'll get back to you within one business day.
           </p>
         </div>
         <div class="mb-10">
-          <h3 class="font-heading text-lg font-semibold text-text-primary mb-3">Career opportunities</h3>
+          <h3 class="font-heading text-text-primary mb-3 text-lg font-semibold">
+            Career opportunities
+          </h3>
           <p class="text-text-secondary leading-relaxed">
-            We're always looking for talented engineers who care about craft. If that's you, reach out. We'd love to hear your story.
+            We're always looking for talented engineers who care about craft. If
+            that's you, reach out. We'd love to hear your story.
           </p>
         </div>
-        <div class="flex items-center gap-3 text-text-tertiary">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+        <div class="text-text-tertiary flex items-center gap-3">
+          <svg
+            class="h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+            ></path>
           </svg>
           <span class="text-sm">Seattle, Washington</span>
         </div>
       </div>
 
       <!-- Right: Form -->
-      <div class="lg:col-span-3 animate-on-scroll">
-        <form class="space-y-5" action="https://formsubmit.co/loren@goinnovise.com" method="POST">
-          <input type="hidden" name="_next" value="https://goinnovise.com/#contact" />
+      <div class="animate-on-scroll lg:col-span-3">
+        <form
+          class="space-y-5"
+          action="https://formsubmit.co/loren@goinnovise.com"
+          method="POST"
+        >
+          <input
+            type="hidden"
+            name="_next"
+            value="https://goinnovise.com/#contact"
+          />
           <input type="hidden" name="_template" value="table" />
-          <div class="grid sm:grid-cols-2 gap-5">
+          <div class="grid gap-5 sm:grid-cols-2">
             <div>
-              <label for="name" class="block text-sm font-medium text-text-primary mb-2">Name <span class="text-red-500">*</span></label>
+              <label
+                for="name"
+                class="text-text-primary mb-2 block text-sm font-medium"
+                >Name <span class="text-red-500">*</span></label
+              >
               <input
                 type="text"
                 id="name"
                 name="name"
                 required
-                class="w-full bg-surface-card border border-surface-inset rounded-lg px-4 py-3 text-text-primary placeholder-text-tertiary focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-all"
+                class="bg-surface-card border-surface-inset text-text-primary placeholder-text-tertiary focus:ring-brand-500/20 focus:border-brand-500 w-full rounded-lg border px-4 py-3 transition-all focus:ring-2 focus:outline-none"
                 placeholder="Your name"
               />
             </div>
             <div>
-              <label for="email" class="block text-sm font-medium text-text-primary mb-2">Email <span class="text-red-500">*</span></label>
+              <label
+                for="email"
+                class="text-text-primary mb-2 block text-sm font-medium"
+                >Email <span class="text-red-500">*</span></label
+              >
               <input
                 type="email"
                 id="email"
                 name="email"
                 required
-                class="w-full bg-surface-card border border-surface-inset rounded-lg px-4 py-3 text-text-primary placeholder-text-tertiary focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-all"
+                class="bg-surface-card border-surface-inset text-text-primary placeholder-text-tertiary focus:ring-brand-500/20 focus:border-brand-500 w-full rounded-lg border px-4 py-3 transition-all focus:ring-2 focus:outline-none"
                 placeholder="you@company.com"
               />
             </div>
           </div>
-          <div class="grid sm:grid-cols-2 gap-5">
+          <div class="grid gap-5 sm:grid-cols-2">
             <div>
-              <label for="phone" class="block text-sm font-medium text-text-primary mb-2">Phone</label>
+              <label
+                for="phone"
+                class="text-text-primary mb-2 block text-sm font-medium"
+                >Phone</label
+              >
               <input
                 type="tel"
                 id="phone"
                 name="phone"
-                class="w-full bg-surface-card border border-surface-inset rounded-lg px-4 py-3 text-text-primary placeholder-text-tertiary focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-all"
+                class="bg-surface-card border-surface-inset text-text-primary placeholder-text-tertiary focus:ring-brand-500/20 focus:border-brand-500 w-full rounded-lg border px-4 py-3 transition-all focus:ring-2 focus:outline-none"
                 placeholder="(555) 123-4567"
               />
             </div>
             <div>
-              <label for="subject" class="block text-sm font-medium text-text-primary mb-2">Subject <span class="text-red-500">*</span></label>
+              <label
+                for="subject"
+                class="text-text-primary mb-2 block text-sm font-medium"
+                >Subject <span class="text-red-500">*</span></label
+              >
               <input
                 type="text"
                 id="subject"
                 name="_subject"
                 required
-                class="w-full bg-surface-card border border-surface-inset rounded-lg px-4 py-3 text-text-primary placeholder-text-tertiary focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-all"
+                class="bg-surface-card border-surface-inset text-text-primary placeholder-text-tertiary focus:ring-brand-500/20 focus:border-brand-500 w-full rounded-lg border px-4 py-3 transition-all focus:ring-2 focus:outline-none"
                 placeholder="Project inquiry"
               />
             </div>
           </div>
           <div>
-            <label for="message" class="block text-sm font-medium text-text-primary mb-2">Message <span class="text-red-500">*</span></label>
+            <label
+              for="message"
+              class="text-text-primary mb-2 block text-sm font-medium"
+              >Message <span class="text-red-500">*</span></label
+            >
             <textarea
               id="message"
               name="message"
               required
               rows="5"
-              class="w-full bg-surface-card border border-surface-inset rounded-lg px-4 py-3 text-text-primary placeholder-text-tertiary focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-all resize-none"
-              placeholder="Tell us about your project..."
-            ></textarea>
+              class="bg-surface-card border-surface-inset text-text-primary placeholder-text-tertiary focus:ring-brand-500/20 focus:border-brand-500 w-full resize-none rounded-lg border px-4 py-3 transition-all focus:ring-2 focus:outline-none"
+              placeholder="Tell us about your project..."></textarea>
           </div>
           <button
             type="submit"
-            class="w-full sm:w-auto bg-brand-500 hover:bg-brand-600 active:bg-brand-700 text-white font-semibold px-8 py-3.5 rounded-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg active:scale-[0.98]"
+            class="bg-brand-500 hover:bg-brand-600 active:bg-brand-700 w-full rounded-lg px-8 py-3.5 font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg active:scale-[0.98] sm:w-auto"
           >
             Send message
           </button>

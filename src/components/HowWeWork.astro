@@ -1,57 +1,67 @@
 ---
 const steps = [
   {
-    number: '01',
-    title: 'Discover',
-    description: 'We learn your business, your users, and your constraints. No assumptions, no boilerplate. Just the real problems worth solving.',
+    number: "01",
+    title: "Discover",
+    description:
+      "We learn your business, your users, and your constraints. No assumptions, no boilerplate. Just the real problems worth solving.",
   },
   {
-    number: '02',
-    title: 'Build',
-    description: 'Iterative development with continuous feedback. You see working software early and often, not just at the end.',
+    number: "02",
+    title: "Build",
+    description:
+      "Iterative development with continuous feedback. You see working software early and often, not just at the end.",
   },
   {
-    number: '03',
-    title: 'Deliver & support',
-    description: 'Launch is just the beginning. We provide ongoing maintenance, monitoring, and iteration so your software keeps pace with your business.',
+    number: "03",
+    title: "Deliver & support",
+    description:
+      "Launch is just the beginning. We provide ongoing maintenance, monitoring, and iteration so your software keeps pace with your business.",
   },
 ];
 ---
 
-<section id="how-we-work" class="py-24 lg:py-32 bg-surface-inset">
-  <div class="max-w-[1200px] mx-auto px-6 lg:px-16">
-    <div class="text-center mb-16">
-      <p class="text-brand-400 text-sm font-semibold tracking-widest uppercase mb-4 animate-on-scroll">
+<section id="how-we-work" class="bg-surface-inset py-24 lg:py-32">
+  <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+    <div class="mb-16 text-center">
+      <p
+        class="text-brand-400 animate-on-scroll mb-4 text-sm font-semibold tracking-widest uppercase"
+      >
         Our approach
       </p>
-      <h2 class="font-heading text-3xl sm:text-4xl lg:text-[41px] font-semibold text-text-primary mb-5 animate-on-scroll">
+      <h2
+        class="font-heading text-text-primary animate-on-scroll mb-5 text-3xl font-semibold sm:text-4xl lg:text-[41px]"
+      >
         Built the agile way
       </h2>
-      <p class="text-lg text-text-secondary max-w-xl mx-auto animate-on-scroll">
-        Modern methodologies, industry best practices, and a process you can trust. Every engagement follows a proven path.
+      <p class="text-text-secondary animate-on-scroll mx-auto max-w-xl text-lg">
+        Modern methodologies, industry best practices, and a process you can
+        trust. Every engagement follows a proven path.
       </p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-8 lg:gap-12 stagger-children">
-      {steps.map((step, i) => (
-        <div class="relative">
-          {/* Connecting line for desktop */}
-          {i < steps.length - 1 && (
-            <div class="hidden md:block absolute top-8 left-[calc(50%+40px)] w-[calc(100%-40px)] h-px bg-brand-100"></div>
-          )}
-          <div class="text-center">
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-500 text-white font-heading font-bold text-lg mb-6 relative z-10">
-              {step.number}
+    <div class="stagger-children grid gap-8 md:grid-cols-3 lg:gap-12">
+      {
+        steps.map((step, i) => (
+          <div class="relative">
+            {/* Connecting line for desktop */}
+            {i < steps.length - 1 && (
+              <div class="bg-brand-100 absolute top-8 left-[calc(50%+40px)] hidden h-px w-[calc(100%-40px)] md:block" />
+            )}
+            <div class="text-center">
+              <div class="bg-brand-500 font-heading relative z-10 mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full text-lg font-bold text-white">
+                {step.number}
+              </div>
+              <h3 class="font-heading text-text-primary mb-3 text-xl font-semibold">
+                {step.title}
+              </h3>
+              <p class="text-text-secondary mx-auto max-w-sm leading-relaxed">
+                {step.description}
+              </p>
             </div>
-            <h3 class="font-heading text-xl font-semibold text-text-primary mb-3">
-              {step.title}
-            </h3>
-            <p class="text-text-secondary leading-relaxed max-w-sm mx-auto">
-              {step.description}
-            </p>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </div>
 </section>

@@ -1,9 +1,11 @@
 # Innovise Technologies: Website Content
+
 ## Rewritten for Modern Rebuild
 
 ---
 
 ## Navigation
+
 - Home
 - Services
 - About
@@ -32,6 +34,7 @@ We design, build, and maintain custom software solutions tailored to how your bu
 **Heading:** Trusted by teams who ship
 
 **Client logos:**
+
 - AI
 - WSOS
 - Savvy Lane
@@ -39,7 +42,7 @@ We design, build, and maintain custom software solutions tailored to how your bu
 - TPS
 - The Chances App
 
-*Display as grayscale logo strip, color on hover*
+_Display as grayscale logo strip, color on hover_
 
 ---
 
@@ -55,27 +58,27 @@ We design, build, and maintain custom software solutions tailored to how your bu
 
 **Custom Software Development**
 Full-stack development across web, desktop, and mobile platforms. We build the tools your team needs to move faster and work smarter.
-*Icon: Code2*
+_Icon: Code2_
 
 **System Integrations**
 Connect your platforms, automate your workflows, and eliminate the manual busywork that slows your team down.
-*Icon: Plug*
+_Icon: Plug_
 
 **Systems Design & Architecture**
 Turn your ideas into production-ready blueprints. We plan complex systems so they're built right the first time.
-*Icon: Layers*
+_Icon: Layers_
 
 **Analytics & Dashboards**
 Custom data visualization that tells you what matters. Know when you're on track and get alerts when something breaks.
-*Icon: BarChart3*
+_Icon: BarChart3_
 
 **DevOps & Cloud Infrastructure**
 CI/CD pipelines, containerization, cloud hosting, and monitoring. Ship with confidence and sleep through the night.
-*Icon: Cloud*
+_Icon: Cloud_
 
 **UX & Interface Design**
 Research-driven design that puts your users first. We craft interfaces that are intuitive, accessible, and on-brand.
-*Icon: Palette*
+_Icon: Palette_
 
 ---
 
@@ -111,22 +114,22 @@ Launch is just the beginning. We provide ongoing maintenance, monitoring, and it
 ### Package Cards
 
 **Development Teams**
-*For projects big and small*
+_For projects big and small_
 Dedicated engineers embedded with your team, short-term or long-term. We become your development department or augment the one you have.
 **CTA:** Learn more
 
 **Custom Website Builds**
-*Modern web, done right*
+_Modern web, done right_
 From ground-up builds to e-commerce upgrades and cloud migrations. Modern tech, blazing performance, and a design your customers will remember.
 **CTA:** Learn more
 
 **Monthly Maintenance**
-*Software support on demand*
+_Software support on demand_
 Don't need a full-time developer? Our retainer model gives you access to experienced engineers whenever you need them. No overhead, no commitment.
 **CTA:** Learn more
 
 **Technology & Security Audits**
-*Know where you stand*
+_Know where you stand_
 Comprehensive reviews of your tech stack, security posture, and cloud spend. We find the risks, the waste, and the opportunities you're missing.
 **CTA:** Learn more
 
@@ -143,14 +146,14 @@ Comprehensive reviews of your tech stack, security posture, and cloud spend. We 
 ### Team Members
 
 **Loren Anderson: President**
-*Photo: /assets/images/team/loren-anderson.jpg*
+_Photo: /assets/images/team/loren-anderson.jpg_
 
 Loren has built software across a broad range of languages, frameworks, and platforms, from scrappy startups to Fortune 50 enterprises. He views software as a tool to solve business problems and tackles every challenge with a pragmatic, efficient approach.
 
 [LinkedIn](https://www.linkedin.com/in/loren-anderson-85953a13/)
 
 **Gary Rubens: Business Development**
-*Photo: /assets/images/team/gary-rubens.png*
+_Photo: /assets/images/team/gary-rubens.png_
 
 Gary is a serial entrepreneur, startup investor, and real estate developer based in the Seattle area. After years of working with development teams on his own technology startups, Gary brings a valuable client-first perspective to every engagement.
 
@@ -182,6 +185,7 @@ Have a project that needs the right team behind it? Tell us about it and we'll g
 We're always looking for talented engineers who care about craft. If that's you, reach out. We'd love to hear your story.
 
 ### Contact Form
+
 - Name (required)
 - Email (required)
 - Phone (optional)
@@ -200,6 +204,7 @@ Innovise Technologies logo
 "Custom software, built for you."
 
 **Column 2: Navigation**
+
 - Home
 - Services
 - About
@@ -207,6 +212,7 @@ Innovise Technologies logo
 - Contact
 
 **Column 3: Services**
+
 - Custom Development
 - System Integrations
 - DevOps & Cloud
@@ -214,6 +220,7 @@ Innovise Technologies logo
 - Tech Audits
 
 **Column 4: Connect**
+
 - LinkedIn (company)
 - Email: info@goinnovise.com
 

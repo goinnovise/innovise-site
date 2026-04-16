@@ -1,73 +1,102 @@
 ---
 const navLinks = [
-  { href: '#home', label: 'Home' },
-  { href: '#services', label: 'Services' },
-  { href: '#how-we-work', label: 'How we work' },
-  { href: '#team', label: 'About' },
-  { href: '#contact', label: 'Contact' },
+  { href: "#home", label: "Home" },
+  { href: "#services", label: "Services" },
+  { href: "#how-we-work", label: "How we work" },
+  { href: "#team", label: "About" },
+  { href: "#contact", label: "Contact" },
 ];
 
 const serviceLinks = [
-  'Custom development',
-  'System integrations',
-  'DevOps & cloud',
-  'UX design',
-  'Tech audits',
+  "Custom development",
+  "System integrations",
+  "DevOps & cloud",
+  "UX design",
+  "Tech audits",
 ];
 ---
 
-<footer class="bg-surface-inverse text-white/80 pt-16 pb-8">
-  <div class="max-w-[1200px] mx-auto px-6 lg:px-16">
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+<footer class="bg-surface-inverse pt-16 pb-8 text-white/80">
+  <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+    <div class="mb-12 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
       <!-- Brand -->
       <div class="lg:col-span-1">
         <img
           src="/images/logo/innovise-main-logo.png"
           alt="Innovise Technologies"
-          class="h-10 mb-4"
+          class="mb-4 h-10"
           style="filter: brightness(0) invert(1);"
         />
-        <p class="text-white/50 text-sm leading-relaxed">
+        <p class="text-sm leading-relaxed text-white/50">
           Custom software, built for you.
         </p>
       </div>
 
       <!-- Navigation -->
       <div>
-        <h4 class="font-heading text-white font-semibold text-sm uppercase tracking-wider mb-4">Navigation</h4>
+        <h4
+          class="font-heading mb-4 text-sm font-semibold tracking-wider text-white uppercase"
+        >
+          Navigation
+        </h4>
         <ul class="space-y-2.5">
-          {navLinks.map((link) => (
-            <li>
-              <a href={link.href} class="text-sm text-white/50 hover:text-brand-400 transition-colors">
-                {link.label}
-              </a>
-            </li>
-          ))}
+          {
+            navLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="hover:text-brand-400 text-sm text-white/50 transition-colors"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </div>
 
       <!-- Services -->
       <div>
-        <h4 class="font-heading text-white font-semibold text-sm uppercase tracking-wider mb-4">Services</h4>
+        <h4
+          class="font-heading mb-4 text-sm font-semibold tracking-wider text-white uppercase"
+        >
+          Services
+        </h4>
         <ul class="space-y-2.5">
-          {serviceLinks.map((service) => (
-            <li>
-              <a href="#services" class="text-sm text-white/50 hover:text-brand-400 transition-colors">
-                {service}
-              </a>
-            </li>
-          ))}
+          {
+            serviceLinks.map((service) => (
+              <li>
+                <a
+                  href="#services"
+                  class="hover:text-brand-400 text-sm text-white/50 transition-colors"
+                >
+                  {service}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </div>
 
       <!-- Connect -->
       <div>
-        <h4 class="font-heading text-white font-semibold text-sm uppercase tracking-wider mb-4">Connect</h4>
+        <h4
+          class="font-heading mb-4 text-sm font-semibold tracking-wider text-white uppercase"
+        >
+          Connect
+        </h4>
         <ul class="space-y-2.5">
           <li>
-            <a href="https://www.linkedin.com/in/loren-anderson-85953a13/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm text-white/50 hover:text-brand-400 transition-colors">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            <a
+              href="https://www.linkedin.com/in/loren-anderson-85953a13/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-brand-400 inline-flex items-center gap-2 text-sm text-white/50 transition-colors"
+            >
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                ></path>
               </svg>
               LinkedIn
             </a>

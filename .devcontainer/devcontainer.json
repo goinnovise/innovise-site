@@ -26,10 +26,7 @@
       }
     }
   },
-  "forwardPorts": [
-    4321,
-    24678
-  ],
+  "forwardPorts": [4321, 24678],
   "portsAttributes": {
     "4321": {
       "label": "Astro Dev Server",
@@ -40,9 +37,7 @@
       "onAutoForward": "silent"
     }
   },
-  "mounts": [
-    "source=global-bashhistory,target=/commandhistory,type=volume"
-  ],
+  "mounts": ["source=global-bashhistory,target=/commandhistory,type=volume"],
   "postCreateCommand": "bash .devcontainer/setup-dev-container.sh && npm ci",
   "remoteUser": "node"
 }

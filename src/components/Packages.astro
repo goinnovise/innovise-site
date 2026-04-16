@@ -1,96 +1,138 @@
 ---
 const packages = [
   {
-    title: 'Development teams',
-    subtitle: 'For projects big and small',
-    description: 'Dedicated engineers embedded with your team, short-term or long-term. We become your development department or augment the one you have.',
+    title: "Development teams",
+    subtitle: "For projects big and small",
+    description:
+      "Dedicated engineers embedded with your team, short-term or long-term. We become your development department or augment the one you have.",
     icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />`,
     featured: true,
   },
   {
-    title: 'Custom website builds',
-    subtitle: 'Modern web, done right',
-    description: 'From ground-up builds to e-commerce upgrades and cloud migrations. Modern tech, blazing performance, and a design your customers will remember.',
+    title: "Custom website builds",
+    subtitle: "Modern web, done right",
+    description:
+      "From ground-up builds to e-commerce upgrades and cloud migrations. Modern tech, blazing performance, and a design your customers will remember.",
     icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />`,
     featured: false,
   },
   {
-    title: 'Monthly maintenance',
-    subtitle: 'Software support on demand',
-    description: "Don't need a full-time developer? Our retainer model gives you access to experienced engineers whenever you need them. No overhead, no commitment.",
+    title: "Monthly maintenance",
+    subtitle: "Software support on demand",
+    description:
+      "Don't need a full-time developer? Our retainer model gives you access to experienced engineers whenever you need them. No overhead, no commitment.",
     icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.42 15.17l-5.384 3.171A1.533 1.533 0 014.5 17.082V6.918a1.535 1.535 0 011.536-1.258l5.384 3.171a1.534 1.534 0 010 2.338zm4.08-4.92a3 3 0 010 4.243" />`,
     featured: false,
   },
   {
-    title: 'Technology & security audits',
-    subtitle: 'Know where you stand',
-    description: "Comprehensive reviews of your tech stack, security posture, and cloud spend. We find the risks, the waste, and the opportunities you're missing.",
+    title: "Technology & security audits",
+    subtitle: "Know where you stand",
+    description:
+      "Comprehensive reviews of your tech stack, security posture, and cloud spend. We find the risks, the waste, and the opportunities you're missing.",
     icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />`,
     featured: false,
   },
 ];
 ---
 
-<section id="packages" class="py-24 lg:py-32 bg-surface-page">
-  <div class="max-w-[1200px] mx-auto px-6 lg:px-16">
-    <div class="text-center mb-16">
-      <p class="text-brand-400 text-sm font-semibold tracking-widest uppercase mb-4 animate-on-scroll">
+<section id="packages" class="bg-surface-page py-24 lg:py-32">
+  <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+    <div class="mb-16 text-center">
+      <p
+        class="text-brand-400 animate-on-scroll mb-4 text-sm font-semibold tracking-widest uppercase"
+      >
         Flexible engagement models
       </p>
-      <h2 class="font-heading text-3xl sm:text-4xl lg:text-[41px] font-semibold text-text-primary mb-5 animate-on-scroll">
+      <h2
+        class="font-heading text-text-primary animate-on-scroll mb-5 text-3xl font-semibold sm:text-4xl lg:text-[41px]"
+      >
         Work with us your way
       </h2>
-      <p class="text-lg text-text-secondary max-w-xl mx-auto animate-on-scroll">
-        Whether you need a full team or a few hours a month, we have a model that fits.
+      <p class="text-text-secondary animate-on-scroll mx-auto max-w-xl text-lg">
+        Whether you need a full team or a few hours a month, we have a model
+        that fits.
       </p>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-6 stagger-children">
-      {packages.map((pkg) => (
-        <div class:list={[
-          "group relative rounded-lg p-8 transition-all duration-200 hover:-translate-y-1",
-          pkg.featured
-            ? "bg-brand-500 text-white hover:shadow-[0_12px_40px_rgba(194,74,54,0.35)]"
-            : "bg-surface-card border border-surface-inset hover:shadow-[0_4px_18px_rgba(0,0,0,0.08)]"
-        ]}>
-          <div class:list={[
-            "w-12 h-12 rounded-lg flex items-center justify-center mb-5",
-            pkg.featured ? "bg-white/15" : "bg-brand-50"
-          ]}>
-            <svg class:list={["w-6 h-6", pkg.featured ? "text-white" : "text-brand-500"]} fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={pkg.icon} />
-          </div>
-          <p class:list={[
-            "text-xs font-semibold tracking-widest uppercase mb-2",
-            pkg.featured ? "text-brand-100" : "text-brand-400"
-          ]}>
-            {pkg.subtitle}
-          </p>
-          <h3 class:list={[
-            "font-heading text-xl font-semibold mb-3",
-            pkg.featured ? "text-white" : "text-text-primary"
-          ]}>
-            {pkg.title}
-          </h3>
-          <p class:list={[
-            "leading-relaxed mb-6",
-            pkg.featured ? "text-white/80" : "text-text-secondary"
-          ]}>
-            {pkg.description}
-          </p>
-          <a
-            href="#contact"
+    <div class="stagger-children grid gap-6 md:grid-cols-2">
+      {
+        packages.map((pkg) => (
+          <div
             class:list={[
-              "inline-flex items-center text-sm font-semibold transition-colors",
-              pkg.featured ? "text-white hover:text-brand-50" : "text-brand-500 hover:text-brand-400"
+              "group relative rounded-lg p-8 transition-all duration-200 hover:-translate-y-1",
+              pkg.featured
+                ? "bg-brand-500 text-white hover:shadow-[0_12px_40px_rgba(194,74,54,0.35)]"
+                : "bg-surface-card border-surface-inset border hover:shadow-[0_4px_18px_rgba(0,0,0,0.08)]",
             ]}
           >
-            Learn more
-            <svg class="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-        </div>
-      ))}
+            <div
+              class:list={[
+                "mb-5 flex h-12 w-12 items-center justify-center rounded-lg",
+                pkg.featured ? "bg-white/15" : "bg-brand-50",
+              ]}
+            >
+              <svg
+                class:list={[
+                  "h-6 w-6",
+                  pkg.featured ? "text-white" : "text-brand-500",
+                ]}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                set:html={pkg.icon}
+              />
+            </div>
+            <p
+              class:list={[
+                "mb-2 text-xs font-semibold tracking-widest uppercase",
+                pkg.featured ? "text-brand-100" : "text-brand-400",
+              ]}
+            >
+              {pkg.subtitle}
+            </p>
+            <h3
+              class:list={[
+                "font-heading mb-3 text-xl font-semibold",
+                pkg.featured ? "text-white" : "text-text-primary",
+              ]}
+            >
+              {pkg.title}
+            </h3>
+            <p
+              class:list={[
+                "mb-6 leading-relaxed",
+                pkg.featured ? "text-white/80" : "text-text-secondary",
+              ]}
+            >
+              {pkg.description}
+            </p>
+            <a
+              href="#contact"
+              class:list={[
+                "inline-flex items-center text-sm font-semibold transition-colors",
+                pkg.featured
+                  ? "hover:text-brand-50 text-white"
+                  : "text-brand-500 hover:text-brand-400",
+              ]}
+            >
+              Learn more
+              <svg
+                class="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </a>
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>

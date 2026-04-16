@@ -14,10 +14,10 @@ Key features of this container:
 
 Two files are gitignored and let you layer on personal preferences without touching shared config:
 
-| File | Purpose |
-|---|---|
-| `.devcontainer/extensions.local` | List your personal VS Code extension IDs, one per line |
-| `.devcontainer/setup.local.sh` | Shell script run at container start — install zsh, set git config, add aliases, etc. |
+| File                             | Purpose                                                                              |
+| -------------------------------- | ------------------------------------------------------------------------------------ |
+| `.devcontainer/extensions.local` | List your personal VS Code extension IDs, one per line                               |
+| `.devcontainer/setup.local.sh`   | Shell script run at container start — install zsh, set git config, add aliases, etc. |
 
 Copy the `.example` files to get started:
 

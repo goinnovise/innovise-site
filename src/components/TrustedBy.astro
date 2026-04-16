@@ -1,27 +1,33 @@
 ---
 const clients = [
-  { src: '/images/clients/ai-logo.png', alt: 'AI' },
-  { src: '/images/clients/wsos-logo.png', alt: 'WSOS' },
-  { src: '/images/clients/savvy-lane-logo.png', alt: 'Savvy Lane' },
-  { src: '/images/clients/aw-logo.png', alt: 'AW' },
-  { src: '/images/clients/tps-logo.png', alt: 'TPS' },
-  { src: '/images/clients/chances-app-logo.webp', alt: 'The Chances App' },
+  { src: "/images/clients/ai-logo.png", alt: "AI" },
+  { src: "/images/clients/wsos-logo.png", alt: "WSOS" },
+  { src: "/images/clients/savvy-lane-logo.png", alt: "Savvy Lane" },
+  { src: "/images/clients/aw-logo.png", alt: "AW" },
+  { src: "/images/clients/tps-logo.png", alt: "TPS" },
+  { src: "/images/clients/chances-app-logo.webp", alt: "The Chances App" },
 ];
 ---
 
-<section class="py-16 bg-surface-page border-b border-surface-inset">
-  <div class="max-w-[1200px] mx-auto px-6 lg:px-16">
-    <p class="text-center text-text-tertiary text-sm font-medium tracking-wider uppercase mb-10 animate-on-scroll">
+<section class="bg-surface-page border-surface-inset border-b py-16">
+  <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+    <p
+      class="text-text-tertiary animate-on-scroll mb-10 text-center text-sm font-medium tracking-wider uppercase"
+    >
       Trusted by teams who ship
     </p>
-    <div class="flex flex-wrap items-center justify-center gap-10 md:gap-16 animate-on-scroll">
-      {clients.map((client) => (
-        <img
-          src={client.src}
-          alt={client.alt}
-          class="client-logo h-8 md:h-10 max-w-[140px] object-contain"
-        />
-      ))}
+    <div
+      class="animate-on-scroll flex flex-wrap items-center justify-center gap-10 md:gap-16"
+    >
+      {
+        clients.map((client) => (
+          <img
+            src={client.src}
+            alt={client.alt}
+            class="client-logo h-8 max-w-[140px] object-contain md:h-10"
+          />
+        ))
+      }
     </div>
   </div>
 </section>

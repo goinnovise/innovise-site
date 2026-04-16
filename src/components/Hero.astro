@@ -1,49 +1,76 @@
 ---
+
 ---
 
-<section id="home" class="relative bg-brand-500 min-h-[90vh] flex items-center overflow-hidden">
+<section
+  id="home"
+  class="bg-brand-500 relative flex min-h-[90vh] items-center overflow-hidden"
+>
   <!-- Hero photo: extra height + scroll parallax (see script) -->
   <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
     <div
       id="hero-parallax-bg"
-      class="absolute left-0 w-full bg-cover bg-left bg-no-repeat will-change-transform -top-[12%] h-[124%]"
+      class="absolute -top-[12%] left-0 h-[124%] w-full bg-cover bg-left bg-no-repeat will-change-transform"
       style="background-image: url('/images/hero-bg.png');"
-    ></div>
+    >
+    </div>
   </div>
 
   <!-- Brand tint: strong at top, fades to fully transparent toward the bottom -->
   <div
-    class="absolute inset-0 bg-gradient-to-b from-brand-500/95 via-brand-500/45 to-transparent"
+    class="from-brand-500/95 via-brand-500/45 absolute inset-0 bg-gradient-to-b to-transparent"
     aria-hidden="true"
-  ></div>
+  >
+  </div>
 
   <!-- Subtle pattern overlay -->
-  <div class="absolute inset-0 opacity-[0.04]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+  <div
+    class="absolute inset-0 opacity-[0.04]"
+    style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"
+  >
+  </div>
 
-  <div class="relative max-w-[1200px] mx-auto px-6 lg:px-16 py-32 w-full">
+  <div class="relative mx-auto w-full max-w-[1200px] px-6 py-32 lg:px-16">
     <div class="max-w-3xl">
-      <p class="text-brand-100 text-sm font-semibold tracking-widest uppercase mb-6 animate-on-scroll">
+      <p
+        class="text-brand-100 animate-on-scroll mb-6 text-sm font-semibold tracking-widest uppercase"
+      >
         Custom Software Consulting
       </p>
-      <h1 class="font-heading text-4xl sm:text-5xl lg:text-[65px] font-bold text-white leading-[1.1] mb-8 animate-on-scroll">
+      <h1
+        class="font-heading animate-on-scroll mb-8 text-4xl leading-[1.1] font-bold text-white sm:text-5xl lg:text-[65px]"
+      >
         Software that fits your business, not the other way around.
       </h1>
-      <p class="text-lg sm:text-xl text-white/75 leading-relaxed max-w-2xl mb-10 animate-on-scroll">
-        We design, build, and maintain custom software solutions tailored to how your business actually works. From startups to Fortune 50, Innovise is the development partner that scales with you.
+      <p
+        class="animate-on-scroll mb-10 max-w-2xl text-lg leading-relaxed text-white/75 sm:text-xl"
+      >
+        We design, build, and maintain custom software solutions tailored to how
+        your business actually works. From startups to Fortune 50, Innovise is
+        the development partner that scales with you.
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 animate-on-scroll">
+      <div class="animate-on-scroll flex flex-col gap-4 sm:flex-row">
         <a
           href="#contact"
-          class="inline-flex items-center justify-center bg-white text-brand-500 font-semibold px-8 py-4 rounded-lg text-base hover:bg-surface-page hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+          class="text-brand-500 hover:bg-surface-page inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-base font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
         >
           Let's build together
-          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          <svg
+            class="ml-2 h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
           </svg>
         </a>
         <a
           href="#services"
-          class="inline-flex items-center justify-center text-white/90 font-semibold px-8 py-4 rounded-lg text-base border border-white/20 hover:bg-white/10 transition-all duration-200"
+          class="inline-flex items-center justify-center rounded-lg border border-white/20 px-8 py-4 text-base font-semibold text-white/90 transition-all duration-200 hover:bg-white/10"
         >
           See our services
         </a>
@@ -54,9 +81,9 @@
 
 <script>
   function initHeroParallax() {
-    const bg = document.getElementById('hero-parallax-bg');
+    const bg = document.getElementById("hero-parallax-bg");
     if (!bg) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const rate = 0.32;
     let ticking = false;
@@ -74,7 +101,7 @@
       }
     }
 
-    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
     update();
   }
 
