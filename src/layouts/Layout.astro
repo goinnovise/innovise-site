@@ -5,12 +5,62 @@ import { entranceAnimationsEnabled } from "../config/entrance-animations";
 interface Props {
   title?: string;
   description?: string;
+  // Path relative to site root (e.g., "/images/og-image.png") or an absolute URL.
+  // `new URL(image, Astro.site)` resolves both cases correctly.
+  image?: string;
+  imageAlt?: string;
+  noindex?: boolean;
 }
 
 const {
-  title = "Innovise Technologies | Custom Software Development & Consulting",
-  description = "Innovise Technologies builds custom software solutions for businesses of all sizes. From full-stack development to DevOps and cloud infrastructure. We're the engineering partner that scales with you.",
+  title = "Innovise Technologies | Custom software services",
+  description = "Senior engineers for SMBs and mid-market companies. Full-stack development, systems design, DevOps, and fractional CTO guidance. Direct access, no handoffs.",
+  image = "/images/og-image.png",
+  imageAlt = "Innovise Technologies — custom software, built by senior engineers.",
+  noindex = false,
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
+const ogImageURL = new URL(image, Astro.site).href;
+
+const organizationId = new URL("#organization", Astro.site).href;
+const logoURL = new URL("/images/logo/innovise-main-logo.png", Astro.site).href;
+
+// `JSON.stringify` does not escape `</script>`, `<!--`, or `-->` — sequences
+// that would terminate or corrupt a <script> block when emitted via `set:html`.
+// Escaping `<` to its unicode form is the standard JSON-LD hardening: the JSON
+// remains valid, and no HTML-significant sequence can survive in the payload.
+const safeJsonLd = (schema: object) =>
+  JSON.stringify(schema).replace(/</g, "\\u003c");
+
+const professionalServiceSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": organizationId,
+  name: "Innovise Technologies",
+  url: Astro.site?.href,
+  logo: logoURL,
+  description,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Bellevue",
+    addressRegion: "WA",
+    addressCountry: "US",
+  },
+  sameAs: ["https://www.linkedin.com/company/innovise-technology"],
+  founder: {
+    "@type": "Person",
+    name: "Loren Anderson",
+  },
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Innovise Technologies",
+  url: Astro.site?.href,
+  publisher: { "@id": organizationId },
+};
 
 const entranceAnimationsOn = entranceAnimationsEnabled();
 ---
@@ -22,21 +72,53 @@ const entranceAnimationsOn = entranceAnimationsEnabled();
     <link
       rel="icon"
       type="image/png"
-      href="images/logo/favicon-96x96.png"
+      href="/images/logo/favicon-96x96.png"
       sizes="96x96"
     />
-    <link rel="icon" type="image/svg+xml" href="images/logo/favicon.svg" />
-    <link rel="shortcut icon" href="images/logo/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/images/logo/favicon.svg" />
+    <link rel="shortcut icon" href="/images/logo/favicon.ico" />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
-      href="images/logo/apple-touch-icon.png"
+      href="/images/logo/apple-touch-icon.png"
     />
-    <link rel="manifest" href="images/logo/site.webmanifest" />
+    <link rel="manifest" href="/images/logo/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#f47c64" />
+    <link rel="canonical" href={canonicalURL} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <title>{title}</title>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="360" />
+    <meta property="og:site_name" content="Innovise Technologies" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card (twitter:site intentionally omitted -- no handle yet) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+
+    <!-- Structured data -->
+    <script
+      type="application/ld+json"
+      set:html={safeJsonLd(professionalServiceSchema)}
+    />
+    <script
+      type="application/ld+json"
+      set:html={safeJsonLd(websiteSchema)}
+    />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
