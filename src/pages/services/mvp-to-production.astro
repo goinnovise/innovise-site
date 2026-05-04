@@ -1,0 +1,613 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+
+const faqs = [
+  {
+    q: "Do I need a full rewrite, or can what I have be saved?",
+    a: "Usually, it can be saved. Most codebases built quickly (with AI tools or fast contractors) have a workable foundation underneath the mess. The first thing Innovise does is assess what's actually there before recommending anything. A rewrite is occasionally the right call, but it's rarely the first answer. It's also the most expensive one, and clients deserve to know why before committing to it.",
+  },
+  {
+    q: "What if the code was built with AI coding tools like Cursor or Bolt?",
+    a: "AI-generated code has become a very common starting point for MVPs, and it often works surprisingly well at small scale. The problems show up under load, in security edge cases, and when a second developer tries to understand what was built. Innovise has experience stabilizing codebases built with these tools. The issues tend to follow predictable patterns.",
+  },
+  {
+    q: "Do Innovise engineers use AI coding tools?",
+    a: "Modern AI coding tools are extremely powerful and we are constantly evaluating the best way to use them. We have a strong preference for using them to generate code that is then reviewed and improved by our engineers. We've been experimenting with various different AI coding methodologies and are happy to share and teach our learnings with your staff.",
+  },
+  {
+    q: "How is this different from a technology audit?",
+    a: "A technology audit is a review and assessment: you get a findings document and a prioritized roadmap. MVP-to-production work is hands-on remediation: Innovise engineers actually fix what's broken, refactor what's fragile, and get the codebase into a state that can be handed off or continued. An audit may be the right starting point if the scope is unclear. For most MVPs, the problems are visible enough that we can get started directly.",
+  },
+  {
+    q: "What do I end up with at the end?",
+    a: "A codebase your team can work in, a CI/CD pipeline that catches problems before they hit production, documentation of what was built and why, and monitoring that tells you when something breaks. You either take it in-house from there, or Innovise continues as your development partner. Both are reasonable outcomes.",
+  },
+  {
+    q: "How long does this take?",
+    a: "Most MVP stabilization engagements run four to eight weeks, depending on the size of the codebase and how much DevOps infrastructure needs to be built. We don't give a hard timeline until we've seen what's actually there. The first conversation and a brief code review usually give us enough to scope it.",
+  },
+  {
+    q: "Can Innovise continue building features after the stabilization is complete?",
+    a: "Yes. Some clients want a clean handoff to their own team after stabilization. Others use the production-ready codebase as the foundation for an ongoing embedded engagement. Either works. The goal is a system you can run. What happens after that is your call.",
+  },
+];
+
+const schemaFaqs = faqs.map((f) => ({
+  "@type": "Question",
+  name: f.q,
+  acceptedAnswer: { "@type": "Answer", text: f.a },
+}));
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "MVP to Production — Codebase Stabilization",
+  provider: {
+    "@type": "ProfessionalService",
+    name: "Innovise Technologies",
+    url: "https://goinnovise.com",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Bellevue",
+      addressRegion: "WA",
+      addressCountry: "US",
+    },
+  },
+  description:
+    "Senior engineers who stabilize quickly built or AI-generated codebases for real-world production use. Security hardening, refactoring, DevOps setup, and handoff or continued development. Bellevue, WA. Serving clients nationwide.",
+  areaServed: "US",
+  serviceType: "Software Development",
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: schemaFaqs,
+};
+
+const safeJson = (obj: object) => JSON.stringify(obj).replace(/</g, "\\u003c");
+---
+
+<Layout
+  title="Fix Your MVP Codebase — From AI Tools to Production-Ready | Innovise"
+  description="Built with Cursor, Bolt, Replit, or fast contractors? Innovise stabilizes fragile MVPs for real-world use — without an unnecessary rewrite. Honest assessment first. Bellevue, WA."
+>
+  <script
+    type="application/ld+json"
+    set:html={safeJson(serviceSchema)}
+    slot="head"
+  />
+  <script
+    type="application/ld+json"
+    set:html={safeJson(faqSchema)}
+    slot="head"
+  />
+
+  <Navbar />
+
+  <main>
+    <!-- Hero -->
+    <section class="bg-brand-500 relative overflow-hidden py-24 lg:py-32">
+      <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
+        <picture>
+          <source
+            srcset="/images/content/code-review-dark.webp"
+            type="image/webp"
+          />
+          <img
+            src="/images/content/code-review-dark.jpg"
+            alt=""
+            class="absolute top-0 right-0 h-full w-1/2 object-cover object-left opacity-20"
+          />
+        </picture>
+        <div
+          class="from-brand-500 via-brand-500/80 absolute inset-0 w-3/4 bg-linear-to-r to-transparent"
+        >
+        </div>
+      </div>
+      <div class="relative mx-auto max-w-[1200px] px-6 lg:px-16">
+        <nav class="mb-6 text-sm text-white/60" aria-label="Breadcrumb">
+          <a href="/" class="transition-colors hover:text-white">Home</a>
+          <span class="mx-2">›</span>
+          <a href="/services/" class="transition-colors hover:text-white"
+            >Services</a
+          >
+          <span class="mx-2">›</span>
+          <span class="text-white">From MVP to production</span>
+        </nav>
+        <p
+          class="text-brand-100 mb-6 text-sm font-semibold tracking-widest uppercase"
+        >
+          Production readiness
+        </p>
+        <h1
+          class="font-heading mb-6 text-4xl leading-[1.1] font-bold text-white sm:text-5xl lg:text-[58px]"
+        >
+          From MVP to production — without the rewrite
+        </h1>
+        <p
+          class="mb-10 max-w-2xl text-lg leading-relaxed text-white/80 sm:text-xl"
+        >
+          You built fast. Now you have code that works sometimes, won't scale,
+          and nobody else can maintain. Innovise assesses what you have and
+          stabilizes it for real-world use — without starting over unless that's
+          actually the right call.
+        </p>
+        <a
+          href="/?service=mvp-to-production#contact"
+          class="text-brand-500 hover:bg-surface-page inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-base font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+        >
+          Get an honest assessment
+          <svg
+            class="ml-2 h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Who this is for -->
+    <section class="bg-surface-page py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="grid gap-16 lg:grid-cols-2 lg:gap-24">
+          <div>
+            <p
+              class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+            >
+              Who this is for
+            </p>
+            <h2
+              class="font-heading text-text-primary mb-6 text-3xl font-semibold sm:text-4xl"
+            >
+              You validated the idea. Now the code is in the way.
+            </h2>
+            <div class="text-text-secondary space-y-4 leading-relaxed">
+              <p>
+                Most MVPs aren't bad ideas. They're good ideas built under time
+                pressure with Cursor, Bolt, Replit, or fast contractors who
+                moved on, or founders who needed to ship before they could
+                afford to be careful.
+              </p>
+              <p>
+                The result is a codebase that runs in demo conditions but breaks
+                under real load. Features take longer to add each month.
+                Security holes you haven't found yet. No staging environment, no
+                monitoring, no way to hand it off to a new developer without
+                spending weeks explaining what everything does.
+              </p>
+              <p>
+                Innovise works on codebases like this regularly. The first
+                question is always the same: what can be saved, and what
+                actually needs to go?
+              </p>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            {
+              [
+                {
+                  title: "Built with AI tools or fast contractors",
+                  body: "Cursor, Bolt, Replit, or a contractor who shipped quickly and moved on. The code works in demo conditions but wasn't built to be maintained or extended.",
+                },
+                {
+                  title: "Can't add features without breaking things",
+                  body: "Every new build creates new problems. The team is spending more time on bug fixes than forward progress, and the pattern is getting worse.",
+                },
+                {
+                  title: "Can't hand it off to a new developer",
+                  body: "There's no documentation, no test coverage, and no clear architecture. Hiring someone new would require months of context transfer, if it's even possible.",
+                },
+                {
+                  title: "Worried about scale, security, or reliability",
+                  body: "It works for ten users. You're not confident it works for a thousand. And you haven't had a security review since the first lines were written.",
+                },
+              ].map((item) => (
+                <div class="bg-surface-card border-surface-inset rounded-lg border p-6">
+                  <h3 class="font-heading text-text-primary mb-2 font-semibold">
+                    {item.title}
+                  </h3>
+                  <p class="text-text-secondary leading-relaxed">{item.body}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="bg-surface-inset py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="mb-16">
+          <p
+            class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+          >
+            How it works
+          </p>
+          <h2
+            class="font-heading text-text-primary mb-5 text-3xl font-semibold sm:text-4xl lg:text-[41px]"
+          >
+            Assess first. Fix what matters. Build on solid ground.
+          </h2>
+        </div>
+        <div class="grid gap-8 md:grid-cols-3">
+          {
+            [
+              {
+                step: "01",
+                title: "Codebase audit",
+                body: "Innovise reviews what was built: architecture, security posture, test coverage, dependency health, and DevOps setup. You get an honest picture of what's solid, what's fragile, and what's a liability. No upsell in the findings.",
+              },
+              {
+                step: "02",
+                title: "Stabilize and harden",
+                body: "Senior engineers fix the structural issues first: security vulnerabilities, architectural problems, and the fragile areas that create the most risk. CI/CD pipelines and monitoring get set up so you know when something breaks before your users do.",
+              },
+              {
+                step: "03",
+                title: "Hand off or keep building",
+                body: "You get a system your team can run and a codebase someone new can actually work in. If you want to keep building (with Innovise or your own engineers), the foundation is solid enough to build on.",
+              },
+            ].map((s) => (
+              <div class="bg-surface-card rounded-lg p-8">
+                <div class="bg-brand-500 font-heading mb-6 inline-flex h-14 w-14 items-center justify-center rounded-full text-lg font-bold text-white">
+                  {s.step}
+                </div>
+                <h3 class="font-heading text-text-primary mb-3 text-xl font-semibold">
+                  {s.title}
+                </h3>
+                <p class="text-text-secondary leading-relaxed">{s.body}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- What's included -->
+    <section class="bg-surface-page py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="mb-16">
+          <p
+            class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+          >
+            What's covered
+          </p>
+          <h2
+            class="font-heading text-text-primary mb-5 text-3xl font-semibold sm:text-4xl lg:text-[41px]"
+          >
+            From fragile code to a system you can run
+          </h2>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {
+            [
+              {
+                title: "Security hardening",
+                body: "Authentication flows, data handling, secrets management, access controls, and dependency vulnerabilities. The gaps that matter most get fixed first.",
+              },
+              {
+                title: "Architecture refactoring",
+                body: "Structural problems that make the codebase hard to extend or maintain. Not everything, just the parts that create real risk or compound cost over time.",
+              },
+              {
+                title: "CI/CD and deployment",
+                body: "A working pipeline from commit to production: automated testing, staging environment, and a deployment process that doesn't require heroics.",
+              },
+              {
+                title: "Monitoring and alerting",
+                body: "Basic observability so you know when something breaks before your users report it. Error tracking, uptime monitoring, and enough visibility to debug problems.",
+              },
+              {
+                title: "Documentation",
+                body: "Enough that a developer who hasn't seen the codebase can understand what it does and how the pieces fit together. Written for humans, not for auditors.",
+              },
+              {
+                title: "Handoff plan",
+                body: "If you're transitioning to your own team or a different vendor, Innovise will document what was done and why, and walk whoever's taking over through the system.",
+              },
+            ].map((item) => (
+              <div class="bg-surface-card border-surface-inset rounded-lg border p-8">
+                <h3 class="font-heading text-text-primary mb-3 text-lg font-semibold">
+                  {item.title}
+                </h3>
+                <p class="text-text-secondary leading-relaxed">{item.body}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Where we've pushed back -->
+    <section class="bg-surface-inset py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="mb-16 grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <p
+              class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+            >
+              In practice
+            </p>
+            <h2
+              class="font-heading text-text-primary text-3xl font-semibold sm:text-4xl"
+            >
+              What we've found — and what we've saved clients from
+            </h2>
+          </div>
+          <div class="overflow-hidden rounded-xl shadow-lg">
+            <picture>
+              <source
+                srcset="/images/content/developer-desk-wide.webp"
+                type="image/webp"
+              />
+              <img
+                src="/images/content/developer-desk-wide.jpg"
+                alt="Developer reviewing code at a clean desk setup"
+                width="1920"
+                height="1278"
+                class="h-64 w-full object-cover object-center"
+                loading="lazy"
+              />
+            </picture>
+          </div>
+        </div>
+        <div class="space-y-10">
+          <div class="border-brand-500 border-l-2 pl-8">
+            <p
+              class="text-brand-500 mb-3 text-xs font-semibold tracking-widest uppercase"
+            >
+              Mobile app vs. web refactor
+            </p>
+            <p class="text-text-secondary text-lg leading-relaxed">
+              A client was convinced they needed a native mobile app. Their
+              existing web application worked but felt clunky on mobile, and the
+              assumption was that a new app was the answer. Innovise walked
+              through the actual cost and complexity of building and maintaining
+              two codebases. With some targeted refactoring, the web application
+              served their mobile audience without the overhead of a second
+              product. The client saved months of development time and the
+              ongoing cost of maintaining two platforms.
+            </p>
+          </div>
+          <div class="border-brand-500 border-l-2 pl-8">
+            <p
+              class="text-brand-500 mb-3 text-xs font-semibold tracking-widest uppercase"
+            >
+              Backend rewrite vs. targeted refactoring
+            </p>
+            <p class="text-text-secondary text-lg leading-relaxed">
+              A client wanted their entire backend API rebuilt from scratch
+              because it had been written by someone else and they didn't trust
+              it. Innovise reviewed the code and found the core architecture was
+              sound. The problems were surface-level: inconsistent patterns,
+              some cleanup needed, a few fragile endpoints. A targeted refactor
+              fixed what mattered. The client kept a working system instead of
+              taking on a multi-month rebuild with all the risk that comes with
+              it.
+            </p>
+          </div>
+          <div class="border-brand-500 border-l-2 pl-8">
+            <p
+              class="text-brand-500 mb-3 text-xs font-semibold tracking-widest uppercase"
+            >
+              Framework migration vs. routing update
+            </p>
+            <p class="text-text-secondary text-lg leading-relaxed">
+              A client needed to improve SEO and server-side rendering for their
+              React application. The initial proposal from their team was a full
+              migration to Next.js. Innovise looked at what was needed and found
+              that React Router 7 (a much lighter lift, same framework the team
+              already knew) covered everything required. No one had to learn
+              anything new, the migration took a fraction of the time, and the
+              SEO improvements came out the same.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What's different -->
+    <section class="bg-surface-page py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="mx-auto max-w-3xl">
+          <p
+            class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+          >
+            What's different
+          </p>
+          <h2
+            class="font-heading text-text-primary mb-8 text-3xl font-semibold sm:text-4xl"
+          >
+            The first question is always what can be saved
+          </h2>
+          <div class="text-text-secondary space-y-5 text-lg leading-relaxed">
+            <p>
+              Most firms will recommend a rewrite. It's a larger engagement,
+              it's easier to scope, and it's a clean slate. The problem is that
+              it also discards everything that works, introduces all the risks
+              of a greenfield build, and takes longer than most clients expect.
+            </p>
+            <p>
+              Innovise starts by looking at what's actually there. The audit
+              findings drive the recommendation. Sometimes a full rewrite is the
+              right call. More often, it isn't. The principal engineer leads
+              every engagement and is accountable for the assessment. The goal
+              is an honest answer, not the most billable one.
+            </p>
+            <p>
+              Based in Bellevue, WA and working with clients nationwide. All
+              work is done on-shore: faster turnaround, better context, no
+              timezone gaps between you and the engineer doing the work.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="bg-surface-inset py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="mx-auto max-w-3xl">
+          <p
+            class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+          >
+            Common questions
+          </p>
+          <h2
+            class="font-heading text-text-primary mb-12 text-3xl font-semibold sm:text-4xl"
+          >
+            Frequently asked questions
+          </h2>
+          <div class="space-y-8">
+            {
+              faqs.map((faq) => (
+                <div class="border-surface-inset border-b pb-8 last:border-0 last:pb-0">
+                  <h3 class="font-heading text-text-primary mb-3 text-lg font-semibold">
+                    {faq.q}
+                  </h3>
+                  <p class="text-text-secondary leading-relaxed">{faq.a}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Other services -->
+    <section class="bg-surface-page border-surface-inset border-t py-16">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <p
+          class="text-brand-500 mb-6 text-xs font-semibold tracking-widest uppercase"
+        >
+          Other services
+        </p>
+        <div class="grid gap-4 sm:grid-cols-3">
+          <a
+            href="/services/embedded-development-team/"
+            class="group border-surface-inset bg-surface-card flex items-start justify-between rounded-lg border p-5 transition-all hover:-translate-y-0.5 hover:shadow-sm"
+          >
+            <div>
+              <p class="text-text-primary font-semibold">
+                Embedded development teams
+              </p>
+              <p class="text-text-secondary mt-1 text-sm">
+                Senior engineers embedded in your business for as long as you
+                need.
+              </p>
+            </div>
+            <svg
+              class="text-brand-500 mt-0.5 ml-3 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+            >
+          </a>
+          <a
+            href="/services/technology-audit/"
+            class="group border-surface-inset bg-surface-card flex items-start justify-between rounded-lg border p-5 transition-all hover:-translate-y-0.5 hover:shadow-sm"
+          >
+            <div>
+              <p class="text-text-primary font-semibold">
+                Technology & security audit
+              </p>
+              <p class="text-text-secondary mt-1 text-sm">
+                A clear picture of where you stand before committing to a larger
+                engagement.
+              </p>
+            </div>
+            <svg
+              class="text-brand-500 mt-0.5 ml-3 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+            >
+          </a>
+          <a
+            href="/services/custom-software-development/"
+            class="group border-surface-inset bg-surface-card flex items-start justify-between rounded-lg border p-5 transition-all hover:-translate-y-0.5 hover:shadow-sm"
+          >
+            <div>
+              <p class="text-text-primary font-semibold">
+                Custom software development
+              </p>
+              <p class="text-text-secondary mt-1 text-sm">
+                Full-stack development built for your specific situation.
+              </p>
+            </div>
+            <svg
+              class="text-brand-500 mt-0.5 ml-3 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+            >
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-brand-500 py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 text-center lg:px-16">
+        <h2
+          class="font-heading mb-6 text-3xl font-bold text-white sm:text-4xl lg:text-[41px]"
+        >
+          Every month you wait, the technical debt compounds
+        </h2>
+        <p class="mx-auto mb-10 max-w-xl text-lg text-white/80">
+          Start with a conversation. Describe what you have and what's not
+          working. Innovise will be direct about whether this is something we
+          can help with, what it would take, and whether a full rewrite is
+          actually necessary.
+        </p>
+        <a
+          href="/?service=mvp-to-production#contact"
+          class="text-brand-500 hover:bg-surface-page inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-base font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+        >
+          Get an honest assessment
+          <svg
+            class="ml-2 h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

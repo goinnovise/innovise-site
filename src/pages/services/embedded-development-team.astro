@@ -1,0 +1,584 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+
+const faqs = [
+  {
+    q: "What does 'embedded' actually mean?",
+    a: "It means we operate as internal colleagues, not external vendors. We join your standups, communicate in your tools (Slack, Teams, Jira — whatever you use), and work on your priorities in real time. You're not submitting tickets to an agency and waiting for a sprint update. You have a senior engineer working inside your operation.",
+  },
+  {
+    q: "How quickly can we get started?",
+    a: "The first conversation is a discovery call, typically 45 to 60 minutes, where we map out what you're trying to accomplish, what's blocking you, and what good looks like in 90 days. Most engagements are scoped and ready to begin within two weeks of that first call.",
+  },
+  {
+    q: "Do you work with our existing internal team?",
+    a: "Yes. A large portion of Innovise engagements are with companies that already have some engineering capacity. They need senior bandwidth, technical direction, or a specific capability their team doesn't have. We integrate without disrupting what's working.",
+  },
+  {
+    q: "What if we eventually want to build our own internal engineering team?",
+    a: "That's a legitimate goal and Innovise will help you get there. That includes advising on what roles to hire first, helping you evaluate candidates, and structuring a handoff plan so the transition doesn't create risk. The business model is not built on creating dependency.",
+  },
+  {
+    q: "How does pricing work?",
+    a: "Engagements are structured as monthly retainers based on scope and the number of engineers involved. We don't charge by the ticket or the feature. The goal is a stable team you can plan around, not a fluctuating bill tied to how many Jira cards closed.",
+  },
+  {
+    q: "Which industries do you work with?",
+    a: "Innovise is industry-agnostic. We've worked with healthcare technology, SaaS platforms, operations software, and media companies. The common thread isn't the vertical. It's the business situation: a company that needs senior engineering capacity and doesn't want to build an entire department to get it.",
+  },
+  {
+    q: "How is this different from hiring an outsourced development team?",
+    a: "Outsourced vendors operate at arm's length. You submit a spec, they deliver, and context lives in a ticket system. Innovise operates as an internal team. We join your tools, your standups, your communication channels, and work on your priorities in real time. The engineer on your first call is the engineer doing your work.",
+  },
+];
+
+const schemaFaqs = faqs.map((f) => ({
+  "@type": "Question",
+  name: f.q,
+  acceptedAnswer: { "@type": "Answer", text: f.a },
+}));
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Embedded Software Development Team",
+  provider: {
+    "@type": "ProfessionalService",
+    name: "Innovise Technologies",
+    url: "https://goinnovise.com",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Bellevue",
+      addressRegion: "WA",
+      addressCountry: "US",
+    },
+  },
+  description:
+    "Senior software engineers embedded in your business as a dedicated development team. No junior staff, no account managers. Serving SMBs and mid-market companies nationwide.",
+  areaServed: "US",
+  serviceType: "Software Development",
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: schemaFaqs,
+};
+
+const safeJson = (obj: object) => JSON.stringify(obj).replace(/</g, "\\u003c");
+---
+
+<Layout
+  title="Embedded Software Development Team for SMBs | Innovise"
+  description="Senior engineers embedded in your business as a dedicated development team. No account managers, no handoffs. Bellevue, WA. Serving SMBs and mid-market companies nationwide."
+>
+  <script
+    type="application/ld+json"
+    set:html={safeJson(serviceSchema)}
+    slot="head"
+  />
+  <script
+    type="application/ld+json"
+    set:html={safeJson(faqSchema)}
+    slot="head"
+  />
+
+  <Navbar />
+
+  <main>
+    <!-- Hero -->
+    <section class="bg-brand-500 relative overflow-hidden py-24 lg:py-32">
+      <!-- Atmospheric photo on right -->
+      <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
+        <picture>
+          <source
+            srcset="/images/content/clean-code-workspace.webp"
+            type="image/webp"
+          />
+          <img
+            src="/images/content/clean-code-workspace.jpg"
+            alt=""
+            class="absolute top-0 right-0 h-full w-1/2 object-cover object-left opacity-20"
+          />
+        </picture>
+        <!-- Gradient fade from left so it blends with the solid brand color -->
+        <div
+          class="from-brand-500 via-brand-500/80 absolute inset-0 w-3/4 bg-linear-to-r to-transparent"
+        >
+        </div>
+      </div>
+      <div class="relative mx-auto max-w-[1200px] px-6 lg:px-16">
+        <nav class="mb-6 text-sm text-white/60" aria-label="Breadcrumb">
+          <a href="/" class="transition-colors hover:text-white">Home</a>
+          <span class="mx-2">›</span>
+          <a href="/services/" class="transition-colors hover:text-white"
+            >Services</a
+          >
+          <span class="mx-2">›</span>
+          <span class="text-white">Embedded development teams</span>
+        </nav>
+        <p
+          class="text-brand-100 mb-6 text-sm font-semibold tracking-widest uppercase"
+        >
+          Most common starting point
+        </p>
+        <h1
+          class="font-heading mb-6 text-4xl leading-[1.1] font-bold text-white sm:text-5xl lg:text-[58px]"
+        >
+          Your embedded development team — senior engineers from day one
+        </h1>
+        <p
+          class="mb-10 max-w-2xl text-lg leading-relaxed text-white/80 sm:text-xl"
+        >
+          Innovise is your engineering team. Senior engineers working inside
+          your operation, in your tools, on your priorities. Not a vendor you
+          file tickets with and wait on.
+        </p>
+        <a
+          href="/?service=embedded-team#contact"
+          class="text-brand-500 hover:bg-surface-page inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-base font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+        >
+          Start the conversation
+          <svg
+            class="ml-2 h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Who this is for -->
+    <section class="bg-surface-page py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="grid gap-16 lg:grid-cols-2 lg:gap-24">
+          <div>
+            <p
+              class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+            >
+              Who this is for
+            </p>
+            <h2
+              class="font-heading text-text-primary mb-6 text-3xl font-semibold sm:text-4xl"
+            >
+              Built for businesses that need engineering — not just code
+            </h2>
+            <div class="text-text-secondary space-y-4 leading-relaxed">
+              <p>
+                Most companies that reach out to Innovise have already tried
+                something else. An agency that scoped the work with senior
+                engineers and staffed it with juniors. A contractor who needed
+                constant direction and context. A hiring process that stretched
+                six months and still didn't land the right person.
+              </p>
+              <p>
+                They're not looking for another vendor. They need a senior
+                engineer who understands their business, communicates directly,
+                and ships. Someone embedded in their operation, not responding
+                to tickets from the outside.
+              </p>
+              <p>
+                Engagements are structured around your business, not our
+                capacity model.
+              </p>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            {
+              [
+                {
+                  title: "No internal engineering team",
+                  body: "You need engineering capacity but aren't ready to build a department. Innovise is your engineering team, from architecture through delivery, for as long as you need.",
+                },
+                {
+                  title: "Existing team, need senior bandwidth",
+                  body: "You have engineers, but the senior capacity isn't there for a new initiative. Innovise adds experienced muscle without disrupting what's working.",
+                },
+                {
+                  title: "Fast-moving initiative",
+                  body: "You have a window: a market opportunity, a product launch, a systems migration. Hiring takes months. Innovise can start in weeks.",
+                },
+                {
+                  title: "Building toward internal ownership",
+                  body: "Your goal is eventually to hire your own engineers. Innovise will work toward that transition, including hiring guidance and a structured handoff plan.",
+                },
+              ].map((item) => (
+                <div class="bg-surface-card border-surface-inset rounded-lg border p-6">
+                  <h3 class="font-heading text-text-primary mb-2 font-semibold">
+                    {item.title}
+                  </h3>
+                  <p class="text-text-secondary leading-relaxed">{item.body}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Client outcomes -->
+    <section class="bg-surface-inset py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="mb-16 grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <p
+              class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+            >
+              In practice
+            </p>
+            <h2
+              class="font-heading text-text-primary text-3xl font-semibold sm:text-4xl"
+            >
+              How it's worked for clients
+            </h2>
+          </div>
+          <div class="overflow-hidden rounded-xl shadow-lg">
+            <picture>
+              <source
+                srcset="/images/content/team-meeting-bright.webp"
+                type="image/webp"
+              />
+              <img
+                src="/images/content/team-meeting-bright.jpg"
+                alt="Senior engineer and client discussing a project"
+                width="1920"
+                height="1280"
+                class="h-64 w-full object-cover object-center"
+                loading="lazy"
+              />
+            </picture>
+          </div>
+        </div>
+        <div class="space-y-10">
+          <div class="border-brand-500 border-l-2 pl-8">
+            <p
+              class="text-brand-500 mb-3 text-xs font-semibold tracking-widest uppercase"
+            >
+              Real estate / SaaS startup
+            </p>
+            <p class="text-text-secondary text-lg leading-relaxed">
+              A recently funded real estate startup needed to build their SaaS
+              platform. No engineering team, just a CEO ready to ship. Innovise
+              brought in three developers who worked directly with the CEO as
+              product owner, running daily standups and agile sprints. As the
+              build approached MVP, the team scaled back to a single developer
+              to match the budget. The MVP shipped. The client paid for exactly
+              the capacity they needed.
+            </p>
+          </div>
+          <div class="border-brand-500 border-l-2 pl-8">
+            <p
+              class="text-brand-500 mb-3 text-xs font-semibold tracking-widest uppercase"
+            >
+              Ed-tech / engineering team build-out
+            </p>
+            <p class="text-text-secondary text-lg leading-relaxed">
+              An ed-tech company had most of their software built offshore
+              across multiple teams. Context was thin, the feedback loop between
+              business and engineering was slow, and technical debt was piling
+              up. They decided to transition away from offshore and build an
+              on-shore team. Innovise's lead engineers helped plan the
+              transition and structure the hiring process, while Innovise
+              developers stepped in on a contract-to-hire basis during the
+              build-out. Two years later, the client has 25 on-shore engineers:
+              a mix of full-time employees and contractors.
+            </p>
+          </div>
+          <div class="border-brand-500 border-l-2 pl-8">
+            <p
+              class="text-brand-500 mb-3 text-xs font-semibold tracking-widest uppercase"
+            >
+              Continuity / operations
+            </p>
+            <p class="text-text-secondary text-lg leading-relaxed">
+              A client's full-time SRE engineer resigned mid-project. Replacing
+              them through a standard hiring process was going to take months.
+              An Innovise engineer already embedded in the team stepped in with
+              no ramp-up. No gap in operations, no lost context. The hiring
+              process ran in parallel and the client kept moving.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="bg-surface-page py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="mb-16 text-center">
+          <p
+            class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+          >
+            How it works
+          </p>
+          <h2
+            class="font-heading text-text-primary mb-5 text-3xl font-semibold sm:text-4xl lg:text-[41px]"
+          >
+            Senior engineers. Direct access. Real work.
+          </h2>
+        </div>
+        <div class="grid gap-8 md:grid-cols-3">
+          {
+            [
+              {
+                step: "01",
+                title: "Discovery",
+                body: "The first conversation is about your business, not the stack. What are you trying to accomplish? What's blocked? Where's the risk? We figure out what to build first, and what to skip.",
+              },
+              {
+                step: "02",
+                title: "Embedded work",
+                body: "We join your tools, your standups, your communication channels. You work directly with the engineer doing the work. No relayed updates, no account managers. Working software ships early.",
+              },
+              {
+                step: "03",
+                title: "Scale or take it in-house",
+                body: "If you're scaling, we scale with you. If your goal is to build an internal engineering team, we help you hire, onboard, and structure the transition so it doesn't create risk.",
+              },
+            ].map((s) => (
+              <div class="bg-surface-card rounded-lg p-8">
+                <div class="bg-brand-500 font-heading mb-6 inline-flex h-14 w-14 items-center justify-center rounded-full text-lg font-bold text-white">
+                  {s.step}
+                </div>
+                <h3 class="font-heading text-text-primary mb-3 text-xl font-semibold">
+                  {s.title}
+                </h3>
+                <p class="text-text-secondary leading-relaxed">{s.body}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- What's different -->
+    <section class="bg-surface-page py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="mx-auto max-w-3xl">
+          <p
+            class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+          >
+            What's different
+          </p>
+          <h2
+            class="font-heading text-text-primary mb-8 text-3xl font-semibold sm:text-4xl"
+          >
+            Senior-led, on-shore, and accountable through delivery
+          </h2>
+          <div class="text-text-secondary space-y-5 text-lg leading-relaxed">
+            <p>
+              Many development shops sell with seniors and staff with juniors.
+              The staff you interface may not be the engineer doing your work.
+              Innovise doesn't operate that way.
+            </p>
+            <p>
+              A principal Innovise engineer leads every engagement. The same
+              person is the primary architect, the technical decision-maker, and
+              accountable through production. For engagements that need broader
+              capacity, Innovise can bring in experienced engineers to support
+              the work. You'll always know who's on your project. No account
+              managers, no bait-and-switch after the first call, and a smooth
+              hand-off to your own team.
+            </p>
+            <p>
+              All work is done on-shore which promotes faster turnaround, better
+              context, no timezone gaps. And if your goal is eventually to bring
+              engineering in-house, Innovise will help you get there: hiring
+              guidance, a transition plan, and a model that isn't built on
+              creating dependency.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="bg-surface-inset py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="mx-auto max-w-3xl">
+          <p
+            class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+          >
+            Common questions
+          </p>
+          <h2
+            class="font-heading text-text-primary mb-12 text-3xl font-semibold sm:text-4xl"
+          >
+            Frequently asked questions
+          </h2>
+          <div class="space-y-8">
+            {
+              faqs.map((faq) => (
+                <div class="border-surface-inset border-b pb-8 last:border-0 last:pb-0">
+                  <h3 class="font-heading text-text-primary mb-3 text-lg font-semibold">
+                    {faq.q}
+                  </h3>
+                  <p class="text-text-secondary leading-relaxed">{faq.a}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Other services -->
+    <section class="bg-surface-inset border-surface-inset border-t py-16">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <p
+          class="text-brand-500 mb-6 text-xs font-semibold tracking-widest uppercase"
+        >
+          Other services
+        </p>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <a
+            href="/services/custom-software-development/"
+            class="group border-surface-inset bg-surface-card flex items-start justify-between rounded-lg border p-5 transition-all hover:-translate-y-0.5 hover:shadow-sm"
+          >
+            <div>
+              <p class="text-text-primary font-semibold">
+                Custom software development
+              </p>
+              <p class="text-text-secondary mt-1 text-sm">
+                Full-stack development built for your specific situation.
+              </p>
+            </div>
+            <svg
+              class="text-brand-500 mt-0.5 ml-3 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+            >
+          </a>
+          <a
+            href="/services/mvp-to-production/"
+            class="group border-surface-inset bg-surface-card flex items-start justify-between rounded-lg border p-5 transition-all hover:-translate-y-0.5 hover:shadow-sm"
+          >
+            <div>
+              <p class="text-text-primary font-semibold">
+                From MVP to production
+              </p>
+              <p class="text-text-secondary mt-1 text-sm">
+                Stabilize a quickly built codebase without the unnecessary
+                rewrite.
+              </p>
+            </div>
+            <svg
+              class="text-brand-500 mt-0.5 ml-3 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+            >
+          </a>
+          <a
+            href="/services/internal-team-development/"
+            class="group border-surface-inset bg-surface-card flex items-start justify-between rounded-lg border p-5 transition-all hover:-translate-y-0.5 hover:shadow-sm"
+          >
+            <div>
+              <p class="text-text-primary font-semibold">
+                Internal team development
+              </p>
+              <p class="text-text-secondary mt-1 text-sm">
+                Hiring support and interim coverage while you build your own
+                team.
+              </p>
+            </div>
+            <svg
+              class="text-brand-500 mt-0.5 ml-3 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+            >
+          </a>
+          <a
+            href="/services/technology-audit/"
+            class="group border-surface-inset bg-surface-card flex items-start justify-between rounded-lg border p-5 transition-all hover:-translate-y-0.5 hover:shadow-sm"
+          >
+            <div>
+              <p class="text-text-primary font-semibold">
+                Technology & security audit
+              </p>
+              <p class="text-text-secondary mt-1 text-sm">
+                A clear picture of where you stand before committing to a larger
+                engagement.
+              </p>
+            </div>
+            <svg
+              class="text-brand-500 mt-0.5 ml-3 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+            >
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-brand-500 py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 text-center lg:px-16">
+        <h2
+          class="font-heading mb-6 text-3xl font-bold text-white sm:text-4xl lg:text-[41px]"
+        >
+          Ready to add senior engineering to your business?
+        </h2>
+        <p class="mx-auto mb-10 max-w-xl text-lg text-white/80">
+          Start with a conversation. No sales process, no proposal deck, no
+          commitment. Just a direct talk about your situation and whether
+          Innovise is the right fit. If it isn't, we'll tell you that too. Most
+          engagements are scoped and ready to begin within two weeks.
+        </p>
+        <a
+          href="/?service=embedded-team#contact"
+          class="text-brand-500 hover:bg-surface-page inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-base font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+        >
+          Start the conversation
+          <svg
+            class="ml-2 h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

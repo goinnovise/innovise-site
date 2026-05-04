@@ -1,0 +1,544 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+
+const faqs = [
+  {
+    q: "Is this hiring support, or do you provide interim engineers while we hire?",
+    a: "Both. Innovise can help with the hiring process (defining roles, writing job descriptions, running technical interviews, evaluating candidates) and provide interim engineering coverage while the process runs. The two often happen in parallel: you're not blocked on operations while the hiring takes months.",
+  },
+  {
+    q: "We have offshore developers. Can you help us transition to an onshore team?",
+    a: "Yes. Transitioning from offshore to onshore is one of the more common situations Innovise works through. Replacing headcount is the easy part. Transferring context, stabilizing handoffs, and rebuilding the feedback loop between business and engineering are what make these transitions hard. Innovise can step in as interim engineers during the transition, help structure the hiring process, and work through the knowledge transfer systematically.",
+  },
+  {
+    q: "How long does a team build-out take?",
+    a: "It depends on the starting point. Building from no internal team to a functioning five-person department typically takes six to twelve months. Hiring, onboarding, and ramp-up all take time regardless of how well the process is managed. Offshore-to-onshore transitions can be longer if the existing codebase needs stabilization first. Innovise provides interim coverage throughout so the business keeps moving while the long-term team ramps up.",
+  },
+  {
+    q: "Can Innovise help with contract-to-hire arrangements?",
+    a: "Yes. Innovise engineers can work in your operation on a contract basis with the option to convert to full-time employment. This gives you the ability to evaluate engineers in your actual environment before making a permanent hire, which is a much better signal than an interview process.",
+  },
+  {
+    q: "What happens after the team is built? Do you stay involved?",
+    a: "That's up to you. Some clients keep Innovise on a technical retainer for ongoing oversight and senior input even after the internal team is in place. Others complete the transition and run fully independently. Innovise doesn't build dependency into the engagement model. The goal is a team that can operate on its own.",
+  },
+  {
+    q: "What if we just lost a key engineer and need immediate coverage?",
+    a: "This is a situation Innovise has handled before. An Innovise engineer can step into the role while you run the hiring process, often with minimal ramp-up if context documentation exists. The alternative, running without that coverage for several months, creates real operational and technical risk.",
+  },
+];
+
+const schemaFaqs = faqs.map((f) => ({
+  "@type": "Question",
+  name: f.q,
+  acceptedAnswer: { "@type": "Answer", text: f.a },
+}));
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Engineering Team Development",
+  provider: {
+    "@type": "ProfessionalService",
+    name: "Innovise Technologies",
+    url: "https://goinnovise.com",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Bellevue",
+      addressRegion: "WA",
+      addressCountry: "US",
+    },
+  },
+  description:
+    "Innovise helps companies build internal engineering teams from the ground up — hiring support, interim coverage, offshore-to-onshore transitions, and structured handoff plans. Based in Bellevue, WA. Serving clients nationwide.",
+  areaServed: "US",
+  serviceType: "Engineering Consulting",
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: schemaFaqs,
+};
+
+const safeJson = (obj: object) => JSON.stringify(obj).replace(/</g, "\\u003c");
+---
+
+<Layout
+  title="Build Your Engineering Team — Offshore to Onshore Transition | Innovise"
+  description="Hiring support, interim engineering coverage, and offshore-to-onshore transitions for companies building their own team. Based in Bellevue, WA. Serving clients nationwide."
+>
+  <script
+    type="application/ld+json"
+    set:html={safeJson(serviceSchema)}
+    slot="head"
+  />
+  <script
+    type="application/ld+json"
+    set:html={safeJson(faqSchema)}
+    slot="head"
+  />
+
+  <Navbar />
+
+  <main>
+    <!-- Hero -->
+    <section class="bg-brand-500 relative overflow-hidden py-24 lg:py-32">
+      <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
+        <picture>
+          <source
+            srcset="/images/content/team-meeting-bright.webp"
+            type="image/webp"
+          />
+          <img
+            src="/images/content/team-meeting-bright.jpg"
+            alt=""
+            class="absolute top-0 right-0 h-full w-1/2 object-cover object-center opacity-20"
+          />
+        </picture>
+        <div
+          class="from-brand-500 via-brand-500/80 absolute inset-0 w-3/4 bg-linear-to-r to-transparent"
+        >
+        </div>
+      </div>
+      <div class="relative mx-auto max-w-[1200px] px-6 lg:px-16">
+        <nav class="mb-6 text-sm text-white/60" aria-label="Breadcrumb">
+          <a href="/" class="transition-colors hover:text-white">Home</a>
+          <span class="mx-2">›</span>
+          <a href="/services/" class="transition-colors hover:text-white"
+            >Services</a
+          >
+          <span class="mx-2">›</span>
+          <span class="text-white">Internal team development</span>
+        </nav>
+        <p
+          class="text-brand-100 mb-6 text-sm font-semibold tracking-widest uppercase"
+        >
+          Team development · offshore to onshore
+        </p>
+        <h1
+          class="font-heading mb-6 text-4xl leading-[1.1] font-bold text-white sm:text-5xl lg:text-[58px]"
+        >
+          Build the engineering team your business actually needs
+        </h1>
+        <p
+          class="mb-10 max-w-2xl text-lg leading-relaxed text-white/80 sm:text-xl"
+        >
+          Hiring support, interim engineering coverage, and offshore-to-onshore
+          transitions for companies ready to own their engineering. Innovise
+          provides the coverage while the hiring runs and a structured handoff
+          plan so you're not dependent on contractors indefinitely.
+        </p>
+        <a
+          href="/?service=internal-team#contact"
+          class="text-brand-500 hover:bg-surface-page inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-base font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+        >
+          Get in touch about your situation
+          <svg
+            class="ml-2 h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Who this is for -->
+    <section class="bg-surface-page py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="grid gap-16 lg:grid-cols-2 lg:gap-24">
+          <div>
+            <p
+              class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+            >
+              Who this is for
+            </p>
+            <h2
+              class="font-heading text-text-primary mb-6 text-3xl font-semibold sm:text-4xl"
+            >
+              Companies that need more than contractors
+            </h2>
+            <div class="text-text-secondary space-y-4 leading-relaxed">
+              <p>
+                Some businesses that hire Innovise for team development have
+                reached the same point: the current model isn't working. They've
+                been using offshore developers or contractors, and the problems
+                are piling up: slow feedback loops, thin context, high rework.
+                Or they've grown to the point where outsourcing the core product
+                no longer makes sense.
+              </p>
+              <p>
+                The goal is an internal engineering team that understands the
+                business, communicates directly with the people making product
+                decisions, and can own the codebase long-term. Getting there
+                takes more than a job posting.
+              </p>
+              <p>
+                Innovise provides the interim coverage while the hiring runs,
+                the technical leadership to structure the team correctly, and
+                the institutional knowledge transfer to make the transition
+                stick.
+              </p>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            {
+              [
+                {
+                  title: "No internal engineering team",
+                  body: "You've been running on contractors or offshore developers and you're ready to build something permanent. You need help figuring out what to hire first and how to structure the team.",
+                },
+                {
+                  title: "Technical Leadership",
+                  body: "You have some great engineers but they need guidance and direction. You need senior technical leadership to evaluate the landscape and guide the team back to the right track.",
+                },
+                {
+                  title: "Transitioning away from offshore",
+                  body: "Context is thin, the feedback loop is long, and technical debt is piling up. You've decided to move to an onshore team but the transition is complicated. You can't just turn off one model while the other ramps up.",
+                },
+                {
+                  title: "A key engineer just left",
+                  body: "Replacing a senior engineer through a standard hiring process takes months. Operations can't wait that long. Innovise can step into the role while you hire.",
+                },
+                {
+                  title: "Ready to hire but don't know where to start",
+                  body: "What roles to hire first, how to structure interviews, what to look for at each level. Building an engineering team for the first time is a different problem than building software.",
+                },
+              ].map((item) => (
+                <div class="bg-surface-card border-surface-inset rounded-lg border p-6">
+                  <h3 class="font-heading text-text-primary mb-2 font-semibold">
+                    {item.title}
+                  </h3>
+                  <p class="text-text-secondary leading-relaxed">{item.body}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="bg-surface-inset py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="mb-16">
+          <p
+            class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+          >
+            How it works
+          </p>
+          <h2
+            class="font-heading text-text-primary mb-5 text-3xl font-semibold sm:text-4xl lg:text-[41px]"
+          >
+            Interim coverage. Structured hiring. Permanent team.
+          </h2>
+        </div>
+        <div class="grid gap-8 md:grid-cols-3">
+          {
+            [
+              {
+                step: "01",
+                title: "Assess and plan",
+                body: "The lead engineer reviews your current setup: what engineering capacity you have, what's missing, and what the right team structure looks like for your stage. The output is a hiring plan with clear priorities.",
+              },
+              {
+                step: "02",
+                title: "Cover and hire in parallel",
+                body: "Innovise engineers fill the gaps while the hiring process runs. You're not blocked on operations for six months while you find the right people. The interim engineers also help evaluate candidates, since they've worked in your codebase and know what's actually needed.",
+              },
+              {
+                step: "03",
+                title: "Transition and reduce dependency",
+                body: "As your internal team ramps up, Innovise transfers context, documents what matters, and reduces its involvement on a schedule that doesn't create operational risk. The goal is a team that can run without us.",
+              },
+            ].map((s) => (
+              <div class="bg-surface-card rounded-lg p-8">
+                <div class="bg-brand-500 font-heading mb-6 inline-flex h-14 w-14 items-center justify-center rounded-full text-lg font-bold text-white">
+                  {s.step}
+                </div>
+                <h3 class="font-heading text-text-primary mb-3 text-xl font-semibold">
+                  {s.title}
+                </h3>
+                <p class="text-text-secondary leading-relaxed">{s.body}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Client outcomes -->
+    <section class="bg-surface-page py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="mb-16 grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <p
+              class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+            >
+              In practice
+            </p>
+            <h2
+              class="font-heading text-text-primary text-3xl font-semibold sm:text-4xl"
+            >
+              How it's worked for clients
+            </h2>
+          </div>
+          <div class="overflow-hidden rounded-xl shadow-lg">
+            <picture>
+              <source
+                srcset="/images/content/team-whiteboard.webp"
+                type="image/webp"
+              />
+              <img
+                src="/images/content/team-whiteboard.jpg"
+                alt="A growing engineering team collaborating around a table"
+                width="1600"
+                height="1067"
+                class="h-64 w-full object-cover object-center"
+                loading="lazy"
+              />
+            </picture>
+          </div>
+        </div>
+        <div class="space-y-10">
+          <div class="border-brand-500 border-l-2 pl-8">
+            <p
+              class="text-brand-500 mb-3 text-xs font-semibold tracking-widest uppercase"
+            >
+              Ed-tech / offshore to onshore transition
+            </p>
+            <p class="text-text-secondary text-lg leading-relaxed">
+              An ed-tech company had most of their software built offshore
+              across multiple teams. Context was thin, the feedback loop between
+              business and engineering was slow, and technical debt was piling
+              up. They decided to transition to an onshore team and brought in
+              Innovise to structure the process. Innovise developers stepped in
+              on a contract-to-hire basis while the permanent hiring ran. Two
+              years later, the client has 25 onshore engineers: a mix of
+              full-time employees and contractors. The offshore dependency is
+              gone.
+            </p>
+          </div>
+          <div class="border-brand-500 border-l-2 pl-8">
+            <p
+              class="text-brand-500 mb-3 text-xs font-semibold tracking-widest uppercase"
+            >
+              Continuity / senior engineer departure
+            </p>
+            <p class="text-text-secondary text-lg leading-relaxed">
+              A client's full-time SRE engineer resigned while a critical
+              project was in flight. The standard hiring process was going to
+              take months. An Innovise engineer already familiar with the
+              codebase stepped into the role immediately. No gap in operations,
+              no lost context, no disruption to the project timeline. The hiring
+              ran in parallel, and the new hire came into a stable,
+              well-documented system.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What's different -->
+    <section class="bg-surface-inset py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="mx-auto max-w-3xl">
+          <p
+            class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+          >
+            What's different
+          </p>
+          <h2
+            class="font-heading text-text-primary mb-8 text-3xl font-semibold sm:text-4xl"
+          >
+            The goal is a team that can operate without Innovise
+          </h2>
+          <div class="text-text-secondary space-y-5 text-lg leading-relaxed">
+            <p>
+              Most staffing and consulting firms have no incentive to help you
+              hire permanently. Their business model runs on you needing them
+              indefinitely. Innovise doesn't operate that way.
+            </p>
+            <p>
+              Innovise's team has been through this transition multiple times,
+              from both sides. We know what makes a team work, what makes a
+              hiring process fail, and how to structure a handoff that doesn't
+              create new problems. The goal is a team that operates without
+              Innovise, on a timeline that works for your business.
+            </p>
+            <p>
+              Based in Bellevue, WA and working with clients nationwide. All
+              work is done on-shore. If you're transitioning from an offshore
+              model, Innovise can also help document the context gaps and
+              technical debt that offshore arrangements tend to leave behind.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="bg-surface-page py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="mx-auto max-w-3xl">
+          <p
+            class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+          >
+            Common questions
+          </p>
+          <h2
+            class="font-heading text-text-primary mb-12 text-3xl font-semibold sm:text-4xl"
+          >
+            Frequently asked questions
+          </h2>
+          <div class="space-y-8">
+            {
+              faqs.map((faq) => (
+                <div class="border-surface-inset border-b pb-8 last:border-0 last:pb-0">
+                  <h3 class="font-heading text-text-primary mb-3 text-lg font-semibold">
+                    {faq.q}
+                  </h3>
+                  <p class="text-text-secondary leading-relaxed">{faq.a}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Other services -->
+    <section class="bg-surface-inset border-surface-inset border-t py-16">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <p
+          class="text-brand-500 mb-6 text-xs font-semibold tracking-widest uppercase"
+        >
+          Other services
+        </p>
+        <div class="grid gap-4 sm:grid-cols-3">
+          <a
+            href="/services/embedded-development-team/"
+            class="group border-surface-inset bg-surface-card flex items-start justify-between rounded-lg border p-5 transition-all hover:-translate-y-0.5 hover:shadow-sm"
+          >
+            <div>
+              <p class="text-text-primary font-semibold">
+                Embedded development teams
+              </p>
+              <p class="text-text-secondary mt-1 text-sm">
+                Senior engineers embedded in your business for as long as you
+                need.
+              </p>
+            </div>
+            <svg
+              class="text-brand-500 mt-0.5 ml-3 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+            >
+          </a>
+          <a
+            href="/services/mvp-to-production/"
+            class="group border-surface-inset bg-surface-card flex items-start justify-between rounded-lg border p-5 transition-all hover:-translate-y-0.5 hover:shadow-sm"
+          >
+            <div>
+              <p class="text-text-primary font-semibold">
+                From MVP to production
+              </p>
+              <p class="text-text-secondary mt-1 text-sm">
+                Stabilize a quickly built codebase for real-world use, without
+                the unnecessary rewrite.
+              </p>
+            </div>
+            <svg
+              class="text-brand-500 mt-0.5 ml-3 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+            >
+          </a>
+          <a
+            href="/services/custom-software-development/"
+            class="group border-surface-inset bg-surface-card flex items-start justify-between rounded-lg border p-5 transition-all hover:-translate-y-0.5 hover:shadow-sm"
+          >
+            <div>
+              <p class="text-text-primary font-semibold">
+                Custom software development
+              </p>
+              <p class="text-text-secondary mt-1 text-sm">
+                Full-stack development built for your specific situation.
+              </p>
+            </div>
+            <svg
+              class="text-brand-500 mt-0.5 ml-3 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+            >
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-brand-500 py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 text-center lg:px-16">
+        <h2
+          class="font-heading mb-6 text-3xl font-bold text-white sm:text-4xl lg:text-[41px]"
+        >
+          Building the team is a long process. Coverage gaps aren't.
+        </h2>
+        <p class="mx-auto mb-10 max-w-xl text-lg text-white/80">
+          Whether you need interim coverage now or help planning the full
+          build-out, start with a conversation. Innovise will be direct about
+          what's realistic and what the right approach looks like for your
+          situation.
+        </p>
+        <a
+          href="/?service=internal-team#contact"
+          class="text-brand-500 hover:bg-surface-page inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-base font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+        >
+          Get in touch about your situation
+          <svg
+            class="ml-2 h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

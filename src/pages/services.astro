@@ -1,0 +1,318 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+const services = [
+  {
+    title: "Embedded development teams",
+    description:
+      "Innovise is your engineering department, senior-led and embedded in your operation from day one. Short or long-term, it scales with your initiative and can transition to internal ownership when you're ready.",
+    href: "/services/embedded-development-team/",
+    eyebrow: "Most common starting point",
+    featured: true,
+  },
+  {
+    title: "Custom software development",
+    description:
+      "Full-stack development for businesses that need software built for their specific situation, not adapted from a template. The first question is always why, not what.",
+    href: "/services/custom-software-development/",
+    eyebrow: "Build",
+    featured: false,
+  },
+  {
+    title: "From MVP to production",
+    description:
+      "You built fast and now the code is fragile. Innovise audits what you have, stabilizes it for real-world use, and gets it to a state you can hand off or keep building on, without an unnecessary rewrite.",
+    href: "/services/mvp-to-production/",
+    eyebrow: "Production readiness",
+    featured: false,
+  },
+  {
+    title: "Internal team development",
+    description:
+      "Hiring support, interim engineering coverage, and a structured transition plan for companies building their own team (whether from scratch or moving away from offshore developers).",
+    href: "/services/internal-team-development/",
+    eyebrow: "Team development",
+    featured: false,
+  },
+  {
+    title: "Technology & security audit",
+    description:
+      "A structured, one-time review of your tech stack, security posture, and cloud spend. A clear picture of where you stand, and an honest roadmap, not a pitch for the next engagement.",
+    href: "/services/technology-audit/",
+    eyebrow: "Assessment",
+    featured: false,
+  },
+  {
+    title: "Fractional CTO",
+    description:
+      "Senior technical leadership for companies that need a CTO-level mind in the room without the full-time cost. Architecture decisions, hiring guidance, and ongoing direction.",
+    href: "/services/fractional-cto/",
+    eyebrow: "Technical leadership",
+    featured: false,
+  },
+];
+---
+
+<Layout
+  title="Software Development Services for SMBs | Innovise"
+  description="Senior engineering services for SMBs: embedded teams, custom software, MVP-to-production, internal team development, and tech audits. Bellevue, WA. Nationwide."
+>
+  <Navbar />
+
+  <main>
+    <!-- Page hero -->
+    <section class="bg-brand-500 relative overflow-hidden py-24 lg:py-32">
+      <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
+        <picture>
+          <source
+            srcset="/images/content/team-whiteboard.webp"
+            type="image/webp"
+          />
+          <img
+            src="/images/content/team-whiteboard.jpg"
+            alt=""
+            class="absolute top-0 right-0 h-full w-1/2 object-cover object-center opacity-20"
+          />
+        </picture>
+        <div
+          class="from-brand-500 via-brand-500/80 absolute inset-0 w-3/4 bg-linear-to-r to-transparent"
+        >
+        </div>
+      </div>
+      <div class="relative mx-auto max-w-[1200px] px-6 lg:px-16">
+        <nav class="mb-6 text-sm text-white/60" aria-label="Breadcrumb">
+          <a href="/" class="transition-colors hover:text-white">Home</a>
+          <span class="mx-2">›</span>
+          <span class="text-white">Services</span>
+        </nav>
+        <h1
+          class="font-heading mb-6 text-4xl leading-[1.1] font-bold text-white sm:text-5xl lg:text-[58px]"
+        >
+          Software engineering services built around your business
+        </h1>
+        <p class="max-w-2xl text-lg leading-relaxed text-white/80 sm:text-xl">
+          Whether you need a full development team, senior technical leadership,
+          or a structured review of your existing systems, Innovise works
+          directly with you.
+        </p>
+      </div>
+    </section>
+
+    <!-- Services grid -->
+    <section class="bg-surface-page py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <!-- Featured service -->
+        {
+          services
+            .filter((s) => s.featured)
+            .map((service) => (
+              <a
+                href={service.href}
+                class="group bg-brand-500 mb-6 block rounded-lg p-8 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(194,74,54,0.35)]"
+              >
+                <p class="text-brand-100 mb-2 text-xs font-semibold tracking-widest uppercase">
+                  {service.eyebrow}
+                </p>
+                <h2 class="font-heading mb-3 text-2xl font-semibold text-white">
+                  {service.title}
+                </h2>
+                <p class="mb-6 max-w-2xl leading-relaxed text-white/80">
+                  {service.description}
+                </p>
+                <span class="group-hover:text-brand-50 inline-flex items-center text-sm font-semibold text-white transition-colors">
+                  Learn more
+                  <svg
+                    class="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </span>
+              </a>
+            ))
+        }
+        <!-- Other services -->
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {
+            services
+              .filter((s) => !s.featured)
+              .map((service) => (
+                <a
+                  href={service.href}
+                  class="group bg-surface-card border-surface-inset relative block rounded-lg border p-8 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_4px_18px_rgba(0,0,0,0.08)]"
+                >
+                  <p class="text-brand-500 mb-2 text-xs font-semibold tracking-widest uppercase">
+                    {service.eyebrow}
+                  </p>
+                  <h2 class="font-heading text-text-primary mb-3 text-2xl font-semibold">
+                    {service.title}
+                  </h2>
+                  <p class="text-text-secondary mb-6 leading-relaxed">
+                    {service.description}
+                  </p>
+                  <span class="text-brand-500 group-hover:text-brand-600 inline-flex items-center text-sm font-semibold transition-colors">
+                    Learn more
+                    <svg
+                      class="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </span>
+                </a>
+              ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical retainer -->
+    <section class="bg-surface-page border-surface-inset border-t py-16">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div
+          class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between"
+        >
+          <div class="max-w-2xl">
+            <p
+              class="text-brand-500 mb-2 text-xs font-semibold tracking-widest uppercase"
+            >
+              Also available
+            </p>
+            <h2
+              class="font-heading text-text-primary mb-2 text-xl font-semibold"
+            >
+              Technical retainer
+            </h2>
+            <p class="text-text-secondary leading-relaxed">
+              A senior engineer monitoring your systems and available for
+              strategic questions on an ongoing basis, without the overhead of a
+              full engagement. Designed for businesses that need steady
+              technical oversight between initiatives.
+            </p>
+          </div>
+          <a
+            href="/#contact?service=retainer"
+            class="bg-brand-500 hover:bg-brand-600 inline-flex shrink-0 items-center rounded-lg px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:shadow-md"
+          >
+            Ask about a retainer
+            <svg
+              class="ml-2 h-4 w-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- How we're different -->
+    <section class="bg-surface-inset py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+          <div>
+            <p
+              class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+            >
+              How we're different
+            </p>
+            <h2
+              class="font-heading text-text-primary mb-8 text-3xl font-semibold sm:text-4xl"
+            >
+              Senior-led, on-shore, and accountable through delivery
+            </h2>
+            <div class="text-text-secondary space-y-5 text-lg leading-relaxed">
+              <p>
+                Most development firms sell with senior engineers and staff with
+                junior ones. The person on your first call isn't the person
+                doing your work. Innovise doesn't operate that way.
+              </p>
+              <p>
+                Innovise's founder and principal engineer, with 15 years of
+                full-stack development and technical leadership experience,
+                leads every engagement as the primary architect, technical
+                decision-maker, and person accountable through production. For
+                larger engagements that need additional capacity, Innovise can
+                bring in experienced supporting engineers. You'll always know
+                who's on your project and what they're responsible for.
+              </p>
+              <p>
+                All work is done on-shore. No off-shoring, no timezone gaps, no
+                context lost across continents. No account managers between you
+                and the engineer. Direct access to the person doing the work.
+              </p>
+              <p>
+                The goal is to solve your business problem, not to maximize the
+                size or duration of an engagement. If the right answer is a
+                simpler solution or a different path, Innovise will say so. If
+                your goal is eventually to bring engineering in-house, Innovise
+                will help you get there.
+              </p>
+            </div>
+            <div class="mt-10">
+              <a
+                href="/#contact"
+                class="bg-brand-500 hover:bg-brand-600 inline-flex items-center rounded-lg px-8 py-4 text-base font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+              >
+                Get in touch
+                <svg
+                  class="ml-2 h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <!-- Photo -->
+          <div class="overflow-hidden rounded-xl shadow-lg">
+            <picture>
+              <source
+                srcset="/images/content/planning-discussion.webp"
+                type="image/webp"
+              />
+              <img
+                src="/images/content/planning-discussion.jpg"
+                alt="Innovise engineers reviewing a codebase together"
+                width="800"
+                height="533"
+                class="h-80 w-full object-cover object-center lg:h-full lg:min-h-[400px]"
+                loading="lazy"
+              />
+            </picture>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

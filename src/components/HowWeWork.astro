@@ -4,19 +4,19 @@ const steps = [
     number: "01",
     title: "Discover",
     description:
-      "The first conversation is about your business, not the stack. We ask the questions that surface what you actually need — not just what you've asked for. Then we help you decide what's worth building first.",
+      "The first call is about 30 minutes and goes both directions — you're describing your situation, we're figuring out whether we're the right fit. No pitch, no proposal until we've talked. If we're not the right call, we'll say so.",
   },
   {
     number: "02",
     title: "Build",
     description:
-      "You work directly with the engineer doing the work — no account managers, no relayed updates. Working software ships early, progress is visible, and if the direction needs to change, it changes.",
+      "You work directly with the engineer doing the work. No account managers, no relayed updates. Working software ships early, progress is visible, and if the direction needs to change, it changes.",
   },
   {
     number: "03",
     title: "Deliver & grow",
     description:
-      "Go-live is not goodbye. The same engineer who built your system stays involved — monitoring, iterating, and fielding the questions that only emerge in production. If your goal is to bring engineering in-house eventually, we'll help you do that too.",
+      "Go-live is not goodbye. The same engineer who built your system stays involved: monitoring, iterating, fielding the questions that only emerge in production. If your goal is to bring engineering in-house eventually, we'll help you do that too.",
   },
 ];
 ---
@@ -25,7 +25,7 @@ const steps = [
   <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
     <div class="mb-16 text-center">
       <p
-        class="text-brand-400 animate-on-scroll mb-4 text-sm font-semibold tracking-widest uppercase"
+        class="text-brand-500 animate-on-scroll mb-4 text-sm font-semibold tracking-widest uppercase"
       >
         Our approach
       </p>
@@ -36,8 +36,26 @@ const steps = [
       </h2>
       <p class="text-text-secondary animate-on-scroll mx-auto max-w-xl text-lg">
         Every engagement starts with the senior engineer who will actually build
-        it — and that relationship stays in place through delivery and beyond.
+        it, and that relationship stays in place through delivery and beyond.
       </p>
+    </div>
+
+    <!-- Context photo -->
+    <div class="animate-on-scroll mb-16 overflow-hidden rounded-xl shadow-md">
+      <picture>
+        <source
+          srcset="/images/content/team-whiteboard.webp"
+          type="image/webp"
+        />
+        <img
+          src="/images/content/team-whiteboard.jpg"
+          alt="Engineers working together at a table"
+          width="1600"
+          height="600"
+          class="h-56 w-full object-cover object-[center_30%] sm:h-72"
+          loading="lazy"
+        />
+      </picture>
     </div>
 
     <div class="stagger-children grid gap-8 md:grid-cols-3 lg:gap-12">

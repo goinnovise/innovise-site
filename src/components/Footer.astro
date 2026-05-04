@@ -1,18 +1,28 @@
 ---
 const navLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#services", label: "Services" },
-  { href: "#how-we-work", label: "How we work" },
-  { href: "#team", label: "About" },
-  { href: "#contact", label: "Contact" },
+  { href: "/", label: "Home" },
+  { href: "/services/", label: "Services" },
+  { href: "/#how-we-work", label: "How we work" },
+  { href: "/#team", label: "About" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 const serviceLinks = [
-  "Custom development",
-  "System integrations",
-  "DevOps & cloud",
-  "UX design",
-  "Tech audits",
+  {
+    href: "/services/embedded-development-team/",
+    label: "Embedded development teams",
+  },
+  {
+    href: "/services/custom-software-development/",
+    label: "Custom software development",
+  },
+  { href: "/services/mvp-to-production/", label: "From MVP to production" },
+  {
+    href: "/services/internal-team-development/",
+    label: "Internal team development",
+  },
+  { href: "/services/technology-audit/", label: "Technology & security audit" },
+  { href: "/services/fractional-cto/", label: "Fractional CTO" },
 ];
 ---
 
@@ -21,12 +31,20 @@ const serviceLinks = [
     <div class="mb-12 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
       <!-- Brand -->
       <div class="lg:col-span-1">
-        <img
-          src="/images/logo/innovise-main-logo.png"
-          alt="Innovise Technologies"
-          class="mb-4 h-10"
-          style="filter: brightness(0) invert(1);"
-        />
+        <picture>
+          <source
+            srcset="/images/logo/innovise-main-logo.webp"
+            type="image/webp"
+          />
+          <img
+            src="/images/logo/innovise-main-logo-opt.png"
+            alt="Innovise Technologies"
+            width="600"
+            height="180"
+            class="mb-4 h-10 w-auto"
+            style="filter: brightness(0) invert(1);"
+          />
+        </picture>
         <p class="text-sm leading-relaxed text-white/50">
           Custom software, built for you.
         </p>
@@ -67,10 +85,10 @@ const serviceLinks = [
             serviceLinks.map((service) => (
               <li>
                 <a
-                  href="#services"
+                  href={service.href}
                   class="hover:text-brand-400 text-sm text-white/50 transition-colors"
                 >
-                  {service}
+                  {service.label}
                 </a>
               </li>
             ))

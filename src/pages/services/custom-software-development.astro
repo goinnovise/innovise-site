@@ -1,0 +1,522 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+
+const faqs = [
+  {
+    q: "How is custom software different from off-the-shelf tools?",
+    a: "Off-the-shelf software is built for the average use case. Custom software is built for your specific business: your workflows, your data model, your edge cases. When your business processes don't fit neatly into existing tools, or when the workarounds are costing you time and creating errors, that's usually when custom development becomes the right call.",
+  },
+  {
+    q: "How do you decide what to build first?",
+    a: "The first conversation is never about technology. It's about what your business is trying to accomplish and where it's stuck. We might as questions such as: What happens if we don't build this? Is there a simpler solution? What would have to be true for this to fail? We help you scope the right thing before writing a line of code.",
+  },
+  {
+    q: "What technologies do you work with?",
+    a: "Innovise is stack-agnostic. We match the technology to the problem, choosing the approach that fits your business and your team, not the most technically impressive one on paper. We have deep experience across web, backend, cloud infrastructure, and integrations.",
+  },
+  {
+    q: "What does the development process look like?",
+    a: "Working software ships early. We don't disappear for three months and deliver something finished. We build incrementally, show progress, and adjust based on what we learn. You work directly with the engineer doing the work throughout.",
+  },
+  {
+    q: "What happens after the software is delivered?",
+    a: "Engagement doesn't end at launch. The same engineer who built your system stays involved: monitoring, iterating, and fielding the questions that only come up in production. We hand over software in a state your team can actually maintain, and we're available when something needs to change.",
+  },
+  {
+    q: "Can you work with our existing codebase?",
+    a: "Yes. A significant portion of Innovise's work involves inheriting, extending, or modernizing existing systems. We'll give you an honest assessment of what you have before proposing anything.",
+  },
+];
+
+const schemaFaqs = faqs.map((f) => ({
+  "@type": "Question",
+  name: f.q,
+  acceptedAnswer: { "@type": "Answer", text: f.a },
+}));
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Custom Software Development",
+  provider: {
+    "@type": "ProfessionalService",
+    name: "Innovise Technologies",
+    url: "https://goinnovise.com",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Bellevue",
+      addressRegion: "WA",
+      addressCountry: "US",
+    },
+  },
+  description:
+    "Full-stack custom software development for small and mid-market businesses. Senior engineers, no junior staff, no handoffs. Built to solve real business problems. Bellevue, WA. Serving clients nationwide.",
+  areaServed: "US",
+  serviceType: "Custom Software Development",
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: schemaFaqs,
+};
+
+const safeJson = (obj: object) => JSON.stringify(obj).replace(/</g, "\\u003c");
+---
+
+<Layout
+  title="Custom Software Development for Small Business | Innovise"
+  description="Full-stack custom software development for SMBs. Senior engineers, no handoffs, direct access from first call through production. Based in Bellevue, WA. Serving clients nationwide."
+>
+  <script
+    type="application/ld+json"
+    set:html={safeJson(serviceSchema)}
+    slot="head"
+  />
+  <script
+    type="application/ld+json"
+    set:html={safeJson(faqSchema)}
+    slot="head"
+  />
+
+  <Navbar />
+
+  <main>
+    <!-- Hero -->
+    <section class="bg-brand-500 relative overflow-hidden py-24 lg:py-32">
+      <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
+        <picture>
+          <source
+            srcset="/images/content/developer-desk-wide.webp"
+            type="image/webp"
+          />
+          <img
+            src="/images/content/developer-desk-wide.jpg"
+            alt=""
+            class="absolute top-0 right-0 h-full w-1/2 object-cover object-left opacity-20"
+          />
+        </picture>
+        <div
+          class="from-brand-500 via-brand-500/80 absolute inset-0 w-3/4 bg-linear-to-r to-transparent"
+        >
+        </div>
+      </div>
+      <div class="relative mx-auto max-w-[1200px] px-6 lg:px-16">
+        <nav class="mb-6 text-sm text-white/60" aria-label="Breadcrumb">
+          <a href="/" class="transition-colors hover:text-white">Home</a>
+          <span class="mx-2">›</span>
+          <a href="/services/" class="transition-colors hover:text-white"
+            >Services</a
+          >
+          <span class="mx-2">›</span>
+          <span class="text-white">Custom software development</span>
+        </nav>
+        <p
+          class="text-brand-100 mb-6 text-sm font-semibold tracking-widest uppercase"
+        >
+          Build
+        </p>
+        <h1
+          class="font-heading mb-6 text-4xl leading-[1.1] font-bold text-white sm:text-5xl lg:text-[58px]"
+        >
+          Custom software development — built for your business, not adapted
+          from a template
+        </h1>
+        <p
+          class="mb-10 max-w-2xl text-lg leading-relaxed text-white/80 sm:text-xl"
+        >
+          Full-stack development across web, backend, and cloud. Senior
+          engineers who work directly with you from the first call through
+          production. No handoffs, no account managers. Based in Bellevue, WA.
+          Serving clients nationwide.
+        </p>
+        <a
+          href="/?service=custom-software#contact"
+          class="text-brand-500 hover:bg-surface-page inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-base font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+        >
+          Start the conversation
+          <svg
+            class="ml-2 h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- What we build -->
+    <section class="bg-surface-page py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="mb-16">
+          <p
+            class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+          >
+            What we build
+          </p>
+          <h2
+            class="font-heading text-text-primary mb-5 text-3xl font-semibold sm:text-4xl lg:text-[41px]"
+          >
+            Engineering across your entire stack
+          </h2>
+          <p class="text-text-secondary max-w-2xl text-lg leading-relaxed">
+            Innovise solves the business problem behind the code, not just the
+            code.
+          </p>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {
+            [
+              {
+                title: "Web & Mobile applications",
+                body: "From internal tools to customer-facing platforms, built for performance, maintainability, and the real workflows of the people who use them.",
+              },
+              {
+                title: "Backend systems & APIs",
+                body: "Data pipelines, internal APIs, event-driven architectures, and the infrastructure that makes product features possible at scale.",
+              },
+              {
+                title: "System integrations",
+                body: "Connect your platforms, automate your workflows, and eliminate the manual work that slows your team down. Built to hold up under real load.",
+              },
+              {
+                title: "Systems design & architecture",
+                body: "Before a line of code is written, we map out the full system: data flows, failure modes, scaling decisions, and the edge cases that only experience reveals.",
+              },
+              {
+                title: "DevOps & cloud infrastructure",
+                body: "CI/CD pipelines, containerization, cloud infrastructure, and monitoring, built by engineers who've run production systems at scale.",
+              },
+              {
+                title: "UX & interface design",
+                body: "Interfaces designed for how users actually behave. From information architecture to final pixels, grounded in research and tested against real use.",
+              },
+            ].map((item) => (
+              <div class="bg-surface-card border-surface-inset rounded-lg border p-8">
+                <h3 class="font-heading text-text-primary mb-3 text-lg font-semibold">
+                  {item.title}
+                </h3>
+                <p class="text-text-secondary leading-relaxed">{item.body}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- How we approach it -->
+    <section class="bg-surface-inset py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+          <div>
+            <p
+              class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+            >
+              The approach
+            </p>
+            <h2
+              class="font-heading text-text-primary mb-8 text-3xl font-semibold sm:text-4xl"
+            >
+              The first question is always why, not what
+            </h2>
+            <div class="text-text-secondary space-y-5 text-lg leading-relaxed">
+              <p>
+                Most software fails not because it was built poorly, but because
+                it was built for the wrong problem. Innovise starts every
+                engagement by asking questions: What is this actually trying to
+                accomplish? What happens if we don't build it? Is there a
+                simpler path that gets you 90% of the value?
+              </p>
+              <p>
+                When we build, we build incrementally. Working software ships
+                early. Progress is visible. If the direction needs to change
+                based on what you learn, it changes.
+              </p>
+            </div>
+          </div>
+          <!-- Photo -->
+          <div class="overflow-hidden rounded-xl shadow-lg">
+            <picture>
+              <source
+                srcset="/images/content/ux-wireframe-planning.webp"
+                type="image/webp"
+              />
+              <img
+                src="/images/content/ux-wireframe-planning.jpg"
+                alt="Sketching software architecture and wireframes"
+                width="1200"
+                height="800"
+                class="h-72 w-full object-cover object-center lg:h-full lg:min-h-[380px]"
+                loading="lazy"
+              />
+            </picture>
+          </div>
+        </div>
+      </div>
+
+      <!-- Where we've pushed back -->
+      <section class="bg-surface-page py-24 lg:py-32">
+        <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+          <p
+            class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+          >
+            In practice
+          </p>
+          <h2
+            class="font-heading text-text-primary mb-4 text-3xl font-semibold sm:text-4xl"
+          >
+            Sometimes the answer is: don't build it
+          </h2>
+          <p
+            class="text-text-secondary mb-12 max-w-2xl text-lg leading-relaxed"
+          >
+            A large part of Innovise's work is helping clients see the hidden
+            costs in what they're asking for before they commit to building it.
+          </p>
+          <div class="space-y-10">
+            <div class="border-brand-500 border-l-2 pl-8">
+              <p
+                class="text-brand-500 mb-3 text-xs font-semibold tracking-widest uppercase"
+              >
+                Mobile app vs. web refactor
+              </p>
+              <p class="text-text-secondary text-lg leading-relaxed">
+                A client came in ready to build a mobile app. After working
+                through the actual use cases together, it was clear their
+                existing web app would serve their mobile audience just as well
+                with some responsive design and performance work. Innovise
+                walked through the real cost comparison: mobile development, app
+                store overhead, two codebases to maintain indefinitely. The
+                client chose the web refactor. It shipped faster, cost less, and
+                eliminated a platform they'd have needed to maintain forever.
+              </p>
+            </div>
+            <div class="border-brand-500 border-l-2 pl-8">
+              <p
+                class="text-brand-500 mb-3 text-xs font-semibold tracking-widest uppercase"
+              >
+                Backend API — rewrite vs. refactor
+              </p>
+              <p class="text-text-secondary text-lg leading-relaxed">
+                A client wanted to rewrite their entire backend API because it
+                had been built by a previous developer. Innovise reviewed the
+                codebase and found the architecture was sound. The real issues
+                were surface-level. A focused refactor and cleanup would address
+                them without starting over. The client saved months of work and
+                avoided reintroducing every edge case and bug that comes with a
+                rebuild. The hidden cost of the original request only became
+                visible after someone walked them through it.
+              </p>
+            </div>
+            <div class="border-brand-500 border-l-2 pl-8">
+              <p
+                class="text-brand-500 mb-3 text-xs font-semibold tracking-widest uppercase"
+              >
+                SPA to SSR — lighter lift than assumed
+              </p>
+              <p class="text-text-secondary text-lg leading-relaxed">
+                A client wanted to convert their single-page application to
+                server-side rendering for SEO, and had assumed that meant a full
+                rewrite in a new framework. Innovise engineers identified that
+                React Router 7 would achieve the same result without requiring
+                the team to learn anything new. The migration took a fraction of
+                the anticipated time. Combined with CloudFront caching, Redis
+                caching, and standard SEO work (schema markup, sitemaps,
+                canonical tags, breadcrumbs), the client's search performance
+                improved and the team shipped it themselves.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="bg-surface-page py-24 lg:py-32">
+        <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+          <div class="mx-auto max-w-3xl">
+            <p
+              class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+            >
+              Common questions
+            </p>
+            <h2
+              class="font-heading text-text-primary mb-12 text-3xl font-semibold sm:text-4xl"
+            >
+              Frequently asked questions
+            </h2>
+            <div class="space-y-8">
+              {
+                faqs.map((faq) => (
+                  <div class="border-surface-inset border-b pb-8 last:border-0 last:pb-0">
+                    <h3 class="font-heading text-text-primary mb-3 text-lg font-semibold">
+                      {faq.q}
+                    </h3>
+                    <p class="text-text-secondary leading-relaxed">{faq.a}</p>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Other services -->
+      <section class="bg-surface-inset border-surface-inset border-t py-16">
+        <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+          <p
+            class="text-brand-500 mb-6 text-xs font-semibold tracking-widest uppercase"
+          >
+            Other services
+          </p>
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <a
+              href="/services/embedded-development-team/"
+              class="group border-surface-inset bg-surface-card flex items-start justify-between rounded-lg border p-5 transition-all hover:-translate-y-0.5 hover:shadow-sm"
+            >
+              <div>
+                <p class="text-text-primary font-semibold">
+                  Embedded development teams
+                </p>
+                <p class="text-text-secondary mt-1 text-sm">
+                  Senior-led engineers embedded in your business for as long as
+                  you need.
+                </p>
+              </div>
+              <svg
+                class="text-brand-500 mt-0.5 ml-3 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+              >
+            </a>
+            <a
+              href="/services/mvp-to-production/"
+              class="group border-surface-inset bg-surface-card flex items-start justify-between rounded-lg border p-5 transition-all hover:-translate-y-0.5 hover:shadow-sm"
+            >
+              <div>
+                <p class="text-text-primary font-semibold">
+                  From MVP to production
+                </p>
+                <p class="text-text-secondary mt-1 text-sm">
+                  Stabilize a quickly built codebase without the unnecessary
+                  rewrite.
+                </p>
+              </div>
+              <svg
+                class="text-brand-500 mt-0.5 ml-3 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+              >
+            </a>
+            <a
+              href="/services/internal-team-development/"
+              class="group border-surface-inset bg-surface-card flex items-start justify-between rounded-lg border p-5 transition-all hover:-translate-y-0.5 hover:shadow-sm"
+            >
+              <div>
+                <p class="text-text-primary font-semibold">
+                  Internal team development
+                </p>
+                <p class="text-text-secondary mt-1 text-sm">
+                  Hiring support and interim coverage while you build your own
+                  team.
+                </p>
+              </div>
+              <svg
+                class="text-brand-500 mt-0.5 ml-3 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+              >
+            </a>
+            <a
+              href="/services/technology-audit/"
+              class="group border-surface-inset bg-surface-card flex items-start justify-between rounded-lg border p-5 transition-all hover:-translate-y-0.5 hover:shadow-sm"
+            >
+              <div>
+                <p class="text-text-primary font-semibold">
+                  Technology & security audit
+                </p>
+                <p class="text-text-secondary mt-1 text-sm">
+                  A clear picture of where you stand before committing to a
+                  build.
+                </p>
+              </div>
+              <svg
+                class="text-brand-500 mt-0.5 ml-3 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+              >
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="bg-brand-500 py-24 lg:py-32">
+        <div class="mx-auto max-w-[1200px] px-6 text-center lg:px-16">
+          <h2
+            class="font-heading mb-6 text-3xl font-bold text-white sm:text-4xl lg:text-[41px]"
+          >
+            Every month without the right system is a month your team is working
+            around it
+          </h2>
+          <p class="mx-auto mb-10 max-w-xl text-lg text-white/80">
+            Start with a conversation. We'll tell you whether custom software is
+            the right answer, and if it isn't, we'll say that too. No commitment
+            required.
+          </p>
+          <a
+            href="/?service=custom-software#contact"
+            class="text-brand-500 hover:bg-surface-page inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-base font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+          >
+            Get in touch
+            <svg
+              class="ml-2 h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+      </section>
+    </section>
+
+    <Footer />
+  </main>
+</Layout>

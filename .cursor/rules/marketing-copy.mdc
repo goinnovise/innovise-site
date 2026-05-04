@@ -6,63 +6,77 @@ When creating marketing copy, use the following as your guide:
 
 Innovise
 Company context for AI-assisted marketing
-Last updated: April 2025
+Last updated: May 2026
 
 Purpose of this document
-This file is the authoritative reference for all AI-assisted content created for Innovise — including marketing copy, social media posts, resumes, proposals, and outreach. Every piece of content produced in this project should be consistent with the positioning, voice, and factual details below.
+This file is the authoritative reference for all AI-assisted content created for Innovise -- including marketing copy, social media posts, resumes, proposals, and outreach. Every piece of content produced in this project should be consistent with the positioning, voice, and factual details below.
 When in doubt, default to specificity over generality, directness over warmth, and outcomes over claims.
 
 Company overview
 Innovise is a boutique software engineering firm that functions as an embedded technical partner for small and mid-market businesses. Founded by Loren Anderson, who brings 15 years of full-stack development and technical leadership experience.
-Innovise operates as a senior-only practice. There are no account managers, no hand-offs to junior staff, and no bait-and-switch after the first call. When a client works with Innovise, they work directly with the engineer doing the work.
+Innovise operates as a senior-led practice. Loren leads every engagement. For projects that need additional capacity, Innovise can bring in supporting engineers (including mid-level and junior developers on blended teams). There are no account managers, no hand-offs to junior staff without the client knowing, and no bait-and-switch after the first call. When a client works with Innovise, they work directly with the engineer doing the work.
 
 Mission
-Help small and mid-market businesses solve real problems with software — by being the technical partner they can trust to tell them the truth, build the right thing, and stay accountable through delivery.
+Help small and mid-market businesses solve real problems with software -- by being the technical partner they can trust to tell them the truth, build the right thing, and stay accountable through delivery.
 
 Vision
-A model of technical partnership where the interests of the client and the firm are fully aligned — where senior engineers stay engaged from first conversation through production, and where the measure of success is the client’s outcome, not the size of the engagement.
+A model of technical partnership where the interests of the client and the firm are fully aligned -- where senior engineers stay engaged from first conversation through production, and where the measure of success is the client's outcome, not the size of the engagement.
 
 Purpose
-Most businesses don’t need more software. They need someone who understands their business well enough to know when software is the answer, and what kind. Innovise exists to be that person — technically capable, commercially grounded, and willing to say the thing that’s inconvenient to say.
+Most businesses don't need more software. They need someone who understands their business well enough to know when software is the answer, and what kind. Innovise exists to be that person -- technically capable, commercially grounded, and willing to say the thing that's inconvenient to say.
 
 Who we serve
-Innovise targets SMBs and mid-market companies in one of four situations:
-–	No internal engineering team, and they need one
-–	An existing team, but they need senior bandwidth
-–	A need for technical leadership or fractional CTO guidance
-–	A new initiative that requires fast, high-quality scaling
+Innovise targets SMBs and mid-market companies in one of these situations:
+- No internal engineering team, and they need one
+- An existing team, but they need senior bandwidth
+- A new initiative that requires fast, high-quality scaling
+- A need for technical leadership or fractional CTO guidance
+- A quickly built MVP (with AI tools, contractors, or founders writing code) that needs to be stabilized for production
+- A company ready to build their own engineering team and needing hiring support, interim coverage, or an offshore-to-onshore transition
 The company is industry-agnostic. The common thread is that these clients need a technical partner who thinks like an internal colleague, not a vendor fulfilling a statement of work.
 
 What we believe
-Software is a tool to solve business problems, not an end in itself. The right question is always “why” before “what.”
-Loren brings a pragmatic mindset to every engagement — choosing the approach that fits the client’s business, not the most technically impressive one on paper. Innovise will push back when something doesn’t add up. The goal is always to serve the client’s actual interests, even when that means recommending a simpler solution or a different path than originally requested.
+Software is a tool to solve business problems, not an end in itself. The right question is always "why" before "what."
+Loren brings a pragmatic mindset to every engagement -- choosing the approach that fits the client's business, not the most technically impressive one on paper. Innovise will push back when something doesn't add up. The goal is always to serve the client's actual interests, even when that means recommending a simpler solution or a different path than originally requested.
 
 What makes Innovise different
 Senior engineers, start to finish
-Most dev shops sell with seniors and staff with juniors. Innovise doesn’t. Senior engineers are involved from the first conversation through production and beyond.
+Most dev shops sell with seniors and staff with juniors. Innovise doesn't. Senior engineers are involved from the first conversation through production and beyond.
 No handoffs after go-live
-Engagement doesn’t end at launch. Innovise stays accountable through production and is available for ongoing technical support and leadership.
+Engagement doesn't end at launch. Innovise stays accountable through production and is available for ongoing technical support and leadership.
 We help clients build independence
-Innovise is willing to help clients build their own internal engineering teams when that’s the right move — including hiring guidance, mentorship, and a structured transition plan. The business model is not built on creating dependency.
+Innovise is willing to help clients build their own internal engineering teams when that's the right move -- including hiring guidance, mentorship, and a structured transition plan. The business model is not built on creating dependency.
 Direct access, always
 No account managers, no project coordinators between the client and the engineer. The person on the first call is the person doing the work.
+Innovise is all on-shore for faster turnaround and better context understanding of client products.
 
 Services and engagement models
 What we build and do
-–	Full-stack software development
-–	Fractional technical leadership and CTO advisory
-–	System integrations
-–	Systems design and architecture
-–	DevOps and cloud infrastructure
-–	UX and interface design
-–	Custom website builds (focused on performance, conversion, and long-term maintainability)
+- Full-stack software development
+- Fractional technical leadership and CTO advisory
+- System integrations
+- Systems design and architecture
+- DevOps and cloud infrastructure
+- UX and interface design
+- Custom website builds (focused on performance, conversion, and long-term maintainability)
+- Codebase stabilization and MVP-to-production work
+- Engineering team hiring support and offshore-to-onshore transitions
+
 How we engage
 Embedded development team
-Short or long-term engagements where Innovise functions as the client’s full engineering department. Can scale up or down depending on the initiative.
+Short or long-term engagements where Innovise is the client's engineering department. Can scale up or down depending on the initiative. The most common starting point.
+
+From MVP to production
+For companies that built fast -- with AI tools, contractors, or founders writing code -- and now have a fragile codebase that won't scale or can't be handed off. Innovise audits what exists, stabilizes it for production use, and gets it to a state that can be maintained or extended. The first question is always what can be saved, not whether to rewrite. Typical engagement: 4 to 8 weeks.
+
+Internal team development
+Helping companies build their own engineering teams from the ground up or transition from an offshore model. Covers hiring support, interim coverage while the hiring runs, and a structured handoff plan. Innovise does not build dependency -- the goal is a team that can operate independently.
+
 Technical retainer
-A senior engineer monitoring systems and available for strategic questions on an ongoing basis. Designed for businesses that need steady technical oversight without a full engagement.
+A senior engineer monitoring systems and available for strategic questions on an ongoing basis. Designed for businesses that need steady technical oversight between initiatives.
+
 Technology and security audit
-A structured, one-time entry point for companies not yet ready for a full engagement. Produces a clear-eyed assessment of existing systems, risks, and opportunities.
+A structured, one-time assessment of tech stack, security posture, and cloud spend. Produces honest findings and a prioritized roadmap. Not a pitch for the next engagement. Less common as a starting point -- most clients come through project work -- but useful for companies needing a second opinion or pre-acquisition technical due diligence.
 
 Voice and tone guidelines
 All Innovise content should reflect the following principles:
@@ -71,18 +85,86 @@ Lead with outcomes and concrete specifics. Avoid hedging, filler, and corporate 
 Specificity over adjectives
 Describe quality through specifics (senior engineers, direct access, no handoffs) rather than through adjectives (boutique, world-class, best-in-class).
 No jargon
-Avoid: “end-to-end solutions,” “best-in-class,” “leverage,” “synergy,” “modern methodologies,” “industry best practices.”
+Avoid: "end-to-end solutions," "best-in-class," "leverage," "synergy," "modern methodologies," "industry best practices."
 Earned trust
 Innovise earns trust through honesty about how it works, not through claims about being the best.
 Formatting
 Sentence case for all headings. No unnecessary capitalization.
 
-Key facts for content accuracy
-–	Founded and led by Loren Anderson
-–	15 years of full-stack development and technical leadership experience
-–	Senior-only practice — no junior staff, no account managers
-–	Industry-agnostic client base
-–	Clients range from SMBs with no technical team to mid-market companies needing senior bandwidth
-–	Offers transition support and internal team-building — not dependency creation
-–	Services span development, architecture, DevOps, UX, fractional CTO, and custom web builds
+Copy framing decisions (hard-won through iteration)
+These are specific decisions made after testing copy against the brand and reviewing how buyers actually read it. Follow them unless there's a clear reason to revisit.
 
+Lead with how the work is done, not what it saves.
+The original homepage H1 read "Your engineering team, without the overhead of building one." This frames Innovise on cost avoidance, which attracts buyers who evaluate on price. Buyers who arrive at "someone who actually does the work themselves" evaluate on accountability and fit. Preferred framing: describe the model directly ("Senior engineers who do the work themselves") rather than the thing it replaces ("without the overhead").
+
+Don't overclaim on the team model.
+Copy that says "senior talent, assembled for your work" and "no hand-me-down capacity" sits in direct contradiction to the reality that blended teams (including mid-level and junior developers) are sometimes used. The accurate description: Loren leads every engagement; when more capacity is needed, supporting engineers are brought in; clients always know who's on the project and at what level. Claims about team composition must match what actually gets delivered.
+
+Describe the first call honestly.
+Innovise's differentiation extends to the sales process, not just the delivery. Copy that describes how the first call works ("about 30 minutes, goes both directions, no pitch until we've talked, we'll say if we're not the right fit") is more credible and more aligned with the brand than generic "let's talk" language. Buyers who've been burned by pushy agencies respond to specificity about process.
+
+Geographic references are consistent: Bellevue, WA.
+"Bellevue, WA" is the standard form for all location references. "Seattle" is acceptable as a metro-area reference in contextual copy (e.g., CTA eyebrow, regional references) but should not appear as the primary location. "Seattle, Washington" is incorrect and was the source of a geographic inconsistency caught in review. The hero eyebrow ("Bellevue, WA · serving clients nationwide") is the canonical form for above-the-fold location signal.
+
+The hero eyebrow carries local SEO and buyer-orientation signal.
+The homepage hero eyebrow (the small all-caps line above the H1) is one of the first things a buyer sees. Generic labels like "Engineering Partner" waste that position. Using it for location + geographic scope ("Bellevue, WA · serving clients nationwide") gives local SEO signal above the fold and immediately orients the buyer. Prefer specific over label-like.
+
+Service card eyebrows can carry niche recognition.
+When a service card targets a buyer who may not immediately recognize themselves in the card title alone, an eyebrow helps. The MVP-to-production card uses "AI-generated code · vibe-coded MVPs" because the buyer searching for help with a fragile Cursor or Bolt codebase may not self-identify as needing "From MVP to production." Eyebrows are optional — use them when a service has a specific buyer profile that benefits from naming.
+
+Key facts for content accuracy
+- Founded and led by Loren Anderson
+- 15 years of full-stack development and technical leadership experience
+- Senior-led practice -- Loren leads every engagement; blended teams (senior + mid-level + junior) available for cost efficiency on larger projects
+- Industry-agnostic client base
+- Clients range from SMBs with no technical team to mid-market companies needing senior bandwidth
+- Offers transition support and internal team-building -- not dependency creation
+- Services span development, architecture, DevOps, UX, fractional CTO, MVP stabilization, and internal team development
+- All work is on-shore; based in Bellevue, WA; serving clients nationwide
+
+Notes:
+- The fractional CTO doesn't scale really well. It's a service Innovise offers, but it shouldn't be the top-promoted unit.
+- Blended teams (senior + mid-level + junior developers) are available to help clients manage costs and support the software industry.
+- "From MVP to production" is a new, growing service niche. The target: founders or PMs who built with AI tools (Cursor, Bolt, Replit) or fast contractors, now have fragile code. Positioning: honest assessment first, no automatic rewrites.
+- "Internal team development" is a real, distinct service -- not just a footnote of embedded teams. The ed-tech client story (offshore to 25 onshore FTEs) is the primary proof point. The SRE continuity story is a secondary proof point.
+- Technology audits happen but are rarely an entry point. Most clients come through direct project work. The audit page still has SEO value and serves clients needing a second opinion or pre-acquisition due diligence.
+
+SEO copy decisions:
+- MVP-to-production page: name Cursor, Bolt, and Replit in the first paragraph of "Who this is for" (not just in FAQ). These are high-intent search terms for the target buyer. They also belong in the meta description.
+- Internal team development page: "offshore to onshore" is a direct search phrase and belongs in the page title, meta description, and hero eyebrow or subhead. "Engineering team development" alone does not capture that intent.
+- The homepage hero eyebrow ("Bellevue, WA · serving clients nationwide") provides above-the-fold local SEO signal. Do not replace it with a generic label.
+- Page titles should lead with the problem or service niche, not the company name. Company name goes last (e.g., "Fix Your MVP Codebase — From AI Tools to Production-Ready | Innovise", not "Innovise | MVP Services").
+- Meta descriptions should name specific buyer situations and tools where relevant. Generic descriptions ("we help businesses with software") produce low CTR.
+
+
+Various case studies and examples of what Innovise has offered
+
+Story 1 -- Sports technology / cloud audit
+Sports technology company needed to reduce their Azure spend. Innovise audited their technology and how it was hosted in Azure. Updated services from dedicated VMs to Docker containers. Monthly Azure spend dropped 80%.
+
+Story 2 -- Real estate startup / SaaS build
+A recently-funded real estate startup needed to build a SaaS web application. Innovise was contracted to build it. 3 developers worked together with the CEO as product owner, running daily standups using agile methodology. As the project approached MVP, the team scaled back to a single developer to match the budget. The MVP shipped. The client paid for exactly the capacity they needed.
+
+Story 3 -- Ed-tech / offshore to onshore transition
+An ed-tech client had most of their software built offshore by several different teams. Thin context, long feedback loop, accumulating technical debt. The client decided to transition to an onshore team. Loren helped plan and structure the hiring process while Innovise developers stepped in on a contract-to-hire basis. End result: the client built up to a 25-person onshore staff, a mix of FTEs and contractors.
+
+Story 4 -- Mobile app vs. web refactor (honest pushback)
+A client wanted a native mobile app. Innovise walked through the actual cost and complexity of building and maintaining two codebases. With targeted refactoring, the web application served the mobile audience without a second product. The client saved months of development time and ongoing maintenance overhead.
+
+Story 5 -- Backend rewrite vs. targeted refactoring (honest pushback)
+A client wanted their backend API rebuilt from scratch because "it was built by someone else." Innovise reviewed the code and found the core architecture was sound -- surface-level inconsistencies, some cleanup needed. A targeted refactor fixed what mattered. The client kept a working system instead of a multi-month rebuild.
+
+Story 6 -- SPA to React Router 7 instead of Next.js migration (honest pushback)
+A client needed to improve SEO and SSR for their React application. The team proposed a full Next.js migration. Innovise found that React Router 7 -- a much lighter lift using the same framework -- covered everything needed. No one learned a new framework, the migration took a fraction of the time, and the SEO improvements came out the same.
+
+Story 7 -- Search feature: Algolia pipeline instead of backend rewrite (honest audit)
+A client's in-house team insisted adding search required a full backend rewrite and database migrations. Innovise was contracted to assess. The actual solution: a lightweight write pipeline that synced a subset of fields to an Algolia index on each record update. No migrations, no schema changes. The search feature shipped in a fraction of the time and budget estimated.
+
+Story 8 -- SRE continuity (coverage gap)
+A client's full-time SRE engineer resigned. Replacing them through standard hiring was going to take months. An Innovise engineer already embedded in the team stepped into the role immediately. No gap in operations, no lost context. The hiring ran in parallel and the new hire came into a stable system.
+
+Story 9 -- Offshore team QA and management
+A client had offshore developers building a mobile app but needed a senior developer they could trust to audit and manage the project. The Innovise developer provided full-time support, ensuring quality while working alongside the offshore team.
+
+Story 10 -- Mobile app team assembly
+A client needed to build a mobile app to accompany their web app. Unable to find a cohesive team, they approached Innovise. Innovise assembled a team of developers and a designer who worked embedded in the org alongside the client's PMO. The team built the app and educated the client on mobile-specific processes: App Store releases, deep links, and related technologies.

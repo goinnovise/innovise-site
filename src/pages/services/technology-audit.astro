@@ -1,0 +1,522 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+
+const faqs = [
+  {
+    q: "What does a technology audit cover?",
+    a: "A structured review of your current tech stack, security posture, cloud infrastructure, and key architectural decisions. We look at what you have, how it's structured, where the risks are, and what the actual cost and operational overhead is. The output is a prioritized assessment, not a sales pitch for the next engagement.",
+  },
+  {
+    q: "How long does an audit take?",
+    a: "Most technology and security audits are completed within two to four weeks, depending on the complexity of your systems. We schedule a discovery session, review your architecture and codebase, and deliver a written findings document with prioritized recommendations.",
+  },
+  {
+    q: "Do I need to have technical staff for this to work?",
+    a: "No. Many clients come to Innovise precisely because they don't have internal technical staff and can't evaluate their own systems. We can work directly with business owners, operations leaders, and founders and will explain findings without jargon.",
+  },
+  {
+    q: "Will the audit recommendations push me toward an expensive engagement?",
+    a: "No. The audit is a stand-alone product, and the findings will be honest regardless of what they imply for further work. If your systems are in good shape, we'll say so. If a problem is better addressed by a different vendor or a simpler fix, we'll tell you that. The goal is a clear picture, not a sales handoff.",
+  },
+  {
+    q: "What if I've already had an audit done by another firm?",
+    a: "A second opinion from an independent engineer is often valuable, especially if the first audit was done by a firm with an incentive to recommend a rebuild. We'll review what you have and tell you whether the findings hold up.",
+  },
+  {
+    q: "Can a technology audit help me prepare for a sale or acquisition?",
+    a: "Yes. Technical due diligence is a common use case for this engagement. Buyers will scrutinize your technical infrastructure. A proactive audit helps you understand what they'll find and address gaps before they become deal friction.",
+  },
+];
+
+const schemaFaqs = faqs.map((f) => ({
+  "@type": "Question",
+  name: f.q,
+  acceptedAnswer: { "@type": "Answer", text: f.a },
+}));
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Technology and Security Audit",
+  provider: {
+    "@type": "ProfessionalService",
+    name: "Innovise Technologies",
+    url: "https://goinnovise.com",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Bellevue",
+      addressRegion: "WA",
+      addressCountry: "US",
+    },
+  },
+  description:
+    "A structured technology and security audit for small and mid-market businesses. Honest assessment of your tech stack, security posture, and cloud spend, with a prioritized roadmap. Bellevue, WA. Serving clients nationwide.",
+  areaServed: "US",
+  serviceType: "Technology Audit",
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: schemaFaqs,
+};
+
+const safeJson = (obj: object) => JSON.stringify(obj).replace(/</g, "\\u003c");
+---
+
+<Layout
+  title="Technology & Security Audit for Small Business | Innovise"
+  description="A structured technology and security audit. Honest findings, prioritized recommendations, no upsell. Based in Bellevue, WA. Serving clients nationwide."
+>
+  <script
+    type="application/ld+json"
+    set:html={safeJson(serviceSchema)}
+    slot="head"
+  />
+  <script
+    type="application/ld+json"
+    set:html={safeJson(faqSchema)}
+    slot="head"
+  />
+
+  <Navbar />
+
+  <main>
+    <!-- Hero -->
+    <section class="bg-brand-500 relative overflow-hidden py-24 lg:py-32">
+      <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
+        <picture>
+          <source
+            srcset="/images/content/server-infrastructure.webp"
+            type="image/webp"
+          />
+          <img
+            src="/images/content/server-infrastructure.jpg"
+            alt=""
+            class="absolute top-0 right-0 h-full w-1/2 object-cover object-center opacity-15"
+          />
+        </picture>
+        <div
+          class="from-brand-500 via-brand-500/85 absolute inset-0 w-3/4 bg-linear-to-r to-transparent"
+        >
+        </div>
+      </div>
+      <div class="relative mx-auto max-w-[1200px] px-6 lg:px-16">
+        <nav class="mb-6 text-sm text-white/60" aria-label="Breadcrumb">
+          <a href="/" class="transition-colors hover:text-white">Home</a>
+          <span class="mx-2">›</span>
+          <a href="/services/" class="transition-colors hover:text-white"
+            >Services</a
+          >
+          <span class="mx-2">›</span>
+          <span class="text-white">Technology & security audit</span>
+        </nav>
+        <p
+          class="text-brand-100 mb-6 text-sm font-semibold tracking-widest uppercase"
+        >
+          The best place to start
+        </p>
+        <h1
+          class="font-heading mb-6 text-4xl leading-[1.1] font-bold text-white sm:text-5xl lg:text-[58px]"
+        >
+          Technology & security audit — a clear picture of where you stand
+        </h1>
+        <p
+          class="mb-10 max-w-2xl text-lg leading-relaxed text-white/80 sm:text-xl"
+        >
+          Not sure where to begin? Start here. A structured review of your tech
+          stack, security posture, and cloud spend gives you a prioritized
+          roadmap and an honest assessment, not a pitch for the next engagement.
+        </p>
+        <a
+          href="/?service=technology-audit#contact"
+          class="text-brand-500 hover:bg-surface-page inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-base font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+        >
+          Request an audit
+          <svg
+            class="ml-2 h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- What's covered -->
+    <section class="bg-surface-page py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="mb-16">
+          <p
+            class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+          >
+            What's covered
+          </p>
+          <h2
+            class="font-heading text-text-primary mb-5 text-3xl font-semibold sm:text-4xl lg:text-[41px]"
+          >
+            A complete view of your technical situation
+          </h2>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {
+            [
+              {
+                title: "Architecture review",
+                body: "How your systems are structured, how they communicate, and where the design decisions are creating risk or operational cost.",
+              },
+              {
+                title: "Security posture",
+                body: "Where your current systems are exposed: authentication, access controls, data handling, vendor integrations, and the gaps that matter most.",
+              },
+              {
+                title: "Cloud infrastructure & spend",
+                body: "What you're actually running, what it costs, and whether the configuration is efficient. Cloud bills are rarely optimized by default.",
+              },
+              {
+                title: "Codebase assessment",
+                body: "The state of your codebase: maintainability, test coverage, dependency health, and whether the people you're depending on to maintain it actually can.",
+              },
+              {
+                title: "Vendor and dependency risk",
+                body: "Which vendors, platforms, and libraries create single points of failure, contractual risk, or scaling constraints.",
+              },
+              {
+                title: "Prioritized roadmap",
+                body: "A clear, ranked list of what to address first, grounded in business impact and actual risk, not theoretical best practices.",
+              },
+            ].map((item) => (
+              <div class="bg-surface-card border-surface-inset rounded-lg border p-8">
+                <h3 class="font-heading text-text-primary mb-3 text-lg font-semibold">
+                  {item.title}
+                </h3>
+                <p class="text-text-secondary leading-relaxed">{item.body}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Client outcomes -->
+    <section class="bg-surface-inset py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="mb-16 grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <p
+              class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+            >
+              In practice
+            </p>
+            <h2
+              class="font-heading text-text-primary text-3xl font-semibold sm:text-4xl"
+            >
+              What audits have found
+            </h2>
+          </div>
+          <div class="overflow-hidden rounded-xl shadow-lg">
+            <picture>
+              <source
+                srcset="/images/content/clean-code-workspace.webp"
+                type="image/webp"
+              />
+              <img
+                src="/images/content/clean-code-workspace.jpg"
+                alt="Engineer reviewing code and system architecture"
+                width="1920"
+                height="1080"
+                class="h-64 w-full object-cover object-center"
+                loading="lazy"
+              />
+            </picture>
+          </div>
+        </div>
+        <div class="space-y-10">
+          <div class="border-brand-500 border-l-2 pl-8">
+            <p
+              class="text-brand-500 mb-3 text-xs font-semibold tracking-widest uppercase"
+            >
+              Sports technology / cloud infrastructure
+            </p>
+            <p class="text-text-secondary text-lg leading-relaxed">
+              A sports technology company wanted to reduce their Azure spend
+              without disrupting their services. Innovise audited their
+              infrastructure and found most of their workload running on
+              dedicated virtual machines that were significantly
+              over-provisioned. After migrating to containerized deployments,
+              the client's monthly Azure bill dropped by 80%. The audit paid for
+              itself in the first month.
+            </p>
+          </div>
+          <div class="border-brand-500 border-l-2 pl-8">
+            <p
+              class="text-brand-500 mb-3 text-xs font-semibold tracking-widest uppercase"
+            >
+              SaaS product / search feature assessment
+            </p>
+            <p class="text-text-secondary text-lg leading-relaxed">
+              A client's in-house team insisted that adding search to their
+              application required a full backend rewrite and database
+              migrations. Weeks of work, real production risk. Innovise was
+              brought in to assess. The actual solution was a lightweight write
+              pipeline that synced a subset of fields to an Algolia index on
+              each record update. No migrations, no schema changes, no backend
+              rewrite. The search feature shipped in a fraction of the time and
+              budget the internal team had estimated.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Honesty -->
+    <section class="bg-surface-page py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="mx-auto max-w-3xl">
+          <p
+            class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+          >
+            How this is different
+          </p>
+          <h2
+            class="font-heading text-text-primary mb-8 text-3xl font-semibold sm:text-4xl"
+          >
+            An audit that tells you the truth
+          </h2>
+          <div class="text-text-secondary space-y-5 text-lg leading-relaxed">
+            <p>
+              Most technology audits are delivered by firms that want to sell
+              you the next engagement. The findings conveniently require their
+              services to fix. That's not how Innovise operates.
+            </p>
+            <p>
+              The audit is a stand-alone product. The findings are honest
+              regardless of what they imply for further work. If your systems
+              are in good shape, we'll say so. If the problems you have are
+              better addressed by a simpler fix or a different vendor, we'll
+              tell you that. If the right move is to rebuild something (and
+              sometimes it is), we'll explain exactly why.
+            </p>
+            <p>
+              Many clients use the technology audit as a starting point before
+              committing to a larger engagement. It's designed for that. But it
+              also stands alone for businesses that just need an honest second
+              opinion on where they stand.
+            </p>
+          </div>
+          <p class="text-text-secondary mt-6 text-sm">
+            The audit is a fixed-scope, one-time engagement. After a brief
+            conversation to understand your situation, Innovise will confirm
+            whether an audit is the right starting point and walk you through
+            what's covered.
+          </p>
+          <div class="mt-6">
+            <a
+              href="/?service=technology-audit#contact"
+              class="bg-brand-500 hover:bg-brand-600 inline-flex items-center rounded-lg px-8 py-4 text-base font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+            >
+              Request an audit
+              <svg
+                class="ml-2 h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="bg-surface-page py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="mx-auto max-w-3xl">
+          <p
+            class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+          >
+            Common questions
+          </p>
+          <h2
+            class="font-heading text-text-primary mb-12 text-3xl font-semibold sm:text-4xl"
+          >
+            Frequently asked questions
+          </h2>
+          <div class="space-y-8">
+            {
+              faqs.map((faq) => (
+                <div class="border-surface-inset border-b pb-8 last:border-0 last:pb-0">
+                  <h3 class="font-heading text-text-primary mb-3 text-lg font-semibold">
+                    {faq.q}
+                  </h3>
+                  <p class="text-text-secondary leading-relaxed">{faq.a}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Other services -->
+    <section class="bg-surface-page border-surface-inset border-t py-16">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <p
+          class="text-brand-500 mb-6 text-xs font-semibold tracking-widest uppercase"
+        >
+          Other services
+        </p>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <a
+            href="/services/embedded-development-team/"
+            class="group border-surface-inset bg-surface-card flex items-start justify-between rounded-lg border p-5 transition-all hover:-translate-y-0.5 hover:shadow-sm"
+          >
+            <div>
+              <p class="text-text-primary font-semibold">
+                Embedded development teams
+              </p>
+              <p class="text-text-secondary mt-1 text-sm">
+                Senior-led engineers embedded in your business for as long as
+                you need.
+              </p>
+            </div>
+            <svg
+              class="text-brand-500 mt-0.5 ml-3 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+            >
+          </a>
+          <a
+            href="/services/custom-software-development/"
+            class="group border-surface-inset bg-surface-card flex items-start justify-between rounded-lg border p-5 transition-all hover:-translate-y-0.5 hover:shadow-sm"
+          >
+            <div>
+              <p class="text-text-primary font-semibold">
+                Custom software development
+              </p>
+              <p class="text-text-secondary mt-1 text-sm">
+                Full-stack development built for your specific situation.
+              </p>
+            </div>
+            <svg
+              class="text-brand-500 mt-0.5 ml-3 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+            >
+          </a>
+          <a
+            href="/services/mvp-to-production/"
+            class="group border-surface-inset bg-surface-card flex items-start justify-between rounded-lg border p-5 transition-all hover:-translate-y-0.5 hover:shadow-sm"
+          >
+            <div>
+              <p class="text-text-primary font-semibold">
+                From MVP to production
+              </p>
+              <p class="text-text-secondary mt-1 text-sm">
+                Stabilize a quickly built codebase without the unnecessary
+                rewrite.
+              </p>
+            </div>
+            <svg
+              class="text-brand-500 mt-0.5 ml-3 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+            >
+          </a>
+          <a
+            href="/services/internal-team-development/"
+            class="group border-surface-inset bg-surface-card flex items-start justify-between rounded-lg border p-5 transition-all hover:-translate-y-0.5 hover:shadow-sm"
+          >
+            <div>
+              <p class="text-text-primary font-semibold">
+                Internal team development
+              </p>
+              <p class="text-text-secondary mt-1 text-sm">
+                Hiring support and interim coverage while you build your own
+                team.
+              </p>
+            </div>
+            <svg
+              class="text-brand-500 mt-0.5 ml-3 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+            >
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-brand-500 py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 text-center lg:px-16">
+        <h2
+          class="font-heading mb-6 text-3xl font-bold text-white sm:text-4xl lg:text-[41px]"
+        >
+          Not sure what you have or what to fix first?
+        </h2>
+        <p class="mx-auto mb-10 max-w-xl text-lg text-white/80">
+          A technology audit gives you a clear answer. Start with a conversation
+          and we'll tell you if it's the right fit.
+        </p>
+        <a
+          href="/?service=technology-audit#contact"
+          class="text-brand-500 hover:bg-surface-page inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-base font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+        >
+          Get in touch
+          <svg
+            class="ml-2 h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

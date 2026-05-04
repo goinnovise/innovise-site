@@ -5,21 +5,23 @@ import Hero from "../components/Hero.astro";
 import TrustedBy from "../components/TrustedBy.astro";
 import Services from "../components/Services.astro";
 import HowWeWork from "../components/HowWeWork.astro";
-import Packages from "../components/Packages.astro";
 import Team from "../components/Team.astro";
 import CTA from "../components/CTA.astro";
 import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
 ---
 
-<Layout>
+<Layout
+  title="Embedded Software Development Team for SMBs | Innovise"
+  description="Senior engineers embedded in your business — no junior staff, no account managers, no handoffs. Custom software, fractional CTO, and DevOps for SMBs. Bellevue, WA. Serving clients nationwide."
+  preloadHeroImage={true}
+>
   <Navbar />
   <main>
     <Hero />
     <Services />
     <HowWeWork />
     <Team />
-    <Packages />
     <TrustedBy />
     <CTA />
     <Contact />

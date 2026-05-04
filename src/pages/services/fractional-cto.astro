@@ -1,0 +1,508 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+
+const faqs = [
+  {
+    q: "What is a fractional CTO?",
+    a: "A fractional CTO is a senior technical leader who works with your company on a part-time or retainer basis, providing the strategic and hands-on technical direction of a full-time CTO without the full-time cost. They're involved in architecture decisions, team structure, vendor evaluation, and the technical questions that inform how you build and what you build.",
+  },
+  {
+    q: "When do I need a fractional CTO instead of a consultant?",
+    a: "A consultant delivers a specific output (an audit, a recommendation, a migration plan) and leaves. A fractional CTO stays involved. They participate in ongoing decisions, adapt as your situation changes, and maintain context over time. If you have recurring technical questions and decisions that need a senior mind, a fractional CTO is the right structure.",
+  },
+  {
+    q: "How many hours per week does this typically involve?",
+    a: "It depends on what you need. Some clients need a few hours a week for architecture reviews, team guidance, and strategic questions. Others need closer to 20 hours for an active initiative. Engagements are structured around your situation, not a fixed hour block.",
+  },
+  {
+    q: "Can a fractional CTO help me hire a full-time CTO later?",
+    a: "Yes, and that's a common outcome. Innovise can help you define the role, evaluate candidates with technical depth, and structure a handoff plan. The goal is to leave you in a stronger position than you started, not to create a dependency on Innovise.",
+  },
+  {
+    q: "What stage of company typically uses fractional CTO services?",
+    a: "Most commonly: companies between $2M and $30M in revenue that have made technology a core part of their business but haven't yet built a senior technical leadership function. Also common: post-acquisition companies that need technical integration leadership, or growing companies that have outgrown their current technical setup.",
+  },
+];
+
+const schemaFaqs = faqs.map((f) => ({
+  "@type": "Question",
+  name: f.q,
+  acceptedAnswer: { "@type": "Answer", text: f.a },
+}));
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Fractional CTO Services",
+  provider: {
+    "@type": "ProfessionalService",
+    name: "Innovise Technologies",
+    url: "https://goinnovise.com",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Bellevue",
+      addressRegion: "WA",
+      addressCountry: "US",
+    },
+  },
+  description:
+    "Fractional CTO and technical leadership services for small and mid-market businesses. Senior engineering direction without the full-time cost. Bellevue, WA. Serving clients nationwide.",
+  areaServed: "US",
+  serviceType: "Technical Leadership",
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: schemaFaqs,
+};
+
+const safeJson = (obj: object) => JSON.stringify(obj).replace(/</g, "\\u003c");
+---
+
+<Layout
+  title="Fractional CTO Services for Small Business | Innovise"
+  description="CTO-level technical leadership without the full-time cost. Architecture decisions, hiring guidance, and hands-on direction. Bellevue, WA. Serving SMBs nationwide."
+>
+  <script
+    type="application/ld+json"
+    set:html={safeJson(serviceSchema)}
+    slot="head"
+  />
+  <script
+    type="application/ld+json"
+    set:html={safeJson(faqSchema)}
+    slot="head"
+  />
+
+  <Navbar />
+
+  <main>
+    <!-- Hero -->
+    <section class="bg-brand-500 relative overflow-hidden py-24 lg:py-32">
+      <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
+        <picture>
+          <source
+            srcset="/images/content/strategy-whiteboard.webp"
+            type="image/webp"
+          />
+          <img
+            src="/images/content/strategy-whiteboard.jpg"
+            alt=""
+            class="absolute top-0 right-0 h-full w-1/2 object-cover object-center opacity-20"
+          />
+        </picture>
+        <div
+          class="from-brand-500 via-brand-500/80 absolute inset-0 w-3/4 bg-linear-to-r to-transparent"
+        >
+        </div>
+      </div>
+      <div class="relative mx-auto max-w-[1200px] px-6 lg:px-16">
+        <nav class="mb-6 text-sm text-white/60" aria-label="Breadcrumb">
+          <a href="/" class="transition-colors hover:text-white">Home</a>
+          <span class="mx-2">›</span>
+          <a href="/services/" class="transition-colors hover:text-white"
+            >Services</a
+          >
+          <span class="mx-2">›</span>
+          <span class="text-white">Fractional CTO</span>
+        </nav>
+        <p
+          class="text-brand-100 mb-6 text-sm font-semibold tracking-widest uppercase"
+        >
+          Technical leadership
+        </p>
+        <h1
+          class="font-heading mb-6 text-4xl leading-[1.1] font-bold text-white sm:text-5xl lg:text-[58px]"
+        >
+          Fractional CTO services — senior technical leadership without the
+          full-time cost
+        </h1>
+        <p
+          class="mb-10 max-w-2xl text-lg leading-relaxed text-white/80 sm:text-xl"
+        >
+          Architecture decisions, hiring guidance, team structure, and hands-on
+          direction from Innovise with 15 years of technical leadership
+          experience. Based in Bellevue, WA. Serving clients nationwide.
+        </p>
+        <a
+          href="/?service=fractional-cto#contact"
+          class="text-brand-500 hover:bg-surface-page inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-base font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+        >
+          Get in touch
+          <svg
+            class="ml-2 h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- What a fractional CTO does -->
+    <section class="bg-surface-page py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="grid gap-16 lg:grid-cols-2 lg:gap-24">
+          <div>
+            <p
+              class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+            >
+              What you get
+            </p>
+            <h2
+              class="font-heading text-text-primary mb-6 text-3xl font-semibold sm:text-4xl"
+            >
+              A CTO-level mind, without the full-time hire
+            </h2>
+            <div class="text-text-secondary space-y-4 leading-relaxed">
+              <p>
+                A full-time CTO at a company your size costs $200K–$350K in base
+                compensation alone, before equity, benefits, or the months it
+                takes to hire one. Most small and mid-market businesses don't
+                need a full-time CTO. They need CTO-level thinking applied to
+                the decisions that matter: what to build, how to build it, who
+                to hire, and what to watch out for.
+              </p>
+              <p>
+                Innovise's principal engineer brings 15 years of full-stack
+                development and technical leadership experience to every
+                engagement. Based in Bellevue, WA and working with clients
+                nationwide, the same person has led technical direction for
+                high-growth platforms, orchestrated complex migrations, and
+                built engineering teams from scratch.
+              </p>
+              <p>
+                Unlike a one-off consulting engagement, this is an ongoing
+                partnership with the same person in every conversation,
+                maintaining context as your business evolves. All on-shore, no
+                handoffs, direct access without account managers.
+              </p>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            {
+              [
+                {
+                  title: "Architecture decisions",
+                  body: "Which systems to build, which to buy, how to structure your data layer, where the risk is in your current setup, and what to do about it.",
+                },
+                {
+                  title: "Engineering team structure",
+                  body: "How many engineers you need, what roles matter first, how to evaluate candidates with genuine technical depth, and how to build a team that can operate independently.",
+                },
+                {
+                  title: "Vendor and platform evaluation",
+                  body: "Which vendors are selling you something you don't need. Which platforms will become liabilities at scale. What the real tradeoffs are, not the sales pitch.",
+                },
+                {
+                  title: "Technical due diligence",
+                  body: "If you're acquiring a company, inheriting a system, or evaluating a technology platform, Innovise provides the technical depth to assess it honestly.",
+                },
+                {
+                  title: "Security and compliance posture",
+                  body: "Where your current systems are exposed, what the priority risks are, and a practical path to addressing them without disrupting your operation.",
+                },
+              ].map((item) => (
+                <div class="bg-surface-card border-surface-inset rounded-lg border p-6">
+                  <h3 class="font-heading text-text-primary mb-2 font-semibold">
+                    {item.title}
+                  </h3>
+                  <p class="text-text-secondary leading-relaxed">{item.body}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who needs this -->
+    <section class="bg-surface-inset py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="grid items-start gap-12 lg:grid-cols-2 lg:gap-20">
+          <div class="overflow-hidden rounded-xl shadow-lg lg:sticky lg:top-8">
+            <picture>
+              <source
+                srcset="/images/content/planning-discussion.webp"
+                type="image/webp"
+              />
+              <img
+                src="/images/content/planning-discussion.jpg"
+                alt="Technical leadership discussion between engineers"
+                width="800"
+                height="533"
+                class="h-72 w-full object-cover object-center lg:h-96"
+                loading="lazy"
+              />
+            </picture>
+          </div>
+          <div>
+            <p
+              class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+            >
+              Who this is for
+            </p>
+            <h2
+              class="font-heading text-text-primary mb-8 text-3xl font-semibold sm:text-4xl"
+            >
+              Signs you need fractional CTO support
+            </h2>
+            <ul class="text-text-secondary space-y-4 text-lg leading-relaxed">
+              {
+                [
+                  "You're making technology decisions without anyone in the room who can evaluate them technically.",
+                  "Your current engineering team is executing, but nobody is setting technical direction.",
+                  "You're evaluating a major platform investment, acquisition, or infrastructure change and need a second opinion with real depth.",
+                  "You've been burned by a vendor or agency that oversold and underdelivered, and you want someone who will tell you the truth.",
+                  "You're hiring your first engineers and don't know how to evaluate them or what roles to prioritize.",
+                  "Your technology is working today, but you're not confident it will hold up at 2× or 5× your current scale.",
+                ].map((item) => (
+                  <li class="flex items-start gap-3">
+                    <svg
+                      class="text-brand-500 mt-1 h-5 w-5 shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span>{item}</span>
+                  </li>
+                ))
+              }
+            </ul>
+            <p class="text-text-secondary mt-8 text-base leading-relaxed">
+              Engagements are structured around your situation, not a fixed hour
+              block. Some clients need a few hours a week for standing
+              architecture reviews and strategic guidance. Others need closer to
+              20 hours during an active initiative. Either way, you get
+              consistent access to the same person, not whoever's available that
+              week.
+            </p>
+            <p class="text-text-secondary mt-4 text-base leading-relaxed">
+              Every month these questions go unanswered is a month of technology
+              decisions made without a senior voice. Those decisions compound. A
+              wrong vendor chosen, a platform that becomes a liability at scale,
+              an engineering hire made without someone who can actually evaluate
+              the candidate. The cost isn't always visible until something
+              breaks.
+            </p>
+            <div class="mt-8">
+              <a
+                href="/?service=fractional-cto#contact"
+                class="bg-brand-500 hover:bg-brand-600 inline-flex items-center rounded-lg px-8 py-4 text-base font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+              >
+                Let's talk about your situation
+                <svg
+                  class="ml-2 h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="bg-surface-page py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="mx-auto max-w-3xl">
+          <p
+            class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+          >
+            Common questions
+          </p>
+          <h2
+            class="font-heading text-text-primary mb-12 text-3xl font-semibold sm:text-4xl"
+          >
+            Frequently asked questions
+          </h2>
+          <div class="space-y-8">
+            {
+              faqs.map((faq) => (
+                <div class="border-surface-inset border-b pb-8 last:border-0 last:pb-0">
+                  <h3 class="font-heading text-text-primary mb-3 text-lg font-semibold">
+                    {faq.q}
+                  </h3>
+                  <p class="text-text-secondary leading-relaxed">{faq.a}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Other services -->
+    <section class="bg-surface-page border-surface-inset border-t py-16">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <p
+          class="text-brand-500 mb-6 text-xs font-semibold tracking-widest uppercase"
+        >
+          Other services
+        </p>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <a
+            href="/services/embedded-development-team/"
+            class="group border-surface-inset bg-surface-card flex items-start justify-between rounded-lg border p-5 transition-all hover:-translate-y-0.5 hover:shadow-sm"
+          >
+            <div>
+              <p class="text-text-primary font-semibold">
+                Embedded development teams
+              </p>
+              <p class="text-text-secondary mt-1 text-sm">
+                Senior-led engineers embedded in your business for as long as
+                you need.
+              </p>
+            </div>
+            <svg
+              class="text-brand-500 mt-0.5 ml-3 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+            >
+          </a>
+          <a
+            href="/services/custom-software-development/"
+            class="group border-surface-inset bg-surface-card flex items-start justify-between rounded-lg border p-5 transition-all hover:-translate-y-0.5 hover:shadow-sm"
+          >
+            <div>
+              <p class="text-text-primary font-semibold">
+                Custom software development
+              </p>
+              <p class="text-text-secondary mt-1 text-sm">
+                Full-stack development built for your specific situation.
+              </p>
+            </div>
+            <svg
+              class="text-brand-500 mt-0.5 ml-3 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+            >
+          </a>
+          <a
+            href="/services/mvp-to-production/"
+            class="group border-surface-inset bg-surface-card flex items-start justify-between rounded-lg border p-5 transition-all hover:-translate-y-0.5 hover:shadow-sm"
+          >
+            <div>
+              <p class="text-text-primary font-semibold">
+                From MVP to production
+              </p>
+              <p class="text-text-secondary mt-1 text-sm">
+                Stabilize a quickly built codebase without the unnecessary
+                rewrite.
+              </p>
+            </div>
+            <svg
+              class="text-brand-500 mt-0.5 ml-3 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+            >
+          </a>
+          <a
+            href="/services/internal-team-development/"
+            class="group border-surface-inset bg-surface-card flex items-start justify-between rounded-lg border p-5 transition-all hover:-translate-y-0.5 hover:shadow-sm"
+          >
+            <div>
+              <p class="text-text-primary font-semibold">
+                Internal team development
+              </p>
+              <p class="text-text-secondary mt-1 text-sm">
+                Hiring support and interim coverage while you build your own
+                team.
+              </p>
+            </div>
+            <svg
+              class="text-brand-500 mt-0.5 ml-3 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+            >
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-brand-500 py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 text-center lg:px-16">
+        <h2
+          class="font-heading mb-6 text-3xl font-bold text-white sm:text-4xl lg:text-[41px]"
+        >
+          Technology decisions don't wait for a full-time CTO hire.
+        </h2>
+        <p class="mx-auto mb-10 max-w-xl text-lg text-white/80">
+          Start with a conversation about your situation. Innovise will be
+          direct about whether fractional CTO support makes sense, what it would
+          look like, and what it costs.
+        </p>
+        <a
+          href="/?service=fractional-cto#contact"
+          class="text-brand-500 hover:bg-surface-page inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-base font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+        >
+          Get in touch
+          <svg
+            class="ml-2 h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

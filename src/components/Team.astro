@@ -7,7 +7,7 @@
     {/* Block 1 — Founder profile */}
     <div class="mb-4 text-center">
       <p
-        class="text-brand-400 animate-on-scroll mb-4 text-sm font-semibold tracking-widest uppercase"
+        class="text-brand-500 animate-on-scroll mb-4 text-sm font-semibold tracking-widest uppercase"
       >
         Who you're working with
       </p>
@@ -22,16 +22,22 @@
       class="mx-auto grid max-w-4xl items-center gap-12 md:grid-cols-2 lg:gap-16"
     >
       <div class="animate-on-scroll flex justify-center">
-        <img
-          src="/images/team/loren-anderson.jpg"
-          alt="Loren Anderson"
-          class="border-surface-card h-56 w-56 rounded-full border-4 object-cover shadow-md"
-        />
+        <picture>
+          <source srcset="/images/team/loren-anderson.webp" type="image/webp" />
+          <img
+            src="/images/team/loren-anderson-opt.jpg"
+            alt="Loren Anderson, Founder & President of Innovise Technologies"
+            width="320"
+            height="320"
+            class="border-surface-card h-72 w-72 rounded-xl border-4 object-cover shadow-lg md:h-80 md:w-80"
+            loading="lazy"
+          />
+        </picture>
       </div>
 
       <div class="animate-on-scroll">
         <p
-          class="text-brand-400 mb-1 text-sm font-semibold tracking-widest uppercase"
+          class="text-brand-500 mb-1 text-sm font-semibold tracking-widest uppercase"
         >
           Founder &amp; President
         </p>
@@ -42,7 +48,7 @@
         <div class="text-text-secondary space-y-4 leading-relaxed">
           <p>
             When Loren takes on a client, the first conversation isn't about
-            code — it's about what your business is trying to accomplish and
+            code. It's about what your business is trying to accomplish and
             where it's stuck. In 15 years of full-stack development and
             technical leadership, he's learned that the real problem is rarely
             what's in the ticket. He'll push back when something doesn't add up.
@@ -52,11 +58,9 @@
           <p>
             He's led technical direction for high-growth platforms, orchestrated
             complex migrations, and built engineering teams from scratch. He
-            brings a pragmatic mindset to every engagement — choosing the
+            brings a pragmatic mindset to every engagement, choosing the
             approach that fits your business, not the most impressive one on
-            paper. When you work with Innovise, you work with Loren directly —
-            no handoffs, no account managers, no bait-and-switch to junior staff
-            after the first call.
+            paper.
           </p>
           <p>
             And if your goal is eventually to build your own internal team?
@@ -81,27 +85,46 @@
     </div>
 
     {/* Block 2 — Collective team */}
-    <div class="border-surface-card mt-20 border-t pt-20 text-center">
-      <p
-        class="text-brand-400 animate-on-scroll mb-4 text-sm font-semibold tracking-widest uppercase"
-      >
-        The team behind your project
-      </p>
-      <h3
-        class="font-heading text-text-primary animate-on-scroll mb-6 text-3xl font-semibold sm:text-4xl lg:text-[41px]"
-      >
-        Senior talent, assembled for your work.
-      </h3>
-      <p
-        class="text-text-secondary animate-on-scroll mx-auto max-w-3xl text-lg leading-relaxed"
-      >
-        Every Innovise engagement draws on a network of senior developers, UX
-        designers, product strategists, and experienced mentors — matched to
-        your stack, your goals, and your stage. No hand-me-down capacity. The
-        people who work on your project have done this before, at companies like
-        yours, with stakes like yours. And they are willing to mentor and train
-        your full-time staff.
-      </p>
+    <div class="border-surface-card mt-20 border-t pt-20">
+      <div class="grid items-center gap-12 md:grid-cols-2 lg:gap-16">
+        <div class="animate-on-scroll order-1 md:order-1">
+          <p
+            class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+          >
+            When more capacity is needed
+          </p>
+          <h3
+            class="font-heading text-text-primary mb-6 text-3xl font-semibold sm:text-4xl"
+          >
+            Seasoned leaders. Engineers extending your team.
+          </h3>
+          <p class="text-text-secondary text-lg leading-relaxed">
+            Larger projects sometimes need more than one engineer. When that's
+            the case, Innovise brings in developers matched to your stack and
+            stage. You'll always know who's on your project, what they're
+            responsible for, and at what level. Innovise organizes developers to
+            be an extension of your team.
+          </p>
+        </div>
+        <div class="animate-on-scroll order-2 md:order-2">
+          <div class="overflow-hidden rounded-xl shadow-lg">
+            <picture>
+              <source
+                srcset="/images/content/planning-discussion.webp"
+                type="image/webp"
+              />
+              <img
+                src="/images/content/planning-discussion.jpg"
+                alt="Innovise engineers reviewing code together"
+                width="800"
+                height="533"
+                class="h-72 w-full object-cover object-center md:h-80 lg:h-96"
+                loading="lazy"
+              />
+            </picture>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

@@ -10,14 +10,16 @@ interface Props {
   image?: string;
   imageAlt?: string;
   noindex?: boolean;
+  preloadHeroImage?: boolean;
 }
 
 const {
-  title = "Innovise Technologies | Custom software services",
-  description = "Senior engineers for SMBs and mid-market companies. Full-stack development, systems design, DevOps, and fractional CTO guidance. Direct access, no handoffs.",
+  title = "Embedded Software Development Team for SMBs | Innovise",
+  description = "Senior engineers embedded in your business — no junior staff, no account managers, no handoffs. Custom software development, fractional CTO, and DevOps for SMBs. Based in Bellevue, WA. Serving clients nationwide.",
   image = "/images/og-image.png",
   imageAlt = "Innovise Technologies — custom software, built by senior engineers.",
   noindex = false,
+  preloadHeroImage = false,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
@@ -89,6 +91,11 @@ const entranceAnimationsOn = entranceAnimationsEnabled();
     <meta name="theme-color" content="#f47c64" />
     <link rel="canonical" href={canonicalURL} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {
+      preloadHeroImage && (
+        <link rel="preload" as="image" href="/images/hero-bg.png" />
+      )
+    }
     <title>{title}</title>
 
     <!-- Open Graph -->
@@ -115,10 +122,9 @@ const entranceAnimationsOn = entranceAnimationsEnabled();
       type="application/ld+json"
       set:html={safeJsonLd(professionalServiceSchema)}
     />
-    <script
-      type="application/ld+json"
-      set:html={safeJsonLd(websiteSchema)}
-    />
+    <script type="application/ld+json" set:html={safeJsonLd(websiteSchema)} />
+    <!-- Per-page structured data (service pages etc.) -->
+    <slot name="head" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
