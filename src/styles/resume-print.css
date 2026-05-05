@@ -46,11 +46,32 @@
     box-shadow: none !important;
   }
 
+  /*
+   * Force two-column layout at print regardless of viewport width.
+   * Browser print viewports for Letter (~816px) and A4 (~794px) fall below
+   * Tailwind's `lg` breakpoint (1024px), so the on-screen `grid-cols-1`
+   * fallback would otherwise stack the sidebar below the main column.
+   */
+  .resume-grid {
+    grid-template-columns: 1fr 2.5in !important;
+  }
+
+  /*
+   * Flip the sidebar from coral-on-white to plain white-on-dark for print.
+   * The dark sidebar reads well on screen but consumes ink and looks heavy
+   * on paper. Apply to both the sidebar and every nested element so Tailwind
+   * utility colors (text-white, text-white/90, etc.) don't survive.
+   */
+  .resume-sidebar,
+  .resume-sidebar * {
+    background: transparent !important;
+    color: var(--color-text-primary) !important;
+  }
   .resume-sidebar {
-    background: var(--color-text-primary) !important;
-    color: white !important;
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
+    border-right: 1px solid #e5e5e5;
+  }
+  .resume-profile picture img {
+    border-color: #e5e5e5 !important;
   }
 
   .resume-section,
@@ -73,9 +94,6 @@
   a {
     color: var(--color-text-primary);
     text-decoration: underline;
-  }
-  .resume-sidebar a {
-    color: white;
   }
 
   /* Print-only versioning footer */
