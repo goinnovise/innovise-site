@@ -1,0 +1,128 @@
+# Converted from the Jekyll _data/data.yml at /mnt/c/Users/loren/dev/Innovise/Resumes/jim-r
+# on 2026-05-05.
+#
+# Conversion notes (review before publishing):
+# - Source had no email or phone (both keys present but empty). Omitted.
+# - Source had no education entry. Omitted.
+# - Source projects[] and publications[] contained Lorem ipsum placeholders
+#   only — no real Jim Reynolds projects or publications. Both sections dropped.
+# - Source listed website as goinnovise.com. Kept verbatim — Jim is presented
+#   via the Innovise roster.
+# - Date format standardized from MM/YYYY ranges to "Month Year - Month Year"
+#   to match the existing loren-anderson.yaml convention.
+# - The City of Charlotte role spanned two distinct projects (CLT+ Mobile App,
+#   Emerald Web Portal). The schema does not nest bullets under sub-projects,
+#   so each bullet is prefixed with the project name to preserve grouping.
+#
+# Voice rules applied (per references/transferable-marketing-copy-rules.md):
+# - careerProfile.summary: stripped "dedicated", "strong focus on",
+#   "extensive experience", "robust", "excels in", "proficient in",
+#   "ensuring efficient deployment processes", "meaningful and",
+#   "mobile-first solutions that prioritize performance and user experience".
+#   Compressed from ~115 words to ~78 words. No facts added.
+# - experiences[].bullets: replaced "Utilized" with "Used" (forbidden filler);
+#   replaced "best practices" with "conventions"; stripped "cutting-edge",
+#   "high-performance" qualifiers where they added no information; trimmed
+#   trailing fluff like "for efficient deployments", "to streamline development
+#   processes", "for enhanced functionality and security", "to improve
+#   usability for diverse audiences", "for scalability", "effectively".
+# - All inline Markdown emphasis (** **) stripped from the City of Charlotte
+#   project headers; project names preserved as plain prefixes.
+
+profile:
+  name: Jim Reynolds
+  tagline: Senior React Native Developer
+  avatar: jim-reynolds
+  avatarAlt: Jim Reynolds
+
+contact:
+  website: goinnovise.com
+  linkedin: ifoundjimreynolds
+
+careerProfile:
+  title: Career profile
+  summary: >-
+    Jim is a full-stack developer focused on mobile, building cross-platform
+    apps with React and React Native. He designs backend services on AWS,
+    Google Cloud, and Azure, including cloud and Lambda functions. He
+    architects front-end mono-repos for code sharing across platforms, builds
+    custom UI components documented in Storybook, and implements CI/CD
+    pipelines with Bitrise, Azure DevOps, and GitHub Actions. He has
+    contributed to GraphQL schema design on collaborative team projects.
+
+experiences:
+  - role: Senior Developer (Contractor)
+    time: July 2023 - Present
+    company: bswift
+    location: Remote
+    bullets:
+      - Led development of React Native mobile applications.
+      - Collaborated with cross-functional teams on requirements gathering and delivery.
+      - Integrated third-party libraries and APIs into the application.
+      - Conducted code reviews, mentored junior developers, and established conventions for scalable mobile development.
+      - Implemented React Native features focused on responsiveness and maintainability.
+
+  - role: Senior Developer (Contractor)
+    time: September 2020 - June 2023
+    company: City of Charlotte
+    location: Remote
+    summary: >-
+      Worked across two systems for the city: the CLT+ mobile application and
+      the Emerald web portal.
+    bullets:
+      - "CLT+ Mobile App — Transitioned from class-based to functional components in React Native, improving maintainability and performance."
+      - "CLT+ Mobile App — Mentored junior developers on mono-repo architectures."
+      - "CLT+ Mobile App — Implemented Firebase features including push notifications and authentication."
+      - "CLT+ Mobile App — Built a mobile CI/CD pipeline using Fastlane and Firebase App Distribution."
+      - "CLT+ Mobile App — Designed a global style theme with dark/light mode support, meeting accessibility compliance."
+      - "CLT+ Mobile App — Integrated a language translation system."
+      - "CLT+ Mobile App — Converted a .NET API to Prisma and Apollo Server, optimizing backend performance."
+      - "CLT+ Mobile App — Deployed Apollo Federation 2 on GCP serverless infrastructure."
+      - "CLT+ Mobile App — Developed event-based email and push-notification services using Firebase Cloud Functions and Handlebars."
+      - "Emerald Web Portal — Re-architected the application using React Context and custom hooks, enhancing modularity."
+      - "Emerald Web Portal — Introduced dynamic admin screen configurations, reducing redundancy and promoting DRY principles."
+      - "Emerald Web Portal — Migrated from REST to GraphQL, implementing Apollo Client on the frontend and Apollo Server on the backend."
+
+  - role: Senior Developer (Contractor)
+    time: June 2020 - September 2020
+    company: OfferUp
+    location: Remote
+    bullets:
+      - Supported bug fixes for an e-commerce mobile app ahead of a major launch.
+      - Worked with GraphQL/Apollo Client, React functional components, and Context API.
+      - Contributed to a mono-repo architecture supporting iOS, Android, and Web components.
+      - Used Charles Proxy for debugging and analysis.
+
+  - role: Senior Developer
+    time: May 2019 - June 2020
+    company: Tribal LLC
+    location: Remote
+    bullets:
+      - Led a team of 6 developers in building a React Native corporate employee engagement platform.
+      - Used React Native, TypeScript, Redux, Apollo, GraphQL, and Storybook to deliver reusable components.
+      - Established a CI/CD pipeline using Bitrise.
+      - Conducted code reviews and created documentation to onboard new developers.
+
+skills:
+  - title: Mobile Development
+    value: "React Native, React, Firebase, mobile push notifications, mono-repo architecture, Mapbox, Telematics, custom hooks, Storybook"
+  - title: Backend Development
+    value: "Prisma, Apollo Server, Apollo Federation 2, GraphQL, Apollo Client, REST APIs, Node.js, Lambda functions, Pub/Sub"
+  - title: DevOps & CI/CD
+    value: "Fastlane, CI/CD pipelines, Azure DevOps, Google Compute Engine, AWS, Cloud Functions, virtual machines"
+  - title: Databases
+    value: "NoSQL, PostgreSQL"
+  - title: Programming Languages
+    value: "JavaScript, TypeScript"
+  - title: Testing & Debugging
+    value: "Jest, Handlebars"
+  - title: Development Tools
+    value: "React Context, Storybook, Pub/Sub"
+
+interests:
+  - item: Golf
+  - item: Scuba diving
+  - item: Wood working
+
+display:
+  educationInSidebar: true

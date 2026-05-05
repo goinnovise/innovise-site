@@ -28,7 +28,7 @@ const resumes = defineCollection({
 
       contact: z
         .object({
-          email: z.string().email(),
+          email: z.string().email().optional(),
           phone: z.string().optional(),
           website: z.string().optional(),
           linkedin: z.string().optional(),
