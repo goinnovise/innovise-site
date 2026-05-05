@@ -1,0 +1,99 @@
+/*
+ * Resume print styles. Loaded only by `src/layouts/ResumeLayout.astro`.
+ *
+ * Two intents kept separate:
+ *  - Site chrome and on-screen UI: hidden in print via `display: none`
+ *  - Entrance-animation classes: defensively restored to visible state with
+ *    `!important` so future pages that happen to land .animate-on-scroll on
+ *    a resume don't render invisible when printed.
+ */
+
+@media print {
+  @page {
+    size: letter;
+    margin: 0.5in;
+  }
+
+  html,
+  body {
+    background: white !important;
+    color: var(--color-text-primary) !important;
+  }
+
+  .resume-header,
+  .resume-footer,
+  .resume-print-button {
+    display: none !important;
+  }
+
+  .animate-on-scroll,
+  .stagger-children > * {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  /* Strip the page-level container chrome so the resume bleeds to @page margins */
+  main {
+    background: white !important;
+  }
+  main > div {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+  main > div > div {
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .resume-sidebar {
+    background: var(--color-text-primary) !important;
+    color: white !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .resume-section,
+  .resume-experience {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .resume-section h2 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  /*
+   * Preserve link visibility — recipients of a printed resume need to see
+   * which words are clickable and to type URLs they can't click. Sidebar
+   * already shows the visible URL adjacent to each link, so we don't need
+   * the `a[href]::after` URL-appending pattern.
+   */
+  a {
+    color: var(--color-text-primary);
+    text-decoration: underline;
+  }
+  .resume-sidebar a {
+    color: white;
+  }
+
+  /* Print-only versioning footer */
+  .resume-print-footer {
+    display: block !important;
+    font-size: 9pt;
+    color: var(--color-text-tertiary);
+    margin-top: 0.5in;
+    padding-top: 0.25in;
+    border-top: 1px solid #ddd;
+    page-break-before: avoid;
+    break-before: avoid;
+  }
+}
+
+/* Hidden on screen — only visible in print */
+@media screen {
+  .resume-print-footer {
+    display: none;
+  }
+}

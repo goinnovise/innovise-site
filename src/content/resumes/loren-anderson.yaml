@@ -1,0 +1,174 @@
+# Converted from the Jekyll _data/data.yml on 2026-05-04.
+#
+# Conversion notes (review before publishing):
+# - The Jekyll source listed the CBRE role as "Oct 2019 - May 2019" which is
+#   inverted within a single year. Preserved verbatim; review (likely Oct 2018).
+# - The Jekyll tagline top-promotes Fractional CTO. Marketing guidance says
+#   fractional CTO doesn't scale and shouldn't be top-promoted. Preserved
+#   verbatim; copy revision is a separate decision.
+# - Inline emphasis markers stripped from prose and bullets.
+
+profile:
+  name: Loren Anderson
+  tagline: Principal Consultant | Fractional CTO & Software Engineering Leader
+  avatar: loren-anderson
+  avatarAlt: Loren Anderson
+  location: Bellevue, WA
+
+contact:
+  email: loren@goinnovise.com
+  phone: 425-941-5979
+  website: goinnovise.com
+  linkedin: loren-anderson
+  github: TheOfficialLoren
+  stackOverflow: 1121638/lorengphd
+
+careerProfile:
+  title: Career profile
+  summary: >-
+    Loren is the founder and Principal Consultant of Innovise Technologies,
+    bringing 15+ years of experience helping small and mid-sized businesses
+    solve complex software challenges. He has operated as a fractional CTO,
+    engineering lead, and hands-on architect for clients across multiple
+    industries -- stepping in at the level each organization actually needs.
+    Loren's core value is bridging the gap between business goals and
+    technical execution: he speaks both languages fluently, and has built,
+    led, and scaled engineering orgs and teams. His recent work includes AI
+    integration and workflow modernisation, helping teams leverage tools
+    like AWS Bedrock and Google Cloud AI to build smarter systems and work
+    more efficiently.
+
+experiences:
+  - role: Principal Consultant, President
+    time: November 2019 - Present
+    company: Innovise Technologies
+    location: Bellevue, WA
+    summary: >-
+      As owner and Principal Consultant of Innovise, Loren is responsible for
+      serving clients across many industries in an array of ways. Roles that
+      Loren serves for clients include CTO, Software Development Lead, and
+      Software Engineer. He partners with small and medium-sized organizations
+      to understand business goals, challenges, and needs thens presents
+      creative and innovative solutions. Day-to-Day oversight and
+      responsibilities include, but are not limited to architecting software,
+      managing teams, and conducting business analyses.
+    bullets:
+      - Integrate AWS Bedrock and Google Cloud AI services into client software systems, enabling intelligent automation and reducing manual processing overhead.
+      - Mentor development teams on incorporating AI tooling into daily engineering workflows, measurably improving delivery speed and code quality.
+      - Scale project delivery by building and managing a trusted team, flexing team size based on client scope and timeline.
+      - Serve in a fractional CTO capacity, advising founders and technical leadership on architecture decisions, team structure, and technology roadmap.
+
+  - role: Senior Software Engineer
+    time: May 2019 - January 2020
+    company: Mercedes Benz, Research and Development, North America (on contract by iTrellis, LLC)
+    location: Seattle, WA
+    summary: >-
+      As the Senior Software Engineer Loren was responsible for working on
+      two projects simultaneously for multiple stakeholders within the
+      client's organization. One project focused on creating and integrating
+      the API that provides data to all client vehicle head units worldwide,
+      aligning with changing laws & regulations. The second project was
+      solving Azure Active Directory syncing issues for a subsection of the
+      client's employees, requiring the creation of APIs and tasks to sync
+      the Active Directory databases.
+    bullets:
+      - Learned the clients operations procedures and used Docker & Kubernetes to stand up both systems in Azure, resulting in successful systems integrations.
+      - Supported teams based out of Europe including during off-hours releases for troubleshooting, debugging and general needs.
+      - Successfully delivered both projects ahead of projected timeline.
+      - At the request of the client, presented and demonstrated project work at meetings.
+
+  - role: Senior Software Engineer
+    time: Oct 2019 - May 2019
+    company: CBRE (on contract by iTrellis, LLC)
+    location: Dallas, TX
+    summary: >-
+      This project was for a client based in Dallas, Texas and required a
+      combination of remote and on-site work. Loren was tasked with working
+      within the team to produce an angular-driven internal website,
+      featuring real-time dashboards that displayed performance data an
+      analytics used by the company's sales team. Throughout this project,
+      Loren played an integral role in solving front-end and back-end
+      projects simultaneously for the website, demonstrating the benefits
+      and efficiencies of resources that can execute both types of software
+      design.
+    bullets:
+      - The only member on the project team, working on front-end and back-end parts of the code increase production and decrease dependencies.
+      - Taught the client's team software development best practices such as git version control.
+      - Adopted Angular 7, Postgres and GoLang within a couple of days to meet the client's expectations.
+
+  - role: Account Lead & Senior Software Engineer
+    time: Oct 2018 - Oct 2019
+    company: Crestron (on contract by iTrellis, LLC)
+    location: Rockleigh, NJ
+    summary: >-
+      As a Senior Software Engineer, Loren assisted in the overhaul and
+      deployment of the client's primary customer facing website and
+      back-end tools to support content changes and solve for multiple major
+      performance issues. He also provided post-deployment support and
+      continued feature development. Throughout this process Loren also
+      taught software development best practices and facilitated the
+      implementation of these processes, allowing the client to be
+      self-sufficient post-completion of the project. He was also
+      responsible for helping with code reviews, release management, Azure
+      Dev Ops functions and process documentation.
+    bullets:
+      - Responsible for building and maintaining iTrellis's relationship with the client as the Account Lead.
+      - Supported the release of enterprise level Azure hosted website.
+      - Performed successful integrations including CDN and Elastic Search.
+      - Improved site performance by reducing database calls on each pages from 120 calls per page to 2, making Elastic Search more efficient.
+      - Quickly learned the company's architectural landscape to make an immediate impact on the client's team.
+      - As the Release Manager, Loren planned and executed the back-end tool solution for content managers.
+
+  - role: Project Manager & Senior Software Engineer
+    time: Dec 2017 - Oct 2019
+    company: Capstone Technologies (on contract by iTrellis, LLC)
+    location: Vancouver, WA
+    summary: >-
+      Played an integral role in transforming the client with no software
+      change management processes into a SAFe organization, implementing
+      Microsoft Team Foundation Server as the team support technology.
+      Acted as the Scrum Master, supporting the team in the adoption of
+      Agile principles and continuous development techniques. Produced
+      metrics to identify strong and weak points in the software creation
+      process.
+    bullets:
+      - Organized the company into 3 functioning Scrum teams.
+      - Taught 9 developers and 5+ business analysts how to utilize the Scrum process.
+      - Created a CI/CD pipeline to increase productivity and quality assurance.
+
+  - role: Team Lead & Senior Software Engineer
+    time: Mar 2011 - Jun 2016
+    company: ATG Stores / Lowe's
+    location: Kirkland, WA
+    summary: >-
+      Loren was responsible for the redesign of the cart and checkout pages
+      of e-commerce home improvement companies ATGStores.com and Lowe's
+      Canada. This integral redesign ensured optimal performance for
+      customers purchasing on the website. During this time, Loren also
+      built and lead a team of 6 software engineers to maintain and add
+      additional features to the cart and checkout pages of the site.
+    bullets:
+      - Integral part in helping meet and comply with PCI standards.
+      - Designed and created the credit card value using key encryption technology.
+      - Built and maintained a multi-million dollar checkout experience using Asp.net and C#.
+      - Implemented and lead the first team in the company to adopt Scrum methodologies.
+
+skills:
+  - title: Languages
+    value: "C#, Java, TypeScript, JavaScript, GoLang, Python, VB, SQL, PHP"
+  - title: Frameworks
+    value: ".NET, Angular, ReactJs, VueJs, RxJS, Spring Boot, jQuery, Jekyll"
+  - title: AI & Emerging Tech
+    value: "AWS Bedrock, Google Cloud AI, LLM Integration, AI-Assisted Development Workflows, Developer AI Mentorship"
+  - title: Tools
+    value: "Windows, Mac OS, Redux, Visual Studio, VS Code, Agile, Scrum, SAFe"
+  - title: Operations
+    value: "CICD, Docker, Kubernetes, Helm, Azure DevOps, Atlassian Jira, Jenkins, Atlassian Bamboo"
+  - title: Other
+    value: "Building & Leading Teams, Cross-Functional Communication, Git, AWS, Azure, SQL Server, Postgres"
+
+education:
+  - university: Western Washington University
+
+display:
+  educationInSidebar: true

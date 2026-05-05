@@ -1,0 +1,45 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+type Profile = CollectionEntry<"resumes">["data"]["profile"];
+
+interface Props {
+  profile: Profile;
+}
+
+const { profile } = Astro.props;
+const alt = profile.avatarAlt ?? profile.name;
+---
+
+<div class="resume-profile flex flex-col items-center gap-4 text-center">
+  <picture>
+    <source
+      srcset={`/images/resumes/${profile.avatar}.webp`}
+      type="image/webp"
+    />
+    <img
+      src={`/images/resumes/${profile.avatar}.jpg`}
+      alt={alt}
+      width="160"
+      height="160"
+      class="border-surface-card h-32 w-32 rounded-full border-4 object-cover shadow-md"
+    />
+  </picture>
+  <div>
+    <h1 class="font-heading text-2xl leading-tight font-semibold text-white">
+      {profile.name}
+    </h1>
+    {
+      profile.tagline && (
+        <p class="mt-2 text-sm leading-snug text-white/80">{profile.tagline}</p>
+      )
+    }
+    {
+      profile.location && (
+        <p class="mt-2 text-xs tracking-wider text-white/60 uppercase">
+          {profile.location}
+        </p>
+      )
+    }
+  </div>
+</div>
