@@ -63,7 +63,37 @@
 
       <!-- Right: Form -->
       <div class="animate-on-scroll lg:col-span-3">
+        <div
+          id="contact-success"
+          role="status"
+          aria-live="polite"
+          hidden
+          class="bg-surface-card border-surface-inset rounded-lg border p-8"
+        >
+          <div class="mb-4 flex items-center gap-3">
+            <svg
+              class="text-brand-500 h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M5 13l4 4L19 7"></path>
+            </svg>
+            <h3 class="font-heading text-text-primary text-lg font-semibold">
+              Message received
+            </h3>
+          </div>
+          <p class="text-text-secondary leading-relaxed">
+            Your message has been sent and you will hear back shortly.
+          </p>
+        </div>
         <form
+          id="contact-form"
           class="space-y-5"
           action="https://formsubmit.co/loren@goinnovise.com"
           method="POST"
@@ -71,7 +101,7 @@
           <input
             type="hidden"
             name="_next"
-            value="https://goinnovise.com/#contact"
+            value="https://goinnovise.com/?submitted=true#contact"
           />
           <input type="hidden" name="_template" value="table" />
           <div class="grid gap-5 sm:grid-cols-2">
@@ -162,3 +192,27 @@
     </div>
   </div>
 </section>
+
+<script is:inline>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get("submitted") !== "true") return;
+
+    var form = document.getElementById("contact-form");
+    var success = document.getElementById("contact-success");
+    if (!form || !success) return;
+
+    form.hidden = true;
+    success.hidden = false;
+
+    params.delete("submitted");
+    var query = params.toString();
+    var cleanUrl =
+      window.location.pathname +
+      (query ? "?" + query : "") +
+      window.location.hash;
+    window.history.replaceState({}, "", cleanUrl);
+
+    success.scrollIntoView({ behavior: "instant", block: "start" });
+  })();
+</script>
