@@ -22,7 +22,7 @@ const faqs = [
   },
   {
     q: "Do Innovise engineers use AI coding tools themselves?",
-    a: "Yes, and we're particular about how. Tools like Cursor are powerful, and used by experienced engineers they're a force multiplier: the code ships faster, the review bar stays the same. Used by inexperienced engineers, they generate code nobody can maintain. Every line that ships goes through review and testing the same as hand-written code. We're happy to share what works (and what doesn't) with your team.",
+    a: "Yes, and we're particular about how. Tools like Cursor combined with MCPs are amazingly powerful. They become a force multiplier when used by experienced engineers. The code ships faster, but the review bar stays the same. When AI-generated code isn't applied carefully, nobody can maintain it. Every line that ships goes through review and testing the same as hand-written code. We're happy to share what works (and what doesn't) with your team.",
   },
   {
     q: "Is it ever the wrong call to add AI?",
@@ -179,7 +179,7 @@ const safeJson = (obj: object) => JSON.stringify(obj).replace(/</g, "\\u003c");
           <p class="text-text-secondary text-lg leading-relaxed">
             AI features we build have to clear a bar: code your engineers can
             maintain, costs you can predict, and AI features that hold up under
-            real users instead of just in the demo. Most clients evaluating AI
+            real usage instead of just in the demo. Most clients evaluating AI
             work fall into one of two camps:
           </p>
         </div>
@@ -459,7 +459,7 @@ const safeJson = (obj: object) => JSON.stringify(obj).replace(/</g, "\\u003c");
           </h2>
           <div class="text-text-secondary space-y-5 text-lg leading-relaxed">
             <p>
-              Most firms selling AI work won't tell you when AI isn't the right
+              Some firms selling AI work won't tell you when AI isn't the right
               tool. The incentives don't favor it. A traditional refactor, a
               rules engine, or a better-designed query is harder to sell than an
               agent. The result is a market full of AI features that didn't need
@@ -467,8 +467,7 @@ const safeJson = (obj: object) => JSON.stringify(obj).replace(/</g, "\\u003c");
               running.
             </p>
             <p>
-              Innovise's approach is the opposite. The first conversation
-              includes whether AI is genuinely the right tool for what you're
+              Innovise's approach is the different. We'll chat about whether AI is genuinely the right tool for what you're
               trying to do. If a deterministic solution gets the result with
               less risk and less ongoing cost, that's what we'll recommend. When
               AI is the right answer, the engineering bar is the same as every

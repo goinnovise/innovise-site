@@ -90,7 +90,7 @@ Also include the JSON-LD `Service` and `FAQPage` schema blocks following the exi
 
 Skip for UPDATE unless the user asked for new imagery.
 
-For NEW: read and follow `.cursor/skills/image-fetcher/SKILL.md`. First check `public/images/content/` for an existing asset that fits — reuse rather than fetch. Existing assets as of authoring: `advisor-laptop-meeting`, `clean-code-workspace`, `code-review-dark`, `developer-desk-wide`, `engineer-coding-station`, `planning-discussion`, `seattle-skyline`, `server-infrastructure`, `strategy-whiteboard`, `team-flipchart`, `team-meeting-bright`, `team-whiteboard`, `ux-wireframe-planning` (each available as `.jpg` and `.webp`).
+For NEW: read and follow `.cursor/skills/image-fetcher/SKILL.md`. First check `public/images/content/` for an existing asset that fits — reuse rather than fetch. Existing assets as of authoring: `advisor-laptop-meeting`, `clean-code-workspace`, `code-audit-review`, `code-review-dark`, `coder-workspace-moody`, `developer-desk-wide`, `engineer-coding-station`, `planning-discussion`, `seattle-skyline`, `server-infrastructure`, `strategy-whiteboard`, `team-flipchart`, `team-meeting-bright`, `team-whiteboard`, `ux-wireframe-planning` (each available as `.jpg` and `.webp`).
 
 If a new image is needed, fetch one for the hero and optionally one for the "in practice" section. Save to `public/images/content/` with a descriptive slug. Provide both `.jpg` and `.webp` if the existing pages use a `<picture>` with both sources (they do).
 
