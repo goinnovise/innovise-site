@@ -1,0 +1,377 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+
+const faqs = [
+  {
+    q: "Where are you based?",
+    a: "Innovise is based in Bellevue, WA, directly across the lake from Seattle. We work with companies across Seattle, the Eastside, and nationwide. For Seattle clients, in-person sessions downtown, in SLU, or on the Eastside are easy to arrange.",
+  },
+  {
+    q: "How is Innovise different from a larger Seattle dev shop?",
+    a: "Most software firms in the Seattle market sell with senior engineers and staff the work with juniors. Innovise doesn't. Loren Anderson leads every engagement personally — 15 years of full-stack and technical leadership experience. When more capacity is needed, supporting senior engineers are brought in, and clients always know who's on the project and at what level.",
+  },
+  {
+    q: "Are your engineers actually in the US?",
+    a: "Yes. Innovise is fully on-shore. No offshore handoffs, no nearshore handoffs. This matters for Seattle clients who've been burned by offshore arrangements that quietly degraded over time — thin context, slow feedback loops, and a codebase that's hard to extend without the people who wrote it.",
+  },
+  {
+    q: "What kinds of Seattle companies do you typically work with?",
+    a: "Small and mid-market businesses, industry-agnostic. The common thread is the situation: no internal engineering team and they need one, an existing team that needs senior bandwidth, a fragile MVP that needs to be production-ready, a fractional CTO need, or a company moving from an offshore arrangement to an onshore team.",
+  },
+  {
+    q: "Do we need to be in Seattle to work with you?",
+    a: "No. Innovise serves clients nationwide. Local clients get the option of in-person working sessions when they help; remote clients get the same senior engineer and the same accountability through delivery.",
+  },
+  {
+    q: "How does a first conversation work?",
+    a: "About 30 minutes. It goes both directions — we ask about the business problem before any talk about technology, and we expect you to ask about how we actually work. No pitch until we've talked. If we're not the right fit for what you need, we'll say so.",
+  },
+];
+
+const schemaFaqs = faqs.map((f) => ({
+  "@type": "Question",
+  name: f.q,
+  acceptedAnswer: { "@type": "Answer", text: f.a },
+}));
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Innovise Technologies",
+  url: "https://goinnovise.com/locations/seattle/",
+  description:
+    "Senior-led custom software development serving Seattle, WA and the surrounding region. Embedded engineering teams, fractional CTO, MVP stabilization, and offshore-to-onshore transitions. Based in Bellevue, WA.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Bellevue",
+    addressRegion: "WA",
+    addressCountry: "US",
+  },
+  areaServed: [
+    { "@type": "City", name: "Seattle" },
+    { "@type": "City", name: "Bellevue" },
+    { "@type": "City", name: "Kirkland" },
+    { "@type": "City", name: "Redmond" },
+    { "@type": "AdministrativeArea", name: "King County" },
+    { "@type": "AdministrativeArea", name: "Washington" },
+    { "@type": "Country", name: "United States" },
+  ],
+  serviceType: [
+    "Custom Software Development",
+    "Embedded Development Team",
+    "Fractional CTO",
+    "Software Architecture",
+    "MVP to Production",
+  ],
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: schemaFaqs,
+};
+
+const safeJson = (obj: object) => JSON.stringify(obj).replace(/</g, "\\u003c");
+---
+
+<Layout
+  title="Custom Software Development in Seattle, WA | Innovise"
+  description="Senior-led custom software development for Seattle-area businesses. Embedded engineering teams, fractional CTO, MVP-to-production, and offshore-to-onshore transitions. Based in Bellevue, WA. All on-shore."
+>
+  <script
+    type="application/ld+json"
+    set:html={safeJson(localBusinessSchema)}
+    slot="head"
+  />
+  <script type="application/ld+json" set:html={safeJson(faqSchema)} slot="head" />
+
+  <Navbar />
+
+  <main>
+    <!-- Hero -->
+    <section class="bg-brand-500 relative overflow-hidden py-24 lg:py-32">
+      <div class="relative mx-auto max-w-[1200px] px-6 lg:px-16">
+        <nav class="mb-6 text-sm text-white/60" aria-label="Breadcrumb">
+          <a href="/" class="transition-colors hover:text-white">Home</a>
+          <span class="mx-2">›</span>
+          <span class="text-white">Seattle, WA</span>
+        </nav>
+        <p
+          class="text-brand-100 mb-6 text-sm font-semibold tracking-widest uppercase"
+        >
+          Seattle metro · Bellevue, WA · all on-shore
+        </p>
+        <h1
+          class="font-heading mb-6 text-4xl leading-[1.1] font-bold text-white sm:text-5xl lg:text-[58px]"
+        >
+          Custom software development for Seattle businesses
+        </h1>
+        <p
+          class="mb-10 max-w-2xl text-lg leading-relaxed text-white/80 sm:text-xl"
+        >
+          A senior-led engineering practice based in Bellevue, serving Seattle
+          and the surrounding region. Embedded development teams, fractional
+          CTO, and MVP-to-production work. Direct access to the engineer doing
+          the work — no offshore handoffs, no account managers, no bait-and-switch.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a
+            href="/?service=custom-software#contact"
+            class="text-brand-500 hover:bg-surface-page inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-base font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+          >
+            Start the conversation
+          </a>
+          <a
+            href="https://calendly.com/loren-goinnovise/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center rounded-lg border-2 border-white px-8 py-4 text-base font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/10"
+          >
+            Book a 30-min intro call
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who we work with -->
+    <section class="bg-surface-page py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="mb-16 max-w-3xl">
+          <p
+            class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+          >
+            Who we work with
+          </p>
+          <h2
+            class="font-heading text-text-primary mb-5 text-3xl font-semibold sm:text-4xl lg:text-[41px]"
+          >
+            Seattle-area companies that need senior engineering they can trust
+          </h2>
+          <p class="text-text-secondary text-lg leading-relaxed">
+            The Seattle market has plenty of options for software development.
+            The question is whether the senior engineer on the sales call is the
+            one who'll be on the project six weeks in. Innovise is built around
+            making sure the answer is yes.
+          </p>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2">
+          {
+            [
+              {
+                title: "Stuck without an internal engineering team",
+                body: "You need to build something real, but hiring a full team is months away and you can't pause the business while you wait.",
+              },
+              {
+                title: "An existing team that needs senior backup",
+                body: "Your engineers are capable, but the next initiative needs senior judgment — architecture, scaling decisions, hard conversations — that you don't have internally.",
+              },
+              {
+                title: "A vibe-coded or AI-built MVP that needs to ship",
+                body: "Built quickly with Cursor, Bolt, Replit, or a contractor. Working, but fragile. You need it stabilized for real users without an unnecessary rewrite.",
+              },
+              {
+                title: "An offshore engagement going sideways",
+                body: "Quality drift, communication overhead, code that's hard to maintain. You want to move on-shore without losing operations during the transition.",
+              },
+            ].map((item) => (
+              <div class="bg-surface-card border-surface-inset rounded-lg border p-8">
+                <h3 class="font-heading text-text-primary mb-3 text-lg font-semibold">
+                  {item.title}
+                </h3>
+                <p class="text-text-secondary leading-relaxed">{item.body}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- What's different -->
+    <section class="bg-surface-inset py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+          <div>
+            <p
+              class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+            >
+              What's different about working with Innovise
+            </p>
+            <h2
+              class="font-heading text-text-primary mb-8 text-3xl font-semibold sm:text-4xl"
+            >
+              Senior engineers, all on-shore, no handoffs
+            </h2>
+            <div class="text-text-secondary space-y-5 text-lg leading-relaxed">
+              <p>
+                Most of the 2026 software-services market is built on layered
+                handoffs: senior engineer on the call, junior engineer on the
+                code, account manager in between. Innovise removes the layers.
+                Loren leads every engagement. When supporting engineers join,
+                they're senior, US-based, and you know who's on your project.
+              </p>
+              <p>
+                The Seattle metro is full of companies that have been through
+                the offshore cycle and want a different model. All on-shore is a
+                real choice in 2026, not a default — it costs more per hour, and
+                it returns that cost in context, feedback speed, and code you
+                can extend after the engagement ends.
+              </p>
+              <p>
+                Engagement doesn't end at launch. The same engineer who built
+                the system stays available afterward — for the questions that
+                only come up in production, and for the moment when you're ready
+                to hire your own team and need a structured transition.
+              </p>
+            </div>
+          </div>
+          <div class="bg-surface-card border-surface-inset rounded-lg border p-8">
+            <p
+              class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+            >
+              Where we serve
+            </p>
+            <ul class="text-text-secondary space-y-3 text-base leading-relaxed">
+              <li>· Seattle (downtown, SLU, Capitol Hill, Ballard, Fremont)</li>
+              <li>· Bellevue and the Eastside</li>
+              <li>· Kirkland, Redmond, Mercer Island</li>
+              <li>· Issaquah and Sammamish</li>
+              <li>· Greater King County</li>
+              <li>· Remote clients nationwide</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="bg-surface-page py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="mb-16 max-w-3xl">
+          <p
+            class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+          >
+            How we engage
+          </p>
+          <h2
+            class="font-heading text-text-primary mb-5 text-3xl font-semibold sm:text-4xl lg:text-[41px]"
+          >
+            Services for Seattle-area businesses
+          </h2>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            [
+              {
+                href: "/services/custom-software-development/",
+                title: "Custom software development",
+                body: "Full-stack development across web, backend, and cloud. Senior engineers from first call through production.",
+              },
+              {
+                href: "/services/embedded-development-team/",
+                title: "Embedded development teams",
+                body: "An engineering team that works inside your business — your stack, your tools, your standups.",
+              },
+              {
+                href: "/services/fractional-cto/",
+                title: "Fractional CTO",
+                body: "Senior technical leadership for companies that need direction and judgment, not just execution.",
+              },
+              {
+                href: "/services/mvp-to-production/",
+                title: "From MVP to production",
+                body: "Stabilize a quickly built or AI-generated codebase for real users — without an unnecessary rewrite.",
+              },
+              {
+                href: "/services/internal-team-development/",
+                title: "Internal team development",
+                body: "Build your own engineering team. Hiring support, interim coverage, and offshore-to-onshore transitions.",
+              },
+              {
+                href: "/services/technology-audit/",
+                title: "Technology & security audit",
+                body: "A clear picture of where you stand before committing to a build. Honest findings, prioritized roadmap.",
+              },
+            ].map((s) => (
+              <a
+                href={s.href}
+                class="group border-surface-inset bg-surface-card flex flex-col rounded-lg border p-6 transition-all hover:-translate-y-0.5 hover:shadow-sm"
+              >
+                <h3 class="font-heading text-text-primary mb-2 text-lg font-semibold">
+                  {s.title}
+                </h3>
+                <p class="text-text-secondary text-sm leading-relaxed">
+                  {s.body}
+                </p>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="bg-surface-inset py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <div class="mx-auto max-w-3xl">
+          <p
+            class="text-brand-500 mb-4 text-sm font-semibold tracking-widest uppercase"
+          >
+            Common questions
+          </p>
+          <h2
+            class="font-heading text-text-primary mb-12 text-3xl font-semibold sm:text-4xl"
+          >
+            Working with Innovise from Seattle
+          </h2>
+          <div class="space-y-8">
+            {
+              faqs.map((faq) => (
+                <div class="border-surface-inset border-b pb-8 last:border-0 last:pb-0">
+                  <h3 class="font-heading text-text-primary mb-3 text-lg font-semibold">
+                    {faq.q}
+                  </h3>
+                  <p class="text-text-secondary leading-relaxed">{faq.a}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-brand-500 py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 text-center lg:px-16">
+        <h2
+          class="font-heading mb-6 text-3xl font-bold text-white sm:text-4xl lg:text-[41px]"
+        >
+          Looking for senior engineering in the Seattle area?
+        </h2>
+        <p class="mx-auto mb-10 max-w-xl text-lg text-white/80">
+          Start with a 30-minute conversation. It goes both directions, no pitch
+          until we've talked, and we'll say if we're not the right fit.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a
+            href="https://calendly.com/loren-goinnovise/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-brand-500 hover:bg-surface-page inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-base font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+          >
+            Book an intro call
+          </a>
+          <a
+            href="/?service=seattle#contact"
+            class="inline-flex items-center justify-center rounded-lg border-2 border-white px-8 py-4 text-base font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/10"
+          >
+            Send a message
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
