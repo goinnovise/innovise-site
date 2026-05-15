@@ -1,0 +1,445 @@
+---
+import { getCollection, render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { serviceSlugs } from "../../content.config";
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+
+export async function getStaticPaths() {
+  const articles = await getCollection("articles");
+  return articles.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<"articles">;
+}
+
+const { entry } = Astro.props;
+const {
+  title,
+  description,
+  heroImage,
+  heroImageAlt,
+  ogImage,
+  publishDate,
+  updated,
+  primaryService,
+  relatedServices,
+  author,
+  authorLink,
+} = entry.data;
+
+const { Content } = await render(entry);
+
+// Mirrors the case-studies serviceMeta map. Kept inline (not extracted) for
+// the same reason — extraction is intentionally deferred until a third route
+// needs the same data, at which point it moves to src/data/services.ts.
+const serviceMeta: Record<
+  (typeof serviceSlugs)[number],
+  { label: string; contactQuery: string }
+> = {
+  "ai-engineering": {
+    label: "AI engineering",
+    contactQuery: "ai-engineering",
+  },
+  "custom-software-development": {
+    label: "Custom software development",
+    contactQuery: "custom-software",
+  },
+  "embedded-development-team": {
+    label: "Embedded development teams",
+    contactQuery: "embedded-team",
+  },
+  "fractional-cto": {
+    label: "Fractional CTO",
+    contactQuery: "fractional-cto",
+  },
+  "internal-team-development": {
+    label: "Internal team development",
+    contactQuery: "internal-team",
+  },
+  "mvp-to-production": {
+    label: "From MVP to production",
+    contactQuery: "mvp-to-production",
+  },
+  "technology-audit": {
+    label: "Technology & security audit",
+    contactQuery: "technology-audit",
+  },
+};
+
+const primaryServiceMeta = serviceMeta[primaryService];
+const primaryServiceLabel = primaryServiceMeta?.label ?? primaryService;
+const contactHref = primaryServiceMeta
+  ? `/?service=${primaryServiceMeta.contactQuery}#contact`
+  : "/#contact";
+
+// Related services rail at the bottom of the post: dedupe against the primary
+// service so we never show "More on X" twice on the same page.
+const relatedServiceEntries = (relatedServices ?? [])
+  .filter((slug) => slug !== primaryService)
+  .map((slug) => ({ slug, meta: serviceMeta[slug] }))
+  .filter((e): e is { slug: typeof serviceSlugs[number]; meta: { label: string; contactQuery: string } } => Boolean(e.meta));
+
+const pageTitle = `${title} | Innovise`;
+const pageDescription = description;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
+const heroImageAbsoluteURL = heroImage
+  ? new URL(heroImage, Astro.site).href
+  : new URL("/images/og-image.png", Astro.site).href;
+const ogImageURL = ogImage
+  ? new URL(ogImage, Astro.site).href
+  : heroImageAbsoluteURL;
+
+const formattedPublishDate = publishDate.toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+const formattedUpdatedDate = updated
+  ? updated.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+  : null;
+
+const blogPostingSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: title,
+  description,
+  datePublished: publishDate.toISOString(),
+  ...(updated ? { dateModified: updated.toISOString() } : {}),
+  author: {
+    "@type": "Person",
+    name: author,
+    ...(authorLink ? { url: authorLink } : {}),
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Innovise Technologies",
+    logo: {
+      "@type": "ImageObject",
+      url: new URL("/images/logo/innovise-main-logo.png", Astro.site).href,
+    },
+  },
+  image: heroImageAbsoluteURL,
+  mainEntityOfPage: canonicalURL,
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: new URL("/", Astro.site).href,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Articles",
+      item: new URL("/articles/", Astro.site).href,
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: title,
+      item: canonicalURL,
+    },
+  ],
+};
+
+const safeJson = (obj: object) => JSON.stringify(obj).replace(/</g, "\\u003c");
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  image={ogImage ?? heroImage ?? "/images/og-image.png"}
+  imageAlt={heroImageAlt ?? "Innovise Technologies — article"}
+>
+  <script
+    type="application/ld+json"
+    set:html={safeJson(blogPostingSchema)}
+    slot="head"
+  />
+  <script
+    type="application/ld+json"
+    set:html={safeJson(breadcrumbSchema)}
+    slot="head"
+  />
+
+  <Navbar />
+
+  <main>
+    <!-- Hero -->
+    <section class="bg-brand-500 relative overflow-hidden py-24 lg:py-32">
+      {
+        heroImage && (
+          <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
+            <img
+              src={heroImage}
+              alt=""
+              class="absolute inset-0 h-full w-full object-cover object-right opacity-20"
+            />
+            <div class="from-brand-500/90 via-brand-500/60 to-brand-900/20 absolute inset-0 bg-linear-to-r" />
+          </div>
+        )
+      }
+      <div class="relative mx-auto max-w-[1200px] px-6 lg:px-16">
+        <nav class="mb-6 text-sm text-white/60" aria-label="Breadcrumb">
+          <a href="/" class="transition-colors hover:text-white">Home</a>
+          <span class="mx-2">›</span>
+          <a href="/articles/" class="transition-colors hover:text-white"
+            >Articles</a
+          >
+          <span class="mx-2">›</span>
+          <span class="text-white">{title}</span>
+        </nav>
+        <p
+          class="animate-on-scroll text-brand-100 mb-6 text-sm font-semibold tracking-widest uppercase"
+        >
+          {primaryServiceLabel} · article
+        </p>
+        <h1
+          class="animate-on-scroll font-heading mb-6 text-4xl leading-[1.1] font-bold text-white sm:text-5xl lg:text-[58px]"
+        >
+          {title}
+        </h1>
+        <p
+          class="mb-8 max-w-2xl text-lg leading-relaxed text-white/90 sm:text-xl"
+        >
+          {description}
+        </p>
+        <div
+          class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-white/70"
+        >
+          <span>
+            By {
+              authorLink ? (
+                <a
+                  href={authorLink}
+                  rel="author"
+                  class="underline-offset-4 hover:text-white hover:underline"
+                >
+                  {author}
+                </a>
+              ) : (
+                author
+              )
+            }
+          </span>
+          <span class="text-white/40">·</span>
+          <time datetime={publishDate.toISOString()}>{formattedPublishDate}</time>
+          {
+            formattedUpdatedDate && (
+              <>
+                <span class="text-white/40">·</span>
+                <span>Updated {formattedUpdatedDate}</span>
+              </>
+            )
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Body — same prose styling as case-studies (.case-study-body class
+         reused for one source of truth on Markdown body styling). -->
+    <section class="bg-surface-page py-20 lg:py-28">
+      <div class="mx-auto max-w-3xl px-6 lg:px-0">
+        <article class="case-study-body">
+          <Content />
+        </article>
+      </div>
+    </section>
+
+    <!-- Related services rail -->
+    {
+      (primaryServiceMeta || relatedServiceEntries.length > 0) && (
+        <section class="bg-surface-inset border-surface-inset border-t py-16">
+          <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+            <p class="text-brand-500 mb-6 text-xs font-semibold tracking-widest uppercase">
+              Related services
+            </p>
+            <div class="grid gap-4 md:grid-cols-2">
+              {primaryServiceMeta && (
+                <a
+                  href={`/services/${primaryService}/`}
+                  class="group border-surface-inset bg-surface-card flex items-start justify-between rounded-lg border p-6 transition-all hover:-translate-y-0.5 hover:shadow-sm"
+                >
+                  <div>
+                    <p class="text-text-primary font-semibold">
+                      {primaryServiceMeta.label}
+                    </p>
+                    <p class="text-text-secondary mt-1 text-sm">
+                      See how Innovise approaches this kind of engagement.
+                    </p>
+                  </div>
+                  <svg
+                    class="text-brand-500 mt-0.5 ml-3 h-5 w-5 shrink-0 transition-transform group-hover:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </a>
+              )}
+              {relatedServiceEntries.map(({ slug, meta }) => (
+                <a
+                  href={`/services/${slug}/`}
+                  class="group border-surface-inset bg-surface-card flex items-start justify-between rounded-lg border p-6 transition-all hover:-translate-y-0.5 hover:shadow-sm"
+                >
+                  <div>
+                    <p class="text-text-primary font-semibold">{meta.label}</p>
+                    <p class="text-text-secondary mt-1 text-sm">
+                      Related to the topic in this article.
+                    </p>
+                  </div>
+                  <svg
+                    class="text-brand-500 mt-0.5 ml-3 h-5 w-5 shrink-0 transition-transform group-hover:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      )
+    }
+
+    <!-- CTA -->
+    <section class="bg-brand-500 py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 text-center lg:px-16">
+        <h2
+          class="animate-on-scroll font-heading mb-6 text-3xl font-bold text-white sm:text-4xl lg:text-[41px]"
+        >
+          Have a project worth a conversation?
+        </h2>
+        <p class="mx-auto mb-10 max-w-xl text-lg text-white/80">
+          Start with a call. Innovise will be direct about what's realistic and
+          what the right approach looks like for your situation.
+        </p>
+        <div
+          class="flex flex-col items-center justify-center gap-4 sm:flex-row"
+        >
+          <a
+            href={contactHref}
+            class="text-brand-500 hover:bg-surface-page inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-base font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+          >
+            Get in touch
+            <svg
+              class="ml-2 h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+          <a
+            href="https://calendly.com/loren-goinnovise/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cta="calendly"
+            class="inline-flex items-center justify-center rounded-lg border border-white/25 px-8 py-4 text-base font-semibold text-white/90 transition-all duration-200 hover:bg-white/10"
+          >
+            Book a 30-min call
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+
+  <!--
+    Lightbox dialog for body images — mirrors the case-studies post page.
+    Single instance per page; the JS handler populates src/alt from the
+    clicked image. Pure progressive enhancement: no-JS readers still see
+    inline images, crawlers see no difference.
+  -->
+  <dialog class="image-lightbox" aria-label="Image preview">
+    <button type="button" class="lightbox-close" aria-label="Close image preview">
+      <svg
+        class="h-5 w-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+    <figure class="lightbox-figure">
+      <img alt="" />
+      <figcaption class="lightbox-caption"></figcaption>
+    </figure>
+  </dialog>
+</Layout>
+
+<script>
+  // Article-body lightbox handler. Reuses the .case-study-body class so the
+  // selector matches; this is intentional — articles and case studies share
+  // one Markdown prose styling system to avoid drift.
+  const article = document.querySelector(".case-study-body");
+  const dialog = document.querySelector<HTMLDialogElement>(".image-lightbox");
+
+  if (article && dialog) {
+    const dialogImg = dialog.querySelector("img");
+    const dialogCaption = dialog.querySelector<HTMLElement>(".lightbox-caption");
+    const closeBtn = dialog.querySelector<HTMLButtonElement>(".lightbox-close");
+
+    article.addEventListener("click", (e) => {
+      const target = e.target as Element | null;
+      const img = target?.closest("img");
+      if (!img || !article.contains(img)) return;
+      if (img.classList.contains("no-zoom")) return;
+      if (!dialogImg || !dialogCaption) return;
+
+      dialogImg.src = (img as HTMLImageElement).src;
+      dialogImg.alt = img.alt;
+      const figcaption = img.closest("figure")?.querySelector("figcaption");
+      const captionText = figcaption?.textContent?.trim() || img.alt || "";
+      dialogCaption.textContent = captionText;
+      dialogCaption.hidden = captionText.length === 0;
+      if (!dialog.open) dialog.showModal();
+    });
+
+    closeBtn?.addEventListener("click", () => dialog.close());
+
+    dialog.addEventListener("click", (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+  }
+</script>
