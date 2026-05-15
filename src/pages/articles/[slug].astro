@@ -252,11 +252,11 @@ const safeJson = (obj: object) => JSON.stringify(obj).replace(/</g, "\\u003c");
       </div>
     </section>
 
-    <!-- Body — same prose styling as case-studies (.case-study-body class
+    <!-- Body — same prose styling as case-studies (.prose-body class
          reused for one source of truth on Markdown body styling). -->
     <section class="bg-surface-page py-20 lg:py-28">
       <div class="mx-auto max-w-3xl px-6 lg:px-0">
-        <article class="case-study-body">
+        <article class="prose-body">
           <Content />
         </article>
       </div>
@@ -409,10 +409,10 @@ const safeJson = (obj: object) => JSON.stringify(obj).replace(/</g, "\\u003c");
 </Layout>
 
 <script>
-  // Article-body lightbox handler. Reuses the .case-study-body class so the
+  // Article-body lightbox handler. Reuses the .prose-body class so the
   // selector matches; this is intentional — articles and case studies share
   // one Markdown prose styling system to avoid drift.
-  const article = document.querySelector(".case-study-body");
+  const article = document.querySelector(".prose-body");
   const dialog = document.querySelector<HTMLDialogElement>(".image-lightbox");
 
   if (article && dialog) {
