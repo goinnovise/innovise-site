@@ -1,0 +1,611 @@
+---
+import { getCollection, render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { serviceSlugs } from "../../content.config";
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+
+export async function getStaticPaths() {
+  const caseStudies = await getCollection("caseStudies");
+  return caseStudies.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<"caseStudies">;
+}
+
+const { entry } = Astro.props;
+const {
+  title,
+  summary,
+  outcome,
+  heroImage,
+  heroImageAlt,
+  publishDate,
+  primaryService,
+  author,
+  authorLink,
+} = entry.data;
+
+const { Content } = await render(entry);
+
+// Display label + contact-form service identifier for each primary-service slug.
+// Mirrored against `src/pages/services/*.astro` page slugs and the existing
+// `?service=` query-param values on those pages. Tracked in the case-studies-
+// scaffold plan as deferred follow-up work: extracting to `src/data/services.ts`
+// is intentionally out of scope for this scaffold.
+const serviceMeta: Record<(typeof serviceSlugs)[number], { label: string; contactQuery: string }> = {
+  "ai-engineering": {
+    label: "AI engineering",
+    contactQuery: "ai-engineering",
+  },
+  "custom-software-development": {
+    label: "Custom software development",
+    contactQuery: "custom-software",
+  },
+  "embedded-development-team": {
+    label: "Embedded development teams",
+    contactQuery: "embedded-team",
+  },
+  "fractional-cto": {
+    label: "Fractional CTO",
+    contactQuery: "fractional-cto",
+  },
+  "internal-team-development": {
+    label: "Internal team development",
+    contactQuery: "internal-team",
+  },
+  "mvp-to-production": {
+    label: "From MVP to production",
+    contactQuery: "mvp-to-production",
+  },
+  "technology-audit": {
+    label: "Technology & security audit",
+    contactQuery: "technology-audit",
+  },
+};
+
+const primaryServiceMeta = serviceMeta[primaryService];
+const primaryServiceLabel = primaryServiceMeta?.label ?? primaryService;
+const contactHref = primaryServiceMeta
+  ? `/?service=${primaryServiceMeta.contactQuery}#contact`
+  : "/#contact";
+
+const pageTitle = `${title} — case study | Innovise`;
+const pageDescription = summary;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
+const heroImageAbsoluteURL = heroImage
+  ? new URL(heroImage, Astro.site).href
+  : new URL("/images/og-image.png", Astro.site).href;
+
+const formattedDate = publishDate.toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
+const blogPostingSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: title,
+  description: summary,
+  datePublished: publishDate.toISOString(),
+  author: {
+    "@type": "Person",
+    name: author,
+    ...(authorLink ? { url: authorLink } : {}),
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Innovise Technologies",
+    logo: {
+      "@type": "ImageObject",
+      url: new URL("/images/logo/innovise-main-logo.png", Astro.site).href,
+    },
+  },
+  image: heroImageAbsoluteURL,
+  mainEntityOfPage: canonicalURL,
+};
+
+// Mirrors `safeJson` in `src/pages/services/*.astro`. `safeJsonLd` in
+// `Layout.astro` is a Layout-local const and not exported.
+const safeJson = (obj: object) => JSON.stringify(obj).replace(/</g, "\\u003c");
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  image={heroImage ?? "/images/og-image.png"}
+  imageAlt={heroImageAlt ?? "Innovise Technologies — case study"}
+>
+  <script
+    type="application/ld+json"
+    set:html={safeJson(blogPostingSchema)}
+    slot="head"
+  />
+
+  <Navbar />
+
+  <main>
+    <!-- Hero -->
+    <section class="bg-brand-500 relative overflow-hidden py-24 lg:py-32">
+      {
+        heroImage && (
+          <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
+            <img
+              src={heroImage}
+              alt=""
+              class="absolute top-0 right-0 h-full w-1/2 object-cover object-center opacity-20"
+            />
+            <div class="from-brand-500 via-brand-500/80 absolute inset-0 w-3/4 bg-linear-to-r to-transparent" />
+          </div>
+        )
+      }
+      <div class="relative mx-auto max-w-[1200px] px-6 lg:px-16">
+        <nav class="mb-6 text-sm text-white/60" aria-label="Breadcrumb">
+          <a href="/" class="transition-colors hover:text-white">Home</a>
+          <span class="mx-2">›</span>
+          <a href="/case-studies/" class="transition-colors hover:text-white"
+            >Case studies</a
+          >
+          <span class="mx-2">›</span>
+          <span class="text-white">{title}</span>
+        </nav>
+        <p
+          class="animate-on-scroll text-brand-100 mb-6 text-sm font-semibold tracking-widest uppercase"
+        >
+          {primaryServiceLabel} · case study
+        </p>
+        <h1
+          class="animate-on-scroll font-heading mb-6 text-4xl leading-[1.1] font-bold text-white sm:text-5xl lg:text-[58px]"
+        >
+          {title}
+        </h1>
+        <p
+          class="mb-8 max-w-2xl text-lg leading-relaxed text-white/90 sm:text-xl"
+        >
+          <span class="font-semibold">Outcome:</span> {outcome}
+        </p>
+        <div
+          class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-white/70"
+        >
+          <span>
+            By {
+              authorLink ? (
+                <a
+                  href={authorLink}
+                  rel="author"
+                  class="underline-offset-4 hover:text-white hover:underline"
+                >
+                  {author}
+                </a>
+              ) : (
+                author
+              )
+            }
+          </span>
+          <span class="text-white/40">·</span>
+          <time datetime={publishDate.toISOString()}>{formattedDate}</time>
+        </div>
+      </div>
+    </section>
+
+    <!-- Body -->
+    <section class="bg-surface-page py-20 lg:py-28">
+      <div class="mx-auto max-w-3xl px-6 lg:px-0">
+        <article class="case-study-body">
+          <Content />
+        </article>
+      </div>
+    </section>
+
+    <!-- Back to related service -->
+    {
+      primaryServiceMeta && (
+        <section class="bg-surface-inset border-surface-inset border-t py-16">
+          <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+            <p class="text-brand-500 mb-6 text-xs font-semibold tracking-widest uppercase">
+              Related service
+            </p>
+            <a
+              href={`/services/${primaryService}/`}
+              class="group border-surface-inset bg-surface-card flex items-start justify-between rounded-lg border p-6 transition-all hover:-translate-y-0.5 hover:shadow-sm"
+            >
+              <div>
+                <p class="text-text-primary font-semibold">
+                  More on {primaryServiceMeta.label}
+                </p>
+                <p class="text-text-secondary mt-1 text-sm">
+                  See how Innovise approaches this kind of engagement.
+                </p>
+              </div>
+              <svg
+                class="text-brand-500 mt-0.5 ml-3 h-5 w-5 shrink-0 transition-transform group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </a>
+          </div>
+        </section>
+      )
+    }
+
+    <!-- CTA -->
+    <section class="bg-brand-500 py-24 lg:py-32">
+      <div class="mx-auto max-w-[1200px] px-6 text-center lg:px-16">
+        <h2
+          class="animate-on-scroll font-heading mb-6 text-3xl font-bold text-white sm:text-4xl lg:text-[41px]"
+        >
+          Have a situation that looks like this?
+        </h2>
+        <p class="mx-auto mb-10 max-w-xl text-lg text-white/80">
+          Start with a conversation. Innovise will be direct about what's
+          realistic and what the right approach looks like for your situation.
+        </p>
+        <a
+          href={contactHref}
+          class="text-brand-500 hover:bg-surface-page inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-base font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+        >
+          Get in touch about your situation
+          <svg
+            class="ml-2 h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+
+  <!--
+    Lightbox dialog for body images. Single instance per page; the JS handler
+    populates src/alt from whichever image the reader clicks. Uses the native
+    <dialog> element with showModal(), so focus trapping, Esc-to-close, and
+    focus restoration are handled by the browser. Pure progressive enhancement —
+    if JS is disabled, body images stay inline and crawlers see no difference.
+  -->
+  <dialog class="image-lightbox" aria-label="Image preview">
+    <button type="button" class="lightbox-close" aria-label="Close image preview">
+      <svg
+        class="h-5 w-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+    <figure class="lightbox-figure">
+      <img alt="" />
+      <figcaption class="lightbox-caption"></figcaption>
+    </figure>
+  </dialog>
+</Layout>
+
+<style is:global>
+  /* Markdown body styling for case-study posts. The site does not use the
+     @tailwindcss/typography plugin, so prose elements are styled here with
+     direct properties against the Tailwind 4 @theme tokens in global.css. */
+  .case-study-body {
+    color: var(--color-text-secondary);
+    font-size: 1.125rem;
+    line-height: 1.75;
+  }
+
+  .case-study-body > :first-child {
+    margin-top: 0;
+  }
+
+  .case-study-body p {
+    margin-bottom: 1.25rem;
+  }
+
+  .case-study-body h2 {
+    font-family: var(--font-heading);
+    color: var(--color-text-primary);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    /* Defensive: never squeeze a heading next to a tall floated figure above. */
+    clear: both;
+  }
+
+  .case-study-body h3 {
+    font-family: var(--font-heading);
+    color: var(--color-text-primary);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+    clear: both;
+  }
+
+  .case-study-body ul,
+  .case-study-body ol {
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+  }
+
+  .case-study-body ul {
+    list-style: disc;
+  }
+
+  .case-study-body ol {
+    list-style: decimal;
+  }
+
+  .case-study-body li {
+    margin-bottom: 0.5rem;
+  }
+
+  .case-study-body a {
+    color: var(--color-brand-500);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .case-study-body a:hover {
+    color: var(--color-brand-600);
+  }
+
+  .case-study-body strong {
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .case-study-body blockquote {
+    border-left: 3px solid var(--color-brand-500);
+    padding-left: 1.5rem;
+    margin: 1.5rem 0;
+    color: var(--color-text-secondary);
+    font-style: italic;
+  }
+
+  .case-study-body code {
+    background-color: var(--color-surface-inset);
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.95em;
+  }
+
+  .case-study-body pre {
+    background-color: var(--color-surface-inset);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+
+  .case-study-body pre code {
+    background: transparent;
+    padding: 0;
+  }
+
+  .case-study-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin: 1.5rem 0;
+    /* Body images are click-to-enlarge by default. The lightbox dialog
+       at the bottom of the layout reads the clicked image's src and alt.
+       Opt out per-image with class="no-zoom" if a specific image
+       shouldn't be zoomable. */
+    cursor: zoom-in;
+  }
+
+  .case-study-body img.no-zoom {
+    cursor: default;
+  }
+
+  /* Figures: the semantic wrapper for in-body imagery. Used for both
+     full-width block images (no class) and floated/wrapped images
+     (align-right / align-left). On mobile, floated variants drop back
+     to full-width block flow — narrow text columns wrapping around a
+     half-width image read poorly on phones. */
+  .case-study-body figure {
+    margin: 1.5rem 0;
+  }
+
+  .case-study-body figure img {
+    margin: 0;
+    width: 100%;
+  }
+
+  .case-study-body figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-text-tertiary);
+    font-style: italic;
+  }
+
+  @media (min-width: 640px) {
+    .case-study-body figure.align-right {
+      float: right;
+      width: 45%;
+      margin: 0.5rem 0 1.25rem 2rem;
+    }
+
+    .case-study-body figure.align-left {
+      float: left;
+      width: 45%;
+      margin: 0.5rem 2rem 1.25rem 0;
+    }
+  }
+
+  /* Utility for explicit float-clearing inside prose if ever needed
+     (e.g. forcing a paragraph to start below a floated figure). */
+  .case-study-body .clear-both {
+    clear: both;
+  }
+
+  .case-study-body hr {
+    border: 0;
+    border-top: 1px solid var(--color-surface-inset);
+    margin: 2rem 0;
+  }
+
+  /* Image lightbox — native <dialog> styled to host a single enlarged
+     image with its alt text below. The backdrop dims the page; the close
+     button anchors to the viewport corner so it stays reachable for any
+     image dimensions.
+
+     The dialog itself covers the full viewport (overriding the UA's
+     content-sized + margin:auto centering, which is unreliable across
+     browsers when max-width/max-height are applied). Size constraints
+     live on the figure inside, and flexbox centers it within the dialog. */
+  .image-lightbox {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: white;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+  }
+
+  .image-lightbox::backdrop {
+    background: rgba(0, 0, 0, 0.85);
+  }
+
+  .image-lightbox[open] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox-figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    /* The figure carries the content size constraints, not the dialog */
+    max-width: 95vw;
+    max-height: 95vh;
+  }
+
+  .lightbox-figure img {
+    display: block;
+    max-width: 90vw;
+    max-height: 78vh;
+    object-fit: contain;
+    border-radius: 0.5rem;
+    background: white;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    /* Override the case-study-body img cursor inside the lightbox */
+    cursor: default;
+    margin: 0;
+  }
+
+  .lightbox-caption {
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    text-align: center;
+    max-width: 50rem;
+    font-style: italic;
+    padding: 0 1rem;
+    /* Empty caption (no alt) collapses cleanly */
+    min-height: 1px;
+  }
+
+  .lightbox-close {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: white;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition:
+      background-color 0.15s ease,
+      border-color 0.15s ease;
+  }
+
+  .lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  .lightbox-close:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 3px;
+  }
+</style>
+
+<script>
+  // Image lightbox click handler. Lives at the page level so it's only
+  // wired up on individual case-study post pages (not the landing page).
+  // Uses event delegation on the article element so any image added to
+  // the Markdown body — now or later — is automatically clickable.
+  const article = document.querySelector(".case-study-body");
+  const dialog = document.querySelector<HTMLDialogElement>(".image-lightbox");
+
+  if (article && dialog) {
+    const dialogImg = dialog.querySelector("img");
+    const dialogCaption = dialog.querySelector<HTMLElement>(".lightbox-caption");
+    const closeBtn = dialog.querySelector<HTMLButtonElement>(".lightbox-close");
+
+    article.addEventListener("click", (e) => {
+      const target = e.target as Element | null;
+      const img = target?.closest("img");
+      if (!img || !article.contains(img)) return;
+      if (img.classList.contains("no-zoom")) return;
+      if (!dialogImg || !dialogCaption) return;
+
+      dialogImg.src = (img as HTMLImageElement).src;
+      dialogImg.alt = img.alt;
+      const figcaption = img.closest('figure')?.querySelector('figcaption');
+      const captionText = figcaption?.textContent?.trim() || img.alt || '';
+      dialogCaption.textContent = captionText;
+      dialogCaption.hidden = captionText.length === 0;
+      if (!dialog.open) dialog.showModal();
+    });
+
+    closeBtn?.addEventListener("click", () => dialog.close());
+
+    // Click on the dialog itself (the backdrop area outside the figure) closes.
+    // Clicks on the figure or its children don't match the dialog directly.
+    dialog.addEventListener("click", (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+  }
+</script>

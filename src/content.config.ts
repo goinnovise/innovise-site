@@ -4,6 +4,16 @@ import { z } from "zod";
 
 const slugRegex = /^[a-z0-9-]+$/;
 
+export const serviceSlugs = [
+  "ai-engineering",
+  "custom-software-development",
+  "embedded-development-team",
+  "fractional-cto",
+  "internal-team-development",
+  "mvp-to-production",
+  "technology-audit",
+] as const;
+
 const resumes = defineCollection({
   loader: glob({
     pattern: "*.{yaml,yml}",
@@ -145,4 +155,62 @@ const resumes = defineCollection({
     .strict(),
 });
 
-export const collections = { resumes };
+const caseStudies = defineCollection({
+  loader: glob({
+    pattern: "*.md",
+    base: "./src/content/case-studies",
+  }),
+  schema: z
+    .object({
+      // Display title on the post page; also used for breadcrumbs and the
+      // SEO <title> (which leads with the topic per marketing-copy SEO rules).
+      title: z.string(),
+
+      // Short prose, 1-2 sentences. Sourced into <meta name="description">,
+      // OG description, BlogPosting JSON-LD description, and the card excerpt.
+      summary: z.string(),
+
+      // The concrete client outcome (e.g., "Azure spend dropped 80%").
+      // Templated to lead each landing-page card and to surface as the
+      // hero subhead on the post page itself.
+      outcome: z.string(),
+
+      // Optional path to a hero image asset (e.g., "/images/case-studies/foo.webp").
+      // Paired with heroImageAlt below.
+      heroImage: z.string().optional(),
+      heroImageAlt: z.string().optional(),
+
+      // `coerce` so the schema accepts both unquoted YAML dates (2026-05-14)
+      // and quoted strings. `z.date()` alone rejects strings.
+      publishDate: z.coerce.date(),
+
+      // Anchors the case study to one of the seven existing service pages.
+      // Drives the back-link on the post page and the related-rail surfacing
+      // on the service page.
+      primaryService: z.enum(serviceSlugs),
+
+      // Light inline attribution. Defaults to Loren when omitted; when an
+      // engineer co-authored or solely delivered the work, they go into the
+      // same string (e.g., "Loren Anderson with Jane Doe"). Origin spec is
+      // "light inline attribution" — no separate contributor field.
+      author: z.string().default("Loren Anderson, Founder"),
+      authorLink: z
+        .string()
+        .url()
+        .refine((v) => /^https?:\/\//i.test(v), {
+          message: "authorLink must use http(s) protocol",
+        })
+        .optional(),
+    })
+    .strict()
+    .refine(
+      (data) => data.heroImage === undefined || data.heroImageAlt !== undefined,
+      {
+        message:
+          "heroImageAlt is required when heroImage is set (accessibility + SEO).",
+        path: ["heroImageAlt"],
+      },
+    ),
+});
+
+export const collections = { resumes, caseStudies };

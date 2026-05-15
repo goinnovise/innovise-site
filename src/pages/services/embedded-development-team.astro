@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
+import RelatedCaseStudies from "../../components/RelatedCaseStudies.astro";
 
 const faqs = [
   {
@@ -360,6 +361,8 @@ const safeJson = (obj: object) => JSON.stringify(obj).replace(/</g, "\\u003c");
         </div>
       </div>
     </section>
+
+    <RelatedCaseStudies serviceSlug="embedded-development-team" />
 
     <!-- What's different -->
     <section class="bg-surface-page py-24 lg:py-32">

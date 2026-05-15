@@ -1,0 +1,78 @@
+---
+import { getCollection } from "astro:content";
+import { serviceSlugs } from "../content.config";
+
+interface Props {
+  serviceSlug: (typeof serviceSlugs)[number];
+}
+
+const { serviceSlug } = Astro.props;
+
+// Filter case studies whose `primaryService` matches this service page,
+// sort by publishDate descending, take the first two. When the collection
+// is empty or no entries match this service, `matches` is empty and the
+// template branch below renders nothing — the service page closes cleanly
+// without a related-case-studies block. This is the explicit empty-state
+// behavior from the scaffold plan.
+const matches = (await getCollection("caseStudies"))
+  .filter((entry) => entry.data.primaryService === serviceSlug)
+  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
+  .slice(0, 2);
+---
+
+{
+  matches.length > 0 && (
+    <section class="bg-surface-inset border-surface-inset border-t py-16">
+      <div class="mx-auto max-w-[1200px] px-6 lg:px-16">
+        <p class="animate-on-scroll text-brand-500 mb-2 text-xs font-semibold tracking-widest uppercase">
+          Related case studies
+        </p>
+        <h2 class="animate-on-scroll font-heading text-text-primary mb-8 text-2xl font-semibold sm:text-3xl">
+          How this has played out
+        </h2>
+        <div
+          class:list={[
+            "grid gap-4",
+            matches.length > 1 ? "sm:grid-cols-2" : "mx-auto max-w-xl",
+          ]}
+        >
+          {matches.map((entry) => (
+            <a
+              href={`/case-studies/${entry.id}/`}
+              class="group animate-on-scroll border-surface-inset bg-surface-card flex flex-col rounded-lg border p-6 transition-all hover:-translate-y-0.5 hover:shadow-sm"
+            >
+              <p class="text-brand-500 mb-2 text-[10px] font-semibold tracking-widest uppercase">
+                Outcome
+              </p>
+              <p class="font-heading text-text-primary mb-3 text-base leading-tight font-semibold sm:text-lg">
+                {entry.data.outcome}
+              </p>
+              <p class="text-text-primary mb-2 text-sm font-semibold">
+                {entry.data.title}
+              </p>
+              <p class="text-text-secondary mb-4 line-clamp-2 text-sm">
+                {entry.data.summary}
+              </p>
+              <span class="text-brand-500 mt-auto inline-flex items-center text-sm font-semibold">
+                Read the case study
+                <svg
+                  class="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
