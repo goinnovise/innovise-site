@@ -10,7 +10,7 @@ const faqs = [
   },
   {
     q: "How is Innovise different from a larger Seattle dev shop?",
-    a: "Most software firms in the Seattle market sell with senior engineers and staff the work with juniors. Innovise doesn't. Loren Anderson leads every engagement personally — 15 years of full-stack and technical leadership experience. When more capacity is needed, supporting senior engineers are brought in, and clients always know who's on the project and at what level.",
+    a: "Most software firms in the Seattle market sell with senior engineers and staff the work with juniors. Innovise doesn't. Loren Anderson leads every engagement personally — 15 years of full-stack and technical leadership experience. When more capacity is needed, supporting engineers are brought in, and clients always know who's on the project and at what level.",
   },
   {
     q: "Are your engineers actually in the US?",
@@ -92,6 +92,23 @@ const safeJson = (obj: object) => JSON.stringify(obj).replace(/</g, "\\u003c");
   <main>
     <!-- Hero -->
     <section class="bg-brand-500 relative overflow-hidden py-24 lg:py-32">
+      <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
+        <picture>
+          <source
+            srcset="/images/content/seattle-skyline.webp"
+            type="image/webp"
+          />
+          <img
+            src="/images/content/seattle-skyline.jpg"
+            alt=""
+            class="absolute inset-0 h-full w-full object-cover object-right opacity-20"
+          />
+        </picture>
+        <div
+          class="from-brand-500/90 via-brand-500/60 to-brand-900/20 absolute inset-0 bg-linear-to-r"
+        >
+        </div>
+      </div>
       <div class="relative mx-auto max-w-[1200px] px-6 lg:px-16">
         <nav class="mb-6 text-sm text-white/60" aria-label="Breadcrumb">
           <a href="/" class="transition-colors hover:text-white">Home</a>
@@ -209,7 +226,7 @@ const safeJson = (obj: object) => JSON.stringify(obj).replace(/</g, "\\u003c");
                 handoffs: senior engineer on the call, junior engineer on the
                 code, account manager in between. Innovise removes the layers.
                 Loren leads every engagement. When supporting engineers join,
-                they're senior, US-based, and you know who's on your project.
+                you know who's on your project and at what level.
               </p>
               <p>
                 The Seattle metro is full of companies that have been through

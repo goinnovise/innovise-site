@@ -92,6 +92,23 @@ const safeJson = (obj: object) => JSON.stringify(obj).replace(/</g, "\\u003c");
   <main>
     <!-- Hero -->
     <section class="bg-brand-500 relative overflow-hidden py-24 lg:py-32">
+      <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
+        <picture>
+          <source
+            srcset="/images/content/bellevue-skyline.webp"
+            type="image/webp"
+          />
+          <img
+            src="/images/content/bellevue-skyline.jpg"
+            alt=""
+            class="absolute inset-0 h-full w-full object-cover object-right opacity-20"
+          />
+        </picture>
+        <div
+          class="from-brand-500/90 via-brand-500/60 to-brand-900/20 absolute inset-0 bg-linear-to-r"
+        >
+        </div>
+      </div>
       <div class="relative mx-auto max-w-[1200px] px-6 lg:px-16">
         <nav class="mb-6 text-sm text-white/60" aria-label="Breadcrumb">
           <a href="/" class="transition-colors hover:text-white">Home</a>
@@ -168,7 +185,7 @@ const safeJson = (obj: object) => JSON.stringify(obj).replace(/</g, "\\u003c");
               },
               {
                 title: "A fragile MVP that needs to ship to production",
-                body: "Something was built quickly — with AI tools, contractors, or a founder writing code — and now it can't be safely extended or handed off. The honest first question is what can be saved.",
+                body: "Built quickly with Cursor, Bolt, Replit, a contractor, or a founder writing code. Working, but fragile. The honest first question is what can be saved before any talk of a rewrite.",
               },
               {
                 title: "An offshore engagement that isn't working",
@@ -284,7 +301,7 @@ const safeJson = (obj: object) => JSON.stringify(obj).replace(/</g, "\\u003c");
               {
                 href: "/services/internal-team-development/",
                 title: "Internal team development",
-                body: "Build your own engineering team, with hiring support and interim coverage during the transition.",
+                body: "Build your own engineering team. Hiring support, interim coverage, and offshore-to-onshore transitions.",
               },
               {
                 href: "/services/technology-audit/",
