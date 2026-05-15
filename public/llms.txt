@@ -1,0 +1,38 @@
+# Innovise Technologies
+
+> Senior software engineers embedded in your business — no junior staff, no account managers, no handoffs. Custom software, AI engineering, fractional CTO, and DevOps for SMBs. Based in Bellevue, WA. Serving clients nationwide.
+
+Innovise is a boutique software firm led by Loren Anderson, a senior full-stack engineer with 15 years of experience. Engagements are senior-led and direct — the engineer writing the proposal is the engineer doing the work. When more capacity is needed, supporting engineers are added, and clients always know who's on their project and at what level.
+
+## Services
+
+- [Embedded development team](https://goinnovise.com/services/embedded-development-team/): Senior engineers embedded with your team, paid per engagement rather than per seat.
+- [Custom software development](https://goinnovise.com/services/custom-software-development/): Building software for SMBs where off-the-shelf tools don't fit the operation.
+- [AI engineering](https://goinnovise.com/services/ai-engineering/): LLM integration, RAG, agents, n8n workflow automation, evaluation, cost controls, and production AI that survives past the demo.
+- [From MVP to production](https://goinnovise.com/services/mvp-to-production/): Taking a working but fragile prototype — built with Cursor, Bolt, Replit, a contractor, or a founder writing code — and making it safe to grow on.
+- [Internal team development](https://goinnovise.com/services/internal-team-development/): Hiring support, interim coverage, and offshore-to-onshore transitions for SMBs building their own engineering team.
+- [Technology & security audit](https://goinnovise.com/services/technology-audit/): Architecture, cloud cost, auth/security, dependency, and handoff-readiness reviews.
+- [Fractional CTO](https://goinnovise.com/services/fractional-cto/): Part-time senior technical leadership for $2M–$30M revenue companies.
+
+## Case studies
+
+- [Where vibe coding actually belongs](https://goinnovise.com/case-studies/where-vibe-coding-belongs/): An ed-tech team replaced Figma handoffs with a vibe-coded React playground built on their real design system.
+
+## Articles
+
+- [Articles index](https://goinnovise.com/articles/) — frameworks, checklists, and direct takes on production AI, MVP-to-production work, fractional CTO decisions, embedded teams, and technical audits.
+
+## Locations
+
+- [Bellevue, WA](https://goinnovise.com/locations/bellevue/)
+- [Seattle, WA](https://goinnovise.com/locations/seattle/)
+
+## Contact
+
+- Email via the contact form: https://goinnovise.com/#contact
+- Book a 30-minute call: https://calendly.com/loren-goinnovise/30min
+- LinkedIn: https://www.linkedin.com/company/innovise-technology
+
+## Editorial voice
+
+Direct, senior engineer talking to a business owner. Specific over adjective-heavy. No agency buzzwords. Willing to say when AI or custom software is the wrong answer. Sentence-case headings. Cursor / Bolt / Replit named explicitly when discussing fragile-prototype framings; "offshore to onshore" named explicitly when discussing internal-team development.
