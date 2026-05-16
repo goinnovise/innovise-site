@@ -14,6 +14,8 @@ relatedServices:
   - embedded-development-team
   - technology-audit
   - mvp-to-production
+heroImage: /images/articles/clean-git-history-makes-releases-easier.webp
+heroImageAlt: "Git commit graph interface showing multiple branches and merge points in a dark UI, illustrating how visual branch history becomes easier to follow when the graph stays clean."
 ---
 
 Git can feel mysterious when you're new to it, but clean history is not an advanced trick. It is mostly a habit that makes later work easier. Once a team starts doing staged releases, hotfixes, cherry-picks, or selective reverts, the shape of the history starts to matter. A branch that tells a clear story is easier to review and easier to unwind when something goes wrong.
@@ -71,6 +73,15 @@ This works well when you caught the issue right away, for example:
    ```
 
 The result is one clean commit instead of a stack like "fix typo," "forgot file," and "real fix." That makes review easier and makes later cherry-picks or reverts less annoying.
+
+<figure class="align-right">
+  <img
+    src="/images/articles/clean-git-history-makes-releases-easier-2.webp"
+    alt="Simple commit graph diagram explaining rebasing, with one branch replayed on top of another to keep history linear."
+    loading="lazy"
+  />
+  <figcaption>A simple rebase visual. The goal is not to be clever with Git. The goal is to leave a branch someone else can follow.</figcaption>
+</figure>
 
 <div style="margin: 2rem 0; padding: 1rem 1.25rem; background: #fff7ed; border-left: 4px solid #f97316; border-radius: 0.5rem;">
   <strong>Warning:</strong> Amending commits and rebasing rewrite history. That is usually fine on <em>your own feature branch</em>. It is usually a bad idea on shared branches like <em>development</em>, <em>qa</em>, <em>staging</em>, or <em>production</em>. Do not rewrite history on branches your team is actively sharing unless everyone expects it and the workflow is built for it.
