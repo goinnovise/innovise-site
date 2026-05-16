@@ -2,7 +2,7 @@
 title: "Vibe coding has a bad reputation. Here's where it actually works."
 summary: "How an ed-tech team replaced Figma handoffs with a vibe-coded React playground built on their real design system. Where AI prototyping actually belongs in a product team."
 outcome: "Feature discovery dropped from three planning sessions to one."
-publishDate: 2026-05-01
+publishDate: 2026-05-10
 primaryService: embedded-development-team
 heroImage: /images/case-studies/where-vibe-coding-belongs.webp
 heroImageAlt: "Dashboard built in the design-system playground, showing the same fonts and components used in the live product."

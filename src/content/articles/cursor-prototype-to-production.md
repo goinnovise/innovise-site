@@ -15,7 +15,7 @@ relatedServices:
   - ai-engineering
   - technology-audit
   - internal-team-development
-heroImage: /images/articles/cursor-prototype-to-production.webp
+heroImage: /images/articles/vs-code.webp
 heroImageAlt: "Cursor IDE interface showing an agent task queue and an open Python file mid-edit — the kind of AI-built prototype the article addresses."
 featured: true
 ---
