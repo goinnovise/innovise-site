@@ -148,11 +148,13 @@ For many teams, that is enough to keep feature branches readable.
 
 None of this means merge commits are always wrong. They are useful in some workflows. But if your personal feature branch is collecting merge commits as a substitute for regular rebasing, the history usually gets harder to review and harder to untangle later.
 
-## When not to do this
+## Some additional notes and caveats
 
-Do not rewrite history on a branch your team shares casually. If other developers are branching from `development`, testing against `qa`, or deploying from `staging` or `production`, rewriting those branches will create confusion fast.
+**Do not rewrite history on a branch your team shares casually**. If other developers are branching from `development`, testing against `qa`, or deploying from `staging` or `production`, rewriting those branches will create confusion fast.
 
-Also, do not chase perfect history at the expense of shipping. If a branch is already shared broadly and the safe move is to merge once and move on, do that. Clean history is a means to safer releases and easier maintenance, not an end in itself.
+**Do not chase perfect history at the expense of shipping.** If a branch is already shared broadly and the safe move is to merge once and move on, do that. Clean history is a means to safer releases and easier maintenance, not an end in itself.
+
+**Don't lean on the squash-and-merge github feature.** It's better than doing nothing, but it allows your mental model to degrade and doesn't help your fellow reviewers.
 
 ## Related reading
 
